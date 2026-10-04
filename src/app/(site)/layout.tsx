@@ -5,14 +5,14 @@ import { SiteHeader } from "@/components/site-header";
 import { cn, shell } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
-export default async function AuthLayout({ children }: { children: ReactNode }) {
+export default async function SiteLayout({ children }: { children: ReactNode }) {
   const viewer = await getViewer();
 
   return (
     <div className="relative isolate">
       <Glow />
       <SiteHeader viewer={viewer} />
-      <main id="main" className={cn(shell, "pt-10 pb-8 sm:pt-16 lg:pt-24")}>
+      <main id="main" className={cn(shell, "pt-6 pb-8 sm:pt-8 lg:pt-10")}>
         {children}
       </main>
       <SiteFooter />

@@ -26,7 +26,7 @@ export default async function AccountPage({ searchParams }: PageProps<"/account"
   const emailOn = learner?.emailUpdates ?? false;
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20">
+    <div className="grid gap-12 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-20 lg:pt-14">
       <div>
         <p className="enter eyebrow">{welcome ? "Welcome aboard" : "Your account"}</p>
         <h1 className="enter-rise mt-5 text-[2.6rem] leading-[1.04] font-semibold tracking-[-0.04em] text-fg sm:text-[3.5rem] xl:text-[4.25rem]">

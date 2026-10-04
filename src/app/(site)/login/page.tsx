@@ -68,7 +68,7 @@ function ProviderButton({ id }: { id: keyof typeof providers }) {
 export default async function LoginPage({ searchParams }: PageProps<"/login">) {
   if (!authEnabled) {
     return (
-      <div className="max-w-[35rem]">
+      <div className="max-w-[35rem] pt-4 sm:pt-8 lg:pt-14">
         <p className="eyebrow">Join the learners</p>
         <h1 className="mt-4 text-[2.5rem] leading-[1.05] font-semibold tracking-[-0.035em] text-fg">
           Sign-in opens <span className="font-serif font-normal text-link italic">soon.</span>
@@ -86,7 +86,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
   const count = await learnerCount();
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-center lg:gap-20">
+    <div className="grid gap-12 pt-4 sm:pt-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-center lg:gap-20 lg:pt-14">
       <div>
         <p className="enter eyebrow">Join the learners</p>
         <h1 className="enter-rise mt-5 text-[2.6rem] leading-[1.04] font-semibold tracking-[-0.04em] text-fg sm:text-[3.5rem] xl:text-[4.25rem]">
