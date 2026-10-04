@@ -30,7 +30,7 @@ npm run dev        # http://localhost:3000
 
 `POST /api/visit` records a visit and returns `{ views, learners }`; `GET` returns the totals.
 
-- **views** — every page load on the live site counts (capped at 20 a minute per visitor, so a script can't pump it). Local dev and preview deployments share the store, so they read the totals without adding to them.
+- **views** — one per browser per day on the live site: the first load sets a 24-hour `ll_visit` cookie, and loads while it lasts don't count again. Scripts that ignore cookies are capped at 30 new visits an hour per IP and browser. Local dev and preview deployments share the store, so they read the totals without adding to them.
 - **learners** — people who have signed up (see below).
 - Link-preview crawlers (LinkedIn fetches the page on every post), search bots and scripts are ignored.
 
@@ -41,6 +41,7 @@ then redeploy. Locally, `vercel env pull .env.local`. Without a store the counte
 
 Learners sign in with Google or GitHub (Auth.js). Users and linked accounts are stored in the
 same Redis store under `auth:*`; the session is an encrypted cookie, so nothing piles up.
+A sign-in lasts one day, then the learner signs in again.
 
 Each new learner gets the next number (`learners:seq`) and joins the `learners` set, whose size
 is the count on the home page. Learners who switch on "Email me new logs" are kept in the

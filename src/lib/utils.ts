@@ -19,3 +19,6 @@ export const shell = "mx-auto w-full max-w-[85rem] px-6 md:px-10 xl:px-16";
  * page scales with the root font size (see `html` in globals.css).
  */
 export const rem = (px: number) => `${px / 16}rem`;
+
+/** How long a sign-in lasts, and how long one visit counts for: one day. */
+export const DAY_SECONDS = 60 * 60 * 24;

@@ -4,6 +4,7 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import { ensureLearner } from "@/lib/learners";
 import { redis } from "@/lib/redis";
+import { DAY_SECONDS } from "@/lib/utils";
 
 // A provider switches on once its client id is set (AUTH_GOOGLE_ID / AUTH_GITHUB_ID).
 const enabled = {
@@ -18,9 +19,10 @@ export const authEnabled = Boolean(redis && process.env.AUTH_SECRET && providerI
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   // Users and linked accounts live in Redis; the session itself is an
-  // encrypted cookie, so nothing piles up in the store.
+  // encrypted cookie, so nothing piles up in the store. A sign-in lasts one
+  // day; after that you sign in again.
   adapter: redis ? UpstashRedisAdapter(redis, { baseKeyPrefix: "auth:" }) : undefined,
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: DAY_SECONDS },
   providers: [...(enabled.google ? [Google] : []), ...(enabled.github ? [GitHub] : [])],
   pages: {
     signIn: "/login",
@@ -33,6 +35,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
   },
   callbacks: {
+    jwt({ token, user }) {
+      // Stamped once at sign-in. The cookie already expires after a day; this also
+      // ends sessions that got refreshed, or that were issued before the 1-day rule.
+      if (user) token.signedInAt = Date.now();
+      const signedInAt = typeof token.signedInAt === "number" ? token.signedInAt : 0;
+      return Date.now() - signedInAt < DAY_SECONDS * 1000 ? token : null;
+    },
     session({ session, token }) {
       if (token.sub) session.user.id = token.sub;
       return session;

@@ -1,5 +1,7 @@
 import type { Redis } from "@upstash/redis";
+import { cookies } from "next/headers";
 import { redis, type VisitStats } from "@/lib/redis";
+import { DAY_SECONDS } from "@/lib/utils";
 
 const KEY = {
   views: "views:total",
@@ -7,10 +9,15 @@ const KEY = {
   rate: (id: string) => `rate:${id}`,
 };
 
-// Every page load counts. This cap only stops a script from pumping the
-// number — no person reloads more than 20 times a minute.
-const RATE_LIMIT = 20;
-const RATE_WINDOW_SECONDS = 60;
+// One visit per browser per day: the first page load sets this cookie, and
+// loads while it lasts don't count again.
+const VISIT_COOKIE = "ll_visit";
+
+// Scripts ignore cookies, so this cap stops them pumping the number: at most 30
+// new visits an hour from one IP and browser. Real people on a shared campus
+// network stay well under it.
+const RATE_LIMIT = 30;
+const RATE_WINDOW_SECONDS = 60 * 60;
 
 // Link-preview crawlers (LinkedIn fetches the page on every post), search
 // engines and headless browsers shouldn't count as visits.
@@ -49,13 +56,14 @@ export async function GET() {
   }
 }
 
-/** Records a visit and returns the totals. */
+/** Records a visit (once per browser per day) and returns the totals. */
 export async function POST(request: Request) {
   if (!redis) return Response.json(null, { status: 503, headers: noStore });
 
   try {
     const ua = request.headers.get("user-agent") ?? "";
-    if (!countsVisits || !ua || BOT_UA.test(ua)) {
+    const jar = await cookies();
+    if (!countsVisits || !ua || BOT_UA.test(ua) || jar.has(VISIT_COOKIE)) {
       return Response.json(await readStats(redis), { headers: noStore });
     }
 
@@ -75,6 +83,13 @@ export async function POST(request: Request) {
       .scard(KEY.learners)
       .exec<[number, number]>();
 
+    jar.set(VISIT_COOKIE, "1", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      maxAge: DAY_SECONDS,
+    });
     return Response.json({ views, learners } satisfies VisitStats, { headers: noStore });
   } catch {
     return Response.json(null, { status: 503, headers: noStore });
