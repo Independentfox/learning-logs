@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
+  // Day notes are read from content/days at request time; ship them with every function.
+  outputFileTracingIncludes: {
+    "/*": ["./content/days/**/*"],
+  },
   turbopack: {
     root: path.resolve(__dirname),
   },

@@ -1,13 +1,16 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import type { categories } from "@/content/categories";
+import type { Category } from "@/content/categories";
 import { logsIn } from "@/content/logs";
 import { rem } from "@/lib/utils";
 
-export function CategoryCard({ category, index }: { category: (typeof categories)[number]; index: number }) {
+const SHOWN_TOPICS = 4;
+
+export function CategoryCard({ category, index }: { category: Category; index: number }) {
   const { Icon, name, blurb, topics } = category;
   const logs = logsIn(category.slug);
-  const latest = logs[0];
+  const latest = logs.at(-1);
+  const more = topics.length - SHOWN_TOPICS;
 
   return (
     <Link
@@ -24,13 +27,18 @@ export function CategoryCard({ category, index }: { category: (typeof categories
       <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">{name}</h3>
       <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">{blurb}</p>
 
-      <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} topics`}>
-        {topics.map((topic) => (
-          <li key={topic} className="rounded-md border border-line px-2 py-0.5 text-xs text-muted">
-            {topic}
-          </li>
-        ))}
-      </ul>
+      {category.freeform ? (
+        <p className="mt-4 text-xs text-subtle">Topics added as I go</p>
+      ) : (
+        <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} topics`}>
+          {topics.slice(0, SHOWN_TOPICS).map((topic) => (
+            <li key={topic} className="rounded-md border border-line px-2 py-0.5 text-xs text-muted">
+              {topic}
+            </li>
+          ))}
+          {more > 0 && <li className="px-1 py-0.5 text-xs text-subtle">+{more} more</li>}
+        </ul>
+      )}
 
       <div className="mt-auto pt-6">
         <div className="flex items-center justify-between border-t border-line pt-4 text-[0.8125rem]">

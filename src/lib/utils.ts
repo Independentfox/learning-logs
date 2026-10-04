@@ -22,3 +22,13 @@ export const rem = (px: number) => `${px / 16}rem`;
 
 /** How long a sign-in lasts, and how long one visit counts for: one day. */
 export const DAY_SECONDS = 60 * 60 * 24;
+
+/** "2026-10-16" → "16 Oct 2026". */
+export function formatDate(date: string) {
+  return new Date(`${date}T00:00:00Z`).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}

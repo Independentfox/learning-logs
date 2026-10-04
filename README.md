@@ -18,13 +18,36 @@ npm run dev        # http://localhost:3000
 | --------------------------------------------------------------------- | ------------------------------ |
 | Learning topics (the 14 cards, and a page each at `/learning/<slug>`) | `src/content/categories.ts`    |
 | Building Journey cards                                                | `src/content/projects.ts`      |
-| Daily logs — each day is tagged with one or more topics               | `src/content/logs.ts`          |
+| Daily logs — one Markdown file per day (format below)                 | `content/days/*.md`            |
 | Site name, links                                                      | `src/content/site.ts`          |
 | Home: hero, stats panel, tabs                                         | `src/app/(journey)/layout.tsx` |
 | Topic, login and account pages                                        | `src/app/(site)/`              |
 | Visit counter API                                                     | `src/app/api/visit/route.ts`   |
 | Sign-in config (Google, GitHub)                                       | `src/auth.ts`                  |
 | Learner numbers, email opt-in                                         | `src/lib/learners.ts`          |
+
+## Logging a day
+
+Each day is one Markdown file in `content/days/`, named by its number (`001.md`, `002.md`, …):
+
+```md
+---
+day: 1
+date: 2026-10-06
+title: Two pointers, and when they beat a hash map
+category: dsa # a slug from src/content/categories.ts
+topic: Two Pointers & Sliding Window # must be in that category's syllabus
+linkedin: https://www.linkedin.com/posts/... # optional
+---
+
+The notes, in Markdown — headings, lists, tables, code blocks.
+```
+
+The day gets a page at `/day/1`, appears under its topic on `/learning/dsa`, and counts towards
+the Day number and streak grid on the home page. Research Papers, Cool Things and AI Race have
+no fixed syllabus, so `topic` there can be anything (a paper's title, say). A typo in `category`
+or `topic`, a missing field, or the same day twice fails the build with a message saying what
+to fix.
 
 ## Visit counter
 

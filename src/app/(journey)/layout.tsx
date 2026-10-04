@@ -2,6 +2,7 @@ import { ArrowRight, GraduationCap } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { authEnabled } from "@/auth";
+import { DaySearch } from "@/components/day-search";
 import { Glow } from "@/components/glow";
 import { LinkedInIcon } from "@/components/icons";
 import { JourneyTabs } from "@/components/journey-tabs";
@@ -10,7 +11,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { StatTile } from "@/components/stat-tile";
 import { StreakGrid } from "@/components/streak-grid";
-import { currentDay } from "@/content/logs";
+import { getCategory } from "@/content/categories";
+import { currentDay, logs } from "@/content/logs";
 import { site } from "@/content/site";
 import { cn, delay, rem, shell } from "@/lib/utils";
 import { getViewer, type Viewer } from "@/lib/viewer";
@@ -82,7 +84,12 @@ function StatsPanel() {
   );
 }
 
-/** Shared by both tabs: intro, live stats and the tab switcher. */
+/** What the day search can suggest: every logged day, newest first. */
+const searchIndex = logs
+  .map((log) => ({ day: log.day, title: log.title, category: getCategory(log.category)?.name ?? "" }))
+  .reverse();
+
+/** Shared by both tabs: intro, live stats, the tab switcher and day search. */
 export default async function JourneyLayout({ children }: { children: ReactNode }) {
   const viewer = await getViewer();
 
@@ -112,8 +119,12 @@ export default async function JourneyLayout({ children }: { children: ReactNode 
           <StatsPanel />
         </section>
 
-        <div className="enter mt-16 lg:mt-24" style={delay(220)}>
+        <div
+          className="enter relative z-20 mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:mt-24"
+          style={delay(220)}
+        >
           <JourneyTabs />
+          <DaySearch days={searchIndex} currentDay={currentDay} />
         </div>
 
         <div className="enter mt-8" style={delay(260)}>
