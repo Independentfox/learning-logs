@@ -3,8 +3,7 @@ import { redis, type VisitStats } from "@/lib/redis";
 
 const KEY = {
   views: "views:total",
-  // HyperLogLog: ~0.81% error, 12 KB no matter how many visitors.
-  visitors: "visitors:hll",
+  learners: "learners",
   rate: (id: string) => `rate:${id}`,
 };
 
@@ -14,11 +13,15 @@ const RATE_LIMIT = 20;
 const RATE_WINDOW_SECONDS = 60;
 
 // Link-preview crawlers (LinkedIn fetches the page on every post), search
-// engines and headless browsers shouldn't count as readers.
+// engines and headless browsers shouldn't count as visits.
 const BOT_UA =
   /bot|crawl|spider|slurp|preview|linkedin|facebookexternalhit|whatsapp|telegram|slack|discord|embedly|lighthouse|headless|curl|wget|python|axios|node-fetch/i;
 
 const noStore = { "Cache-Control": "no-store" };
+
+// Local dev and preview deployments share the production store, so only the
+// live site records visits; everywhere else just reads the totals.
+const countsVisits = process.env.VERCEL_ENV === "production";
 
 async function visitorId(request: Request) {
   const ip =
@@ -32,8 +35,8 @@ async function visitorId(request: Request) {
 }
 
 async function readStats(db: Redis): Promise<VisitStats> {
-  const [views, visitors] = await Promise.all([db.get<number>(KEY.views), db.pfcount(KEY.visitors)]);
-  return { views: views ?? 0, visitors };
+  const [views, learners] = await Promise.all([db.get<number>(KEY.views), db.scard(KEY.learners)]);
+  return { views: views ?? 0, learners };
 }
 
 /** Current totals, for the live refresh. */
@@ -52,7 +55,7 @@ export async function POST(request: Request) {
 
   try {
     const ua = request.headers.get("user-agent") ?? "";
-    if (!ua || BOT_UA.test(ua)) {
+    if (!countsVisits || !ua || BOT_UA.test(ua)) {
       return Response.json(await readStats(redis), { headers: noStore });
     }
 
@@ -66,14 +69,13 @@ export async function POST(request: Request) {
       return Response.json(await readStats(redis), { headers: noStore });
     }
 
-    const [views, , visitors] = await redis
+    const [views, learners] = await redis
       .pipeline()
       .incr(KEY.views)
-      .pfadd(KEY.visitors, id)
-      .pfcount(KEY.visitors)
-      .exec<[number, number, number]>();
+      .scard(KEY.learners)
+      .exec<[number, number]>();
 
-    return Response.json({ views, visitors } satisfies VisitStats, { headers: noStore });
+    return Response.json({ views, learners } satisfies VisitStats, { headers: noStore });
   } catch {
     return Response.json(null, { status: 503, headers: noStore });
   }

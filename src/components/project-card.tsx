@@ -8,9 +8,9 @@ export function ProjectCard({ project }: { project: Project }) {
   const logs = logsFor(project.slug);
 
   return (
-    <article className="flex flex-col rounded-2xl border border-line bg-card p-5">
+    <article className="flex flex-col rounded-3xl border border-line bg-card p-6">
       <div className="flex items-start justify-between gap-3">
-        <h3 className="text-lg font-semibold tracking-[-0.01em] text-fg">{name}</h3>
+        <h3 className="text-xl font-semibold tracking-[-0.015em] text-fg">{name}</h3>
         <span
           className={cn(
             "inline-flex h-6 shrink-0 items-center rounded-full border px-2.5 text-xs font-medium",
@@ -30,7 +30,7 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </ul>
 
-      <div className="mt-auto pt-5">
+      <div className="mt-auto pt-6">
         <div className="flex items-center justify-between border-t border-line pt-4 text-[13px]">
           <span className="text-muted">
             <span className="font-medium text-fg tabular-nums">{logs.length}</span> build{" "}

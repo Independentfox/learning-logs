@@ -13,11 +13,13 @@ export const metadata: Metadata = {
 
 function EmptyState() {
   return (
-    <div className="rounded-2xl border border-dashed border-line-strong px-6 py-12 text-center">
+    <div className="rounded-3xl border border-dashed border-line-strong px-6 py-16 text-center sm:py-20">
       <span className="mx-auto grid size-12 place-items-center rounded-2xl border border-tint-line bg-tint text-link">
         <Hammer size={21} aria-hidden />
       </span>
-      <h3 className="mt-5 text-lg font-semibold tracking-[-0.01em] text-fg">The first build is on its way</h3>
+      <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">
+        The first build is on its way
+      </h3>
       <p className="mx-auto mt-2 max-w-[440px] text-[15px] leading-relaxed text-muted">
         I&apos;ll be building open-source projects in public. Each one gets a card here with its repo, its
         progress and the build logs behind it.
@@ -49,7 +51,7 @@ export default function BuildingJourney() {
       {projects.length === 0 ? (
         <EmptyState />
       ) : (
-        <div className="grid gap-3 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}

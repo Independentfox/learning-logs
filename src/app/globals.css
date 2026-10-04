@@ -21,6 +21,7 @@
   --tint: rgb(15 118 110 / 0.08);
   --tint-line: rgb(15 118 110 / 0.26);
   --live: #16a34a;
+  --glow: rgb(15 118 110 / 0.09);
 }
 
 .dark {
@@ -37,6 +38,7 @@
   --tint: rgb(42 157 143 / 0.1);
   --tint-line: rgb(42 157 143 / 0.3);
   --live: #4ade80;
+  --glow: rgb(42 157 143 / 0.16);
 }
 
 @theme inline {

@@ -10,3 +10,6 @@ export function cn(...inputs: ClassValue[]) {
 export function delay(ms: number): CSSProperties {
   return { "--d": `${ms}ms` } as CSSProperties;
 }
+
+/** The page's content column: fills the screen up to 1360px, with roomier gutters as it grows. */
+export const shell = "mx-auto w-full max-w-[1360px] px-6 md:px-10 xl:px-16";

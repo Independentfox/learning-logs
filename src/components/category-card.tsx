@@ -7,7 +7,7 @@ export function CategoryCard({ category, index }: { category: (typeof categories
   const latest = logs[0];
 
   return (
-    <article className="flex flex-col rounded-2xl border border-line bg-card p-5">
+    <article className="flex flex-col rounded-3xl border border-line bg-card p-6">
       <div className="flex items-start justify-between">
         <span className="grid size-10 place-items-center rounded-xl border border-tint-line bg-tint text-link">
           <Icon size={19} aria-hidden />
@@ -15,8 +15,8 @@ export function CategoryCard({ category, index }: { category: (typeof categories
         <span className="font-mono text-xs text-subtle">{String(index + 1).padStart(2, "0")}</span>
       </div>
 
-      <h3 className="mt-5 text-lg font-semibold tracking-[-0.01em] text-fg">{name}</h3>
-      <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{blurb}</p>
+      <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">{name}</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-muted">{blurb}</p>
 
       <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} topics`}>
         {topics.map((topic) => (
@@ -26,7 +26,7 @@ export function CategoryCard({ category, index }: { category: (typeof categories
         ))}
       </ul>
 
-      <div className="mt-auto pt-5">
+      <div className="mt-auto pt-6">
         <div className="flex items-center justify-between border-t border-line pt-4 text-[13px]">
           <span className="text-muted">
             <span className="font-medium text-fg tabular-nums">{logs.length}</span>{" "}

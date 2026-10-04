@@ -8,4 +8,5 @@ const token = process.env.KV_REST_API_TOKEN ?? process.env.UPSTASH_REDIS_REST_TO
 /** `null` until a store is connected — the visit counter hides itself. */
 export const redis = url && token ? new Redis({ url, token }) : null;
 
-export type VisitStats = { views: number; visitors: number };
+/** `learners` is the number of signed-up users. */
+export type VisitStats = { views: number; learners: number };

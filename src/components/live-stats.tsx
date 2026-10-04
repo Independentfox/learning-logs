@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { StatTile } from "@/components/stat-tile";
 import type { VisitStats } from "@/lib/redis";
 
 const REFRESH_MS = 30_000;
@@ -32,20 +33,8 @@ function useCountUp(target: number) {
   return value;
 }
 
-function Stat({ value, label }: { value: number; label: string }) {
-  const shown = useCountUp(value);
-  return (
-    <span>
-      <span className="font-medium text-fg tabular-nums">{format(shown)}</span> {label}
-    </span>
-  );
-}
-
-/**
- * Records this visit once on load, then refreshes the totals every 30s while
- * the tab is visible. Renders nothing until a Redis store is connected.
- */
-export function VisitCounter() {
+/** Records this visit once on load, then refreshes the totals every 30s while the tab is visible. */
+function useVisitStats() {
   const [stats, setStats] = useState<VisitStats | null>(null);
 
   useEffect(() => {
@@ -71,22 +60,19 @@ export function VisitCounter() {
     };
   }, []);
 
-  if (!stats) return null;
+  return stats;
+}
+
+/** The Visits and Learners tiles of the stats panel. Shows "—" until the numbers arrive. */
+export function LiveStats() {
+  const stats = useVisitStats();
+  const views = useCountUp(stats?.views ?? 0);
+  const learners = useCountUp(stats?.learners ?? 0);
 
   return (
-    <span
-      title="Live — updates every 30 seconds"
-      className="inline-flex h-8 items-center gap-2.5 rounded-full border border-line px-3 text-[13px] text-muted"
-    >
-      <span className="relative flex size-2" aria-hidden>
-        <span className="live-ping absolute inset-0 rounded-full bg-live" />
-        <span className="relative size-2 rounded-full bg-live" />
-      </span>
-      <Stat value={stats.views} label={stats.views === 1 ? "visit" : "visits"} />
-      <span aria-hidden className="text-subtle">
-        ·
-      </span>
-      <Stat value={stats.visitors} label={stats.visitors === 1 ? "reader" : "readers"} />
-    </span>
+    <>
+      <StatTile label="Visits" value={stats ? format(views) : "—"} note="all time" />
+      <StatTile label="Learners" value={stats ? format(learners) : "—"} note="signed up" />
+    </>
   );
 }
