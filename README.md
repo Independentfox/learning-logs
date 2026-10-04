@@ -27,7 +27,7 @@ npm run dev        # http://localhost:3000
 
 `POST /api/visit` records a visit and returns `{ views, visitors }`; `GET` returns the totals.
 
-- **views** — a visit counts once per visitor per 30 minutes, so refreshing doesn't inflate it.
+- **views** — every page load counts (capped at 20 a minute per visitor, so a script can't pump it).
 - **visitors** — unique readers, kept in a Redis HyperLogLog (hashed IP + user agent; nothing raw is stored).
 - Link-preview crawlers (LinkedIn fetches the page on every post), search bots and scripts are ignored.
 
