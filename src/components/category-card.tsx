@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { categories } from "@/content/categories";
 import { logsIn } from "@/content/logs";
+import { rem } from "@/lib/utils";
 
 export function CategoryCard({ category, index }: { category: (typeof categories)[number]; index: number }) {
   const { Icon, name, blurb, topics } = category;
@@ -15,13 +16,13 @@ export function CategoryCard({ category, index }: { category: (typeof categories
     >
       <div className="flex items-start justify-between">
         <span className="grid size-10 place-items-center rounded-xl border border-tint-line bg-tint text-link">
-          <Icon size={19} aria-hidden />
+          <Icon size={rem(19)} aria-hidden />
         </span>
         <span className="font-mono text-xs text-subtle">{String(index + 1).padStart(2, "0")}</span>
       </div>
 
       <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">{name}</h3>
-      <p className="mt-2 text-[15px] leading-relaxed text-muted">{blurb}</p>
+      <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">{blurb}</p>
 
       <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} topics`}>
         {topics.map((topic) => (
@@ -32,14 +33,18 @@ export function CategoryCard({ category, index }: { category: (typeof categories
       </ul>
 
       <div className="mt-auto pt-6">
-        <div className="flex items-center justify-between border-t border-line pt-4 text-[13px]">
+        <div className="flex items-center justify-between border-t border-line pt-4 text-[0.8125rem]">
           <span className="text-muted">
             <span className="font-medium text-fg tabular-nums">{logs.length}</span>{" "}
             {logs.length === 1 ? "log" : "logs"}
           </span>
           <span className="inline-flex items-center gap-1 text-subtle transition-colors group-hover:text-link">
             {latest ? `Latest · Day ${latest.day}` : "Coming soon"}
-            <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight
+              size={rem(14)}
+              aria-hidden
+              className="transition-transform group-hover:translate-x-0.5"
+            />
           </span>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { auth, authEnabled } from "@/auth";
 import { Avatar } from "@/components/avatar";
 import { ensureLearner } from "@/lib/learners";
-import { cn, delay } from "@/lib/utils";
+import { cn, delay, rem } from "@/lib/utils";
 import { signOutAction, updateEmailUpdates } from "./actions";
 
 export const metadata: Metadata = {
@@ -52,14 +52,14 @@ export default async function AccountPage({ searchParams }: PageProps<"/account"
         <div className="enter mt-8 flex flex-wrap items-center gap-3" style={delay(140)}>
           <Link
             href="/"
-            className="inline-flex h-11 items-center rounded-xl bg-accent px-5 text-[15px] font-medium text-accent-fg transition-[filter] hover:brightness-110"
+            className="inline-flex h-11 items-center rounded-xl bg-accent px-5 text-[0.9375rem] font-medium text-accent-fg transition-[filter] hover:brightness-110"
           >
             Back to the logs
           </Link>
           <form action={signOutAction}>
             <button
               type="submit"
-              className="inline-flex h-11 items-center rounded-xl border border-line-strong px-5 text-[15px] font-medium text-fg transition-colors hover:bg-card"
+              className="inline-flex h-11 items-center rounded-xl border border-line-strong px-5 text-[0.9375rem] font-medium text-fg transition-colors hover:bg-card"
             >
               Sign out
             </button>
@@ -73,7 +73,7 @@ export default async function AccountPage({ searchParams }: PageProps<"/account"
           style={delay(180)}
         >
           <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-tint-line bg-tint text-link">
-            <Mail size={18} aria-hidden />
+            <Mail size={rem(18)} aria-hidden />
           </span>
           <div className="min-w-0 flex-1">
             <h2 id="email-updates" className="font-medium text-fg">
@@ -111,12 +111,12 @@ export default async function AccountPage({ searchParams }: PageProps<"/account"
           style={delay(220)}
         >
           <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-line text-subtle">
-            <Bookmark size={18} aria-hidden />
+            <Bookmark size={rem(18)} aria-hidden />
           </span>
           <div>
             <h2 className="flex items-center gap-2 font-medium text-fg">
               Progress &amp; bookmarks
-              <span className="rounded-full border border-line px-2 py-px text-[11px] font-normal text-subtle">
+              <span className="rounded-full border border-line px-2 py-px text-[0.6875rem] font-normal text-subtle">
                 soon
               </span>
             </h2>

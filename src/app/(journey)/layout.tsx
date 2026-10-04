@@ -12,7 +12,7 @@ import { StatTile } from "@/components/stat-tile";
 import { StreakGrid } from "@/components/streak-grid";
 import { currentDay } from "@/content/logs";
 import { site } from "@/content/site";
-import { cn, delay, shell } from "@/lib/utils";
+import { cn, delay, rem, shell } from "@/lib/utils";
 import { getViewer, type Viewer } from "@/lib/viewer";
 
 /** Join for visitors, your learner number once you have one, and always a way to follow along. */
@@ -22,18 +22,22 @@ function HeroActions({ viewer }: { viewer: Viewer }) {
       {authEnabled && !viewer && (
         <Link
           href="/login"
-          className="group inline-flex h-11 items-center gap-2 rounded-xl bg-accent px-5 text-[15px] font-medium text-accent-fg shadow-[0_8px_24px_-10px_rgb(15_118_110/0.7)] transition-[filter] hover:brightness-110"
+          className="group inline-flex h-11 items-center gap-2 rounded-xl bg-accent px-5 text-[0.9375rem] font-medium text-accent-fg shadow-[0_8px_24px_-10px_rgb(15_118_110/0.7)] transition-[filter] hover:brightness-110"
         >
           Join the learners
-          <ArrowRight size={16} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight
+            size={rem(16)}
+            aria-hidden
+            className="transition-transform group-hover:translate-x-0.5"
+          />
         </Link>
       )}
       {viewer?.learner && (
         <Link
           href="/account"
-          className="inline-flex h-11 items-center gap-2 rounded-xl border border-tint-line bg-tint px-4 text-[15px] font-medium text-link transition-colors hover:bg-card"
+          className="inline-flex h-11 items-center gap-2 rounded-xl border border-tint-line bg-tint px-4 text-[0.9375rem] font-medium text-link transition-colors hover:bg-card"
         >
-          <GraduationCap size={17} aria-hidden />
+          <GraduationCap size={rem(17)} aria-hidden />
           You&apos;re learner #{viewer.learner.number}
         </Link>
       )}
@@ -41,9 +45,9 @@ function HeroActions({ viewer }: { viewer: Viewer }) {
         href={site.links.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-[15px] font-medium text-fg transition-colors hover:bg-card"
+        className="inline-flex h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-[0.9375rem] font-medium text-fg transition-colors hover:bg-card"
       >
-        <LinkedInIcon size={15} />
+        <LinkedInIcon size={rem(15)} />
         Follow on LinkedIn
       </a>
     </div>
@@ -59,7 +63,7 @@ function StatsPanel() {
     >
       <div className="flex items-center justify-between">
         <p className="eyebrow">At a glance</p>
-        <span className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.12em] text-subtle uppercase">
+        <span className="inline-flex items-center gap-2 font-mono text-[0.6875rem] tracking-[0.12em] text-subtle uppercase">
           <span className="relative flex size-2" aria-hidden>
             <span className="live-ping absolute inset-0 rounded-full bg-live" />
             <span className="relative size-2 rounded-full bg-live" />
@@ -96,7 +100,10 @@ export default async function JourneyLayout({ children }: { children: ReactNode 
               <br />
               <span className="font-serif font-normal text-link italic">one day at a time.</span>
             </h1>
-            <p className="enter mt-6 max-w-[600px] text-[17px] leading-[1.75] text-muted" style={delay(80)}>
+            <p
+              className="enter mt-6 max-w-[37.5rem] text-[1.0625rem] leading-[1.75] text-muted"
+              style={delay(80)}
+            >
               Every day I study something new — DSA, CS fundamentals, software engineering, AI &amp; LLMs —
               and log what I learned here. Everything I build goes up in the open, too.
             </p>

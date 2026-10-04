@@ -3,7 +3,7 @@
 import { BookOpen, Hammer } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import { cn, rem } from "@/lib/utils";
 
 const tabs = [
   { href: "/", label: "Learning Journey", Icon: BookOpen },
@@ -33,7 +33,7 @@ export function JourneyTabs() {
                 : "text-muted hover:text-fg",
             )}
           >
-            <Icon size={16} aria-hidden className={active ? "text-link" : undefined} />
+            <Icon size={rem(16)} aria-hidden className={active ? "text-link" : undefined} />
             {label}
           </Link>
         );

@@ -27,7 +27,7 @@ export function StreakGrid() {
 
   return (
     <div>
-      <div className="flex items-baseline justify-between gap-4 text-[13px]">
+      <div className="flex items-baseline justify-between gap-4 text-[0.8125rem]">
         <span className="text-muted">
           <span className="font-medium text-fg tabular-nums">{count}</span> {count === 1 ? "day" : "days"}{" "}
           logged
@@ -37,7 +37,7 @@ export function StreakGrid() {
       <div
         role="img"
         aria-label={`${count} ${count === 1 ? "day" : "days"} logged in the last ${WEEKS} weeks`}
-        className="mt-3 grid grid-flow-col grid-rows-7 gap-[3px]"
+        className="mt-3 grid grid-flow-col grid-rows-7 gap-[0.1875rem]"
         style={{ gridTemplateColumns: `repeat(${WEEKS}, minmax(0, 1fr))` }}
       >
         {days.map((day) => (
@@ -45,7 +45,7 @@ export function StreakGrid() {
             key={day.date}
             title={day.future ? undefined : `${day.date}${day.logged ? " · logged" : ""}`}
             className={cn(
-              "aspect-square rounded-[3px]",
+              "aspect-square rounded-[0.1875rem]",
               day.future ? "bg-transparent" : day.logged ? "bg-accent" : "bg-line",
               day.today && "ring-1 ring-link",
             )}

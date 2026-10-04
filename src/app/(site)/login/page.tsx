@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { auth, authEnabled, providerIds, signIn } from "@/auth";
 import { GitHubIcon, GoogleIcon } from "@/components/icons";
 import { learnerCount } from "@/lib/learners";
-import { delay } from "@/lib/utils";
+import { delay, rem } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Join the learners",
@@ -56,9 +56,9 @@ function ProviderButton({ id }: { id: keyof typeof providers }) {
     >
       <button
         type="submit"
-        className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-line-strong bg-canvas text-[15px] font-medium text-fg transition-[background-color,transform] hover:bg-card active:scale-[0.99]"
+        className="flex h-12 w-full items-center justify-center gap-3 rounded-xl border border-line-strong bg-canvas text-[0.9375rem] font-medium text-fg transition-[background-color,transform] hover:bg-card active:scale-[0.99]"
       >
-        <Icon size={18} />
+        <Icon size={rem(18)} />
         {label}
       </button>
     </form>
@@ -68,12 +68,12 @@ function ProviderButton({ id }: { id: keyof typeof providers }) {
 export default async function LoginPage({ searchParams }: PageProps<"/login">) {
   if (!authEnabled) {
     return (
-      <div className="max-w-[560px]">
+      <div className="max-w-[35rem]">
         <p className="eyebrow">Join the learners</p>
         <h1 className="mt-4 text-[2.5rem] leading-[1.05] font-semibold tracking-[-0.035em] text-fg">
           Sign-in opens <span className="font-serif font-normal text-link italic">soon.</span>
         </h1>
-        <p className="mt-4 text-[16px] leading-[1.7] text-muted">Check back in a day or two.</p>
+        <p className="mt-4 text-base leading-[1.7] text-muted">Check back in a day or two.</p>
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
           <br />
           <span className="font-serif font-normal text-link italic">day by day.</span>
         </h1>
-        <p className="enter mt-6 max-w-[560px] text-[17px] leading-[1.75] text-muted" style={delay(80)}>
+        <p className="enter mt-6 max-w-[35rem] text-[1.0625rem] leading-[1.75] text-muted" style={delay(80)}>
           Follow the journey as it happens
           {count > 0 && (
             <>
@@ -110,13 +110,13 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
           {perks.map(({ Icon, title, text, soon }) => (
             <li key={title} className="flex gap-4">
               <span className="grid size-10 shrink-0 place-items-center rounded-xl border border-tint-line bg-tint text-link">
-                <Icon size={18} aria-hidden />
+                <Icon size={rem(18)} aria-hidden />
               </span>
               <div>
                 <p className="flex items-center gap-2 font-medium text-fg">
                   {title}
                   {soon && (
-                    <span className="rounded-full border border-line px-2 py-px text-[11px] font-normal text-subtle">
+                    <span className="rounded-full border border-line px-2 py-px text-[0.6875rem] font-normal text-subtle">
                       soon
                     </span>
                   )}
@@ -153,7 +153,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
           ))}
         </div>
 
-        <p className="mt-6 border-t border-line pt-5 text-[13px] leading-relaxed text-subtle">
+        <p className="mt-6 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-subtle">
           I only see your name, email and profile picture, and nothing is ever posted for you.
         </p>
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Moon, Sun } from "lucide-react";
+import { rem } from "@/lib/utils";
 
 export function ThemeToggle() {
   const toggle = () => {
@@ -22,8 +23,8 @@ export function ThemeToggle() {
       className="grid size-10 shrink-0 place-items-center rounded-full text-muted transition-colors hover:bg-card hover:text-fg"
     >
       {/* Both icons render on the server; CSS picks one, so there's no hydration flicker. */}
-      <Sun size={19} aria-hidden className="hidden dark:block" />
-      <Moon size={19} aria-hidden className="block dark:hidden" />
+      <Sun size={rem(19)} aria-hidden className="hidden dark:block" />
+      <Moon size={rem(19)} aria-hidden className="block dark:hidden" />
     </button>
   );
 }

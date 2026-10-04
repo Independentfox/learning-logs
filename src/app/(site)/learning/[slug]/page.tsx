@@ -6,7 +6,7 @@ import { authEnabled } from "@/auth";
 import { StatTile } from "@/components/stat-tile";
 import { categories, getCategory } from "@/content/categories";
 import { logsIn, type Log } from "@/content/logs";
-import { delay } from "@/lib/utils";
+import { delay, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
 export const dynamicParams = false;
@@ -37,7 +37,7 @@ function LogRow({ log }: { log: Log }) {
   return (
     <li className="flex flex-col gap-1 border-b border-line py-5 sm:flex-row sm:items-baseline sm:gap-8">
       <span className="w-20 shrink-0 font-mono text-sm text-link">Day {log.day}</span>
-      <span className="flex-1 text-[17px] font-medium tracking-[-0.01em] text-fg">{log.title}</span>
+      <span className="flex-1 text-[1.0625rem] font-medium tracking-[-0.01em] text-fg">{log.title}</span>
       <time dateTime={log.date} className="text-sm text-subtle">
         {formatDate(log.date)}
       </time>
@@ -52,13 +52,21 @@ function TopicLink({ slug, name, direction }: { slug: string; name: string; dire
       href={`/learning/${slug}`}
       className={`group flex flex-col gap-1.5 rounded-2xl border border-line p-5 transition-colors hover:border-tint-line hover:bg-card ${next ? "sm:col-start-2 sm:items-end sm:text-right" : ""}`}
     >
-      <span className="inline-flex items-center gap-1.5 text-[13px] text-subtle">
+      <span className="inline-flex items-center gap-1.5 text-[0.8125rem] text-subtle">
         {!next && (
-          <ArrowLeft size={14} aria-hidden className="transition-transform group-hover:-translate-x-0.5" />
+          <ArrowLeft
+            size={rem(14)}
+            aria-hidden
+            className="transition-transform group-hover:-translate-x-0.5"
+          />
         )}
         {next ? "Next topic" : "Previous topic"}
         {next && (
-          <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+          <ArrowRight
+            size={rem(14)}
+            aria-hidden
+            className="transition-transform group-hover:translate-x-0.5"
+          />
         )}
       </span>
       <span className="font-medium text-fg">{name}</span>
@@ -85,7 +93,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
         href="/"
         className="enter inline-flex items-center gap-1.5 text-sm text-muted transition-colors hover:text-fg"
       >
-        <ArrowLeft size={15} aria-hidden />
+        <ArrowLeft size={rem(15)} aria-hidden />
         Learning Journey
       </Link>
 
@@ -93,7 +101,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
         <div>
           <div className="enter flex items-center gap-3">
             <span className="grid size-12 place-items-center rounded-2xl border border-tint-line bg-tint text-link">
-              <Icon size={22} aria-hidden />
+              <Icon size={rem(22)} aria-hidden />
             </span>
             <span className="eyebrow">
               Topic {String(index + 1).padStart(2, "0")} of {categories.length}
@@ -102,7 +110,10 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
           <h1 className="enter-rise mt-6 text-[2.5rem] leading-[1.04] font-semibold tracking-[-0.04em] text-fg sm:text-[3.5rem] xl:text-[4.25rem]">
             {name}
           </h1>
-          <p className="enter mt-5 max-w-[620px] text-[17px] leading-[1.75] text-muted" style={delay(80)}>
+          <p
+            className="enter mt-5 max-w-[38.75rem] text-[1.0625rem] leading-[1.75] text-muted"
+            style={delay(80)}
+          >
             {blurb}
           </p>
           <ul className="enter mt-6 flex flex-wrap gap-2" aria-label={`${name} topics`} style={delay(120)}>
@@ -143,10 +154,10 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
         {logs.length === 0 ? (
           <div className="rounded-3xl border border-dashed border-line-strong px-6 py-16 text-center sm:py-20">
             <span className="mx-auto grid size-12 place-items-center rounded-2xl border border-tint-line bg-tint text-link">
-              <NotebookPen size={21} aria-hidden />
+              <NotebookPen size={rem(21)} aria-hidden />
             </span>
             <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">First log coming soon</h3>
-            <p className="mx-auto mt-2 max-w-[460px] text-[15px] leading-relaxed text-muted">
+            <p className="mx-auto mt-2 max-w-[28.75rem] text-[0.9375rem] leading-relaxed text-muted">
               Day-by-day notes on {name} will land here as I study it.
             </p>
             {authEnabled && !viewer && (
@@ -156,7 +167,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
               >
                 Join the learners to follow along
                 <ArrowRight
-                  size={15}
+                  size={rem(15)}
                   aria-hidden
                   className="transition-transform group-hover:translate-x-0.5"
                 />

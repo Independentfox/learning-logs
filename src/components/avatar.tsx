@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, rem } from "@/lib/utils";
 
 export function Avatar({
   name,
@@ -19,7 +19,7 @@ export function Avatar({
         "grid shrink-0 place-items-center overflow-hidden rounded-full bg-tint font-medium text-link ring-1 ring-line",
         className,
       )}
-      style={{ width: size, height: size, fontSize: size * 0.42 }}
+      style={{ width: rem(size), height: rem(size), fontSize: rem(size * 0.42) }}
     >
       {image ? (
         <Image src={image} alt="" width={size} height={size} className="size-full object-cover" />

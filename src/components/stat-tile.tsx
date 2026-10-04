@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 export function StatTile({ label, value, note }: { label: string; value: ReactNode; note: string }) {
   return (
     <div className="min-w-0 border-l border-line pl-4 first:border-l-0 first:pl-0 sm:pl-6">
-      <dt className="text-[13px] text-muted">{label}</dt>
+      <dt className="text-[0.8125rem] text-muted">{label}</dt>
       <dd className="mt-2">
         <span className="block text-[2rem] leading-none font-semibold tracking-[-0.03em] text-fg tabular-nums sm:text-[2.6rem]">
           {value}

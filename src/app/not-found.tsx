@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main id="main" className="mx-auto grid min-h-dvh w-full max-w-[760px] content-center px-6">
+    <main id="main" className="mx-auto grid min-h-dvh w-full max-w-[47.5rem] content-center px-6">
       <p className="eyebrow">404</p>
       <h1 className="mt-4 text-5xl font-semibold tracking-[-0.035em] text-fg">
         No log <span className="font-serif font-normal text-link italic">here</span>.

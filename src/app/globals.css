@@ -81,6 +81,19 @@
     color-scheme: dark;
   }
 
+  /*
+   * On laptops and monitors the whole page scales with the window, so it fills
+   * the same share of the screen everywhere: 1rem is 16px on a 1920px-wide
+   * screen, 12px on a 1440px laptop, 21px on a 2560px monitor. Everything is
+   * sized in rem, so text, spacing and icons all scale together. Phones and
+   * tablets keep the normal 16px.
+   */
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    html {
+      font-size: clamp(12px, calc(100vw / 120), 28px);
+    }
+  }
+
   body {
     min-height: 100dvh;
     font-family: var(--font-sans);
@@ -122,7 +135,7 @@
 
 @utility eyebrow {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--subtle);

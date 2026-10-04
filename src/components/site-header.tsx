@@ -2,13 +2,13 @@ import Link from "next/link";
 import { authEnabled } from "@/auth";
 import { Avatar } from "@/components/avatar";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { cn, shell } from "@/lib/utils";
+import { cn, rem, shell } from "@/lib/utils";
 import type { Viewer } from "@/lib/viewer";
 
 /** Same mark as the favicon: an "L" with a teal dot. */
 function LogoMark() {
   return (
-    <svg viewBox="0 0 64 64" width={30} height={30} aria-hidden className="shrink-0">
+    <svg viewBox="0 0 64 64" width={rem(30)} height={rem(30)} aria-hidden className="shrink-0">
       <rect
         x="2"
         y="2"
@@ -62,8 +62,8 @@ export function SiteHeader({ viewer }: { viewer: Viewer }) {
     <header className={cn(shell, "flex h-16 items-center justify-between gap-4 sm:h-20")}>
       <Link href="/" className="inline-flex items-center gap-2.5">
         <LogoMark />
-        <span className="text-[15px] font-semibold tracking-[-0.01em] text-fg">Learning Logs</span>
-        <span className="hidden text-[15px] text-subtle sm:inline">by Manav Punjabi</span>
+        <span className="text-[0.9375rem] font-semibold tracking-[-0.01em] text-fg">Learning Logs</span>
+        <span className="hidden text-[0.9375rem] text-subtle sm:inline">by Manav Punjabi</span>
       </Link>
       <div className="flex items-center gap-1.5">
         <AccountControl viewer={viewer} />

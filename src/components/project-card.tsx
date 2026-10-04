@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { logsFor } from "@/content/logs";
 import type { Project } from "@/content/projects";
-import { cn } from "@/lib/utils";
+import { cn, rem } from "@/lib/utils";
 
 export function ProjectCard({ project }: { project: Project }) {
   const { name, description, status, stack, repo } = project;
@@ -20,7 +20,7 @@ export function ProjectCard({ project }: { project: Project }) {
           {status === "building" ? "In progress" : "Shipped"}
         </span>
       </div>
-      <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{description}</p>
+      <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted">{description}</p>
 
       <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} stack`}>
         {stack.map((tech) => (
@@ -31,7 +31,7 @@ export function ProjectCard({ project }: { project: Project }) {
       </ul>
 
       <div className="mt-auto pt-6">
-        <div className="flex items-center justify-between border-t border-line pt-4 text-[13px]">
+        <div className="flex items-center justify-between border-t border-line pt-4 text-[0.8125rem]">
           <span className="text-muted">
             <span className="font-medium text-fg tabular-nums">{logs.length}</span> build{" "}
             {logs.length === 1 ? "log" : "logs"}
@@ -44,7 +44,7 @@ export function ProjectCard({ project }: { project: Project }) {
               className="inline-flex items-center gap-0.5 inline-link"
             >
               Repo
-              <ArrowUpRight size={14} aria-hidden />
+              <ArrowUpRight size={rem(14)} aria-hidden />
             </a>
           )}
         </div>

@@ -4,6 +4,7 @@ import { GitHubIcon } from "@/components/icons";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
 import { site } from "@/content/site";
+import { rem } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Building Journey",
@@ -15,12 +16,12 @@ function EmptyState() {
   return (
     <div className="rounded-3xl border border-dashed border-line-strong px-6 py-16 text-center sm:py-20">
       <span className="mx-auto grid size-12 place-items-center rounded-2xl border border-tint-line bg-tint text-link">
-        <Hammer size={21} aria-hidden />
+        <Hammer size={rem(21)} aria-hidden />
       </span>
       <h3 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">
         The first build is on its way
       </h3>
-      <p className="mx-auto mt-2 max-w-[440px] text-[15px] leading-relaxed text-muted">
+      <p className="mx-auto mt-2 max-w-[27.5rem] text-[0.9375rem] leading-relaxed text-muted">
         I&apos;ll be building open-source projects in public. Each one gets a card here with its repo, its
         progress and the build logs behind it.
       </p>
@@ -30,7 +31,7 @@ function EmptyState() {
         rel="noopener noreferrer"
         className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg border border-line-strong px-4 text-sm font-medium text-fg transition-colors hover:bg-card active:scale-[0.98]"
       >
-        <GitHubIcon size={16} />
+        <GitHubIcon size={rem(16)} />
         Follow on GitHub
       </a>
     </div>
