@@ -14,20 +14,23 @@ npm run dev        # http://localhost:3000
 
 ## Where things live
 
-| What                                             | File                           |
-| ------------------------------------------------ | ------------------------------ |
-| Learning Journey cards (DSA, CS Fundamentals, …) | `src/content/categories.ts`    |
-| Building Journey cards                           | `src/content/projects.ts`      |
-| Daily logs (drives counts and the "Day N" badge) | `src/content/logs.ts`          |
-| Site name, links                                 | `src/content/site.ts`          |
-| Visit counter API                                | `src/app/api/visit/route.ts`   |
-| Shared header + tabs                             | `src/app/(journey)/layout.tsx` |
+| What                                                                  | File                           |
+| --------------------------------------------------------------------- | ------------------------------ |
+| Learning topics (the 14 cards, and a page each at `/learning/<slug>`) | `src/content/categories.ts`    |
+| Building Journey cards                                                | `src/content/projects.ts`      |
+| Daily logs — each day is tagged with one or more topics               | `src/content/logs.ts`          |
+| Site name, links                                                      | `src/content/site.ts`          |
+| Home: hero, stats panel, tabs                                         | `src/app/(journey)/layout.tsx` |
+| Topic, login and account pages                                        | `src/app/(site)/`              |
+| Visit counter API                                                     | `src/app/api/visit/route.ts`   |
+| Sign-in config (Google, GitHub)                                       | `src/auth.ts`                  |
+| Learner numbers, email opt-in                                         | `src/lib/learners.ts`          |
 
 ## Visit counter
 
 `POST /api/visit` records a visit and returns `{ views, learners }`; `GET` returns the totals.
 
-- **views** — every page load counts (capped at 20 a minute per visitor, so a script can't pump it).
+- **views** — every page load on the live site counts (capped at 20 a minute per visitor, so a script can't pump it). Local dev and preview deployments share the store, so they read the totals without adding to them.
 - **learners** — people who have signed up (see below).
 - Link-preview crawlers (LinkedIn fetches the page on every post), search bots and scripts are ignored.
 

@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import type { categories } from "@/content/categories";
 import { logsIn } from "@/content/logs";
 
@@ -7,7 +9,10 @@ export function CategoryCard({ category, index }: { category: (typeof categories
   const latest = logs[0];
 
   return (
-    <article className="flex flex-col rounded-3xl border border-line bg-card p-6">
+    <Link
+      href={`/learning/${category.slug}`}
+      className="group flex flex-col rounded-3xl border border-line bg-card p-6 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:border-tint-line hover:shadow-[0_16px_40px_-20px_rgb(15_118_110/0.45)]"
+    >
       <div className="flex items-start justify-between">
         <span className="grid size-10 place-items-center rounded-xl border border-tint-line bg-tint text-link">
           <Icon size={19} aria-hidden />
@@ -32,9 +37,12 @@ export function CategoryCard({ category, index }: { category: (typeof categories
             <span className="font-medium text-fg tabular-nums">{logs.length}</span>{" "}
             {logs.length === 1 ? "log" : "logs"}
           </span>
-          <span className="text-subtle">{latest ? `Latest · Day ${latest.day}` : "First log soon"}</span>
+          <span className="inline-flex items-center gap-1 text-subtle transition-colors group-hover:text-link">
+            {latest ? `Latest · Day ${latest.day}` : "Coming soon"}
+            <ArrowRight size={14} aria-hidden className="transition-transform group-hover:translate-x-0.5" />
+          </span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
