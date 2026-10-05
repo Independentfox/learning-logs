@@ -66,6 +66,12 @@ export function SiteHeader({ viewer }: { viewer: Viewer }) {
         <span className="hidden text-[0.9375rem] text-subtle sm:inline">by Manav Punjabi</span>
       </Link>
       <div className="flex items-center gap-1.5">
+        <Link
+          href="/code"
+          className="inline-flex h-9 items-center rounded-full px-3.5 text-sm font-medium text-muted transition-colors hover:bg-card hover:text-fg"
+        >
+          Code
+        </Link>
         <AccountControl viewer={viewer} />
         <ThemeToggle />
       </div>

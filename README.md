@@ -21,7 +21,7 @@ npm run dev        # http://localhost:3000
 | Daily logs — one Markdown file per day (format below)                 | `content/days/*.md`            |
 | Site name, links                                                      | `src/content/site.ts`          |
 | Home: hero, stats panel, tabs                                         | `src/app/(journey)/layout.tsx` |
-| Topic, login and account pages                                        | `src/app/(site)/`              |
+| Topic, day, code, login and account pages                             | `src/app/(site)/`              |
 | Visit counter API                                                     | `src/app/api/visit/route.ts`   |
 | Sign-in config (Google, GitHub)                                       | `src/auth.ts`                  |
 | Learner numbers, email opt-in                                         | `src/lib/learners.ts`          |
@@ -34,20 +34,61 @@ Each day is one Markdown file in `content/days/`, named by its number (`001.md`,
 ---
 day: 1
 date: 2026-10-06
-title: Two pointers, and when they beat a hash map
+title: Two pointers on sorted arrays
 category: dsa # a slug from src/content/categories.ts
-topic: Two Pointers & Sliding Window # must be in that category's syllabus
+topic: Sliding Window & Two Pointers # must be in that category's syllabus
 linkedin: https://www.linkedin.com/posts/... # optional
+summary: # "Revise in 30 seconds" — a few one-liners
+  - Sorted input is the hint that two pointers will work.
+questions: # practice; the platform is detected from the link
+  - title: Two Sum II - Input Array Is Sorted
+    url: https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+    difficulty: medium # easy | medium | hard
 ---
 
-The notes, in Markdown — headings, lists, tables, code blocks.
+The text notes, in Markdown — explanation, complexity, code (highlighted).
 ```
 
-The day gets a page at `/day/1`, appears under its topic on `/learning/dsa`, and counts towards
-the Day number and streak grid on the home page. Research Papers, Cool Things and AI Race have
-no fixed syllabus, so `topic` there can be anything (a paper's title, say). A typo in `category`
-or `topic`, a missing field, or the same day twice fails the build with a message saying what
-to fix.
+The day gets a page at `/day/1`, shows under its topic on `/learning/dsa`, and counts towards the
+Day number and streak grid. Known platforms (logo or badge) are in `src/content/platforms.ts`:
+Codeforces, LeetCode, CodeChef, GeeksforGeeks, CSES, AtCoder, VJudge, HackerRank, HackerEarth,
+SPOJ, InterviewBit. Research Papers, Cool Things and AI Race have no fixed syllabus, so `topic`
+there can be anything. A typo in `category`/`topic`, an unknown platform, a bad difficulty or the
+same day twice fails the build with a message saying what to fix.
+
+### Drawn notes (Excalidraw)
+
+Each page of a day's drawn notes is an Excalidraw file: `content/notes/<day>/1.excalidraw`,
+`2.excalidraw`, … Render them with
+
+```bash
+npm run notes:render   # → public/notes/<day>/<n>.svg, via headless Chrome
+```
+
+and commit both. The SVGs stay sharp at any size and are inverted for dark mode. A source can
+start as a quick draft (`{"skeleton": true, "elements": [...]}` in Excalidraw's element-skeleton
+format); rendering expands it into a full Excalidraw file you can open and edit on
+excalidraw.com. `npm run notes:check` runs before every build and fails if any page is missing
+or out of date.
+
+### Progress
+
+Signed-in learners mark each question Attempted or Solved; running code for a question marks it
+attempted. Each question shows solved / attempted across learners, and topic pages show each
+learner's own progress. Stored in Redis: `q:<id>:attempted` and `q:<id>:solved` (sets of user
+ids) and `learner:<user>:questions` (hash).
+
+## Code runner
+
+`/code` (or the Code button on any question) is an editor with C++17, Python 3 and Java. Code
+runs on a [Judge0](https://judge0.com) server, never on Vercel:
+
+- `JUDGE0_URL` — `https://judge0-ce.p.rapidapi.com` (Judge0 on RapidAPI) or a self-hosted Judge0
+- `JUDGE0_KEY` — the RapidAPI key, or the self-hosted auth token
+- `RUNNER_DAILY_LIMIT` — runs per day across the site (default 45; match your plan)
+
+Only signed-in learners can run code, 20 runs per 10 minutes each. Without `JUDGE0_URL` the editor
+still works but Run is disabled.
 
 ## Visit counter
 

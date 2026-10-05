@@ -4,11 +4,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import Markdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
 import { LinkedInIcon } from "@/components/icons";
+import { Practice } from "@/components/practice";
 import { getCategory } from "@/content/categories";
-import { currentDay, getLog, neighbours, type Log } from "@/content/logs";
+import { currentDay, getLog, neighbours, type Log, type NotesPage } from "@/content/logs";
 import { delay, formatDate, rem } from "@/lib/utils";
+import { getViewer } from "@/lib/viewer";
 
 /** "/day/12" → 12; anything that isn't a sensible day number is a 404. */
 function parseDay(n: string) {
@@ -98,6 +101,71 @@ function DayNav({ log, direction }: { log?: Log; direction: "prev" | "next" }) {
   );
 }
 
+function Summary({ lines }: { lines: string[] }) {
+  return (
+    <section
+      aria-labelledby="summary-title"
+      className="enter mt-8 max-w-[46rem] rounded-2xl border border-tint-line bg-tint px-5 py-4"
+      style={delay(60)}
+    >
+      <h2 id="summary-title" className="font-mono text-xs tracking-[0.12em] text-link uppercase">
+        Revise in 30 seconds
+      </h2>
+      <ul className="mt-3 space-y-2">
+        {lines.map((line) => (
+          <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed text-fg">
+            <span aria-hidden className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-link" />
+            {line}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** The Excalidraw pages, one under another. In dark mode they're inverted, as Excalidraw does. */
+function NotesPages({ day, pages }: { day: number; pages: NotesPage[] }) {
+  return (
+    <section aria-labelledby="notes-title" className="enter mt-10 max-w-[46rem]" style={delay(100)}>
+      <div className="mb-4 flex items-baseline justify-between">
+        <h2 id="notes-title" className="eyebrow">
+          Notes
+        </h2>
+        <span className="text-xs text-subtle">
+          {pages.length} {pages.length === 1 ? "page" : "pages"}
+        </span>
+      </div>
+      <div className="space-y-6">
+        {pages.map((page, i) => (
+          <figure key={page.src}>
+            <a
+              href={page.src}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Open full size"
+              className="note-page block overflow-hidden rounded-2xl border border-line"
+            >
+              {/* SVGs are already vector, so next/image has nothing to optimise. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={page.src}
+                width={page.width}
+                height={page.height}
+                alt={`Day ${day} notes, page ${i + 1} of ${pages.length}`}
+                loading={i === 0 ? "eager" : "lazy"}
+                className="block h-auto w-full"
+              />
+            </a>
+            <figcaption className="mt-2 text-center text-xs text-subtle">
+              Page {i + 1} of {pages.length}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default async function DayPage({ params }: PageProps<"/day/[n]">) {
   const day = parseDay((await params).n);
   if (!day) notFound();
@@ -108,6 +176,7 @@ export default async function DayPage({ params }: PageProps<"/day/[n]">) {
   const category = getCategory(log.category)!;
   const { Icon } = category;
   const { prev, next } = neighbours(day);
+  const viewer = await getViewer();
 
   return (
     <>
@@ -134,23 +203,33 @@ export default async function DayPage({ params }: PageProps<"/day/[n]">) {
           <h1 className="enter-rise mt-4 text-[2.25rem] leading-[1.08] font-semibold tracking-[-0.035em] text-fg sm:text-[3rem]">
             {log.title}
           </h1>
-          <div className="prose-log enter prose mt-8 max-w-[46rem]" style={delay(80)}>
-            <Markdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                a: ({ href, children }) =>
-                  href?.startsWith("http") ? (
-                    <a href={href} target="_blank" rel="noopener noreferrer">
-                      {children}
-                    </a>
-                  ) : (
-                    <a href={href}>{children}</a>
-                  ),
-              }}
-            >
-              {log.body}
-            </Markdown>
-          </div>
+          {log.summary.length > 0 && <Summary lines={log.summary} />}
+          {log.pages.length > 0 && <NotesPages day={day} pages={log.pages} />}
+          {log.body && (
+            <div className="prose-log enter prose mt-10 max-w-[46rem]" style={delay(120)}>
+              <Markdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeHighlight]}
+                components={{
+                  a: ({ href, children }) =>
+                    href?.startsWith("http") ? (
+                      <a href={href} target="_blank" rel="noopener noreferrer">
+                        {children}
+                      </a>
+                    ) : (
+                      <a href={href}>{children}</a>
+                    ),
+                }}
+              >
+                {log.body}
+              </Markdown>
+            </div>
+          )}
+          {log.questions.length > 0 && (
+            <div className="enter mt-12" style={delay(160)}>
+              <Practice questions={log.questions} viewer={viewer} />
+            </div>
+          )}
         </article>
 
         <aside className="enter lg:sticky lg:top-8 lg:self-start" style={delay(140)}>
@@ -173,6 +252,21 @@ export default async function DayPage({ params }: PageProps<"/day/[n]">) {
                 <span className="text-muted"> · {log.topic}</span>
               </dd>
             </div>
+            {(log.pages.length > 0 || log.questions.length > 0) && (
+              <div>
+                <dt className="text-xs text-subtle">On this day</dt>
+                <dd className="mt-0.5 text-fg">
+                  {[
+                    log.pages.length > 0 &&
+                      `${log.pages.length} ${log.pages.length === 1 ? "page" : "pages"} of notes`,
+                    log.questions.length > 0 &&
+                      `${log.questions.length} ${log.questions.length === 1 ? "question" : "questions"}`,
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
+                </dd>
+              </div>
+            )}
             {log.linkedin && (
               <div>
                 <dt className="text-xs text-subtle">Discussion</dt>

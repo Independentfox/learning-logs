@@ -261,3 +261,93 @@
   margin: 0 0.5em 0 0;
   accent-color: var(--accent);
 }
+
+/* Excalidraw pages: white paper in light mode, inverted in dark (as Excalidraw does). */
+.dark .note-page img {
+  filter: invert(93%) hue-rotate(180deg);
+}
+
+/* ------------------------------------------------------------------ */
+/* Code colours — shared by notes (highlight.js) and the editor.        */
+/* ------------------------------------------------------------------ */
+
+:root {
+  --code-keyword: #7c3aed;
+  --code-string: #0f766e;
+  --code-number: #c2410c;
+  --code-comment: #78716c;
+  --code-function: #2563eb;
+  --code-type: #b45309;
+}
+
+.dark {
+  --code-keyword: #c4b5fd;
+  --code-string: #5eead4;
+  --code-number: #fdba74;
+  --code-comment: #8f8f8f;
+  --code-function: #93c5fd;
+  --code-type: #fcd34d;
+}
+
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in {
+  color: var(--code-keyword);
+}
+.hljs-string,
+.hljs-meta .hljs-string,
+.hljs-regexp {
+  color: var(--code-string);
+}
+.hljs-number,
+.hljs-literal {
+  color: var(--code-number);
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+.hljs-title,
+.hljs-title.function_ {
+  color: var(--code-function);
+}
+.hljs-type,
+.hljs-title.class_,
+.hljs-meta {
+  color: var(--code-type);
+}
+
+.tok-keyword,
+.tok-controlKeyword,
+.tok-modifier,
+.tok-operatorKeyword {
+  color: var(--code-keyword);
+}
+.tok-string,
+.tok-string2 {
+  color: var(--code-string);
+}
+.tok-number,
+.tok-bool,
+.tok-atom {
+  color: var(--code-number);
+}
+.tok-comment {
+  color: var(--code-comment);
+  font-style: italic;
+}
+.tok-typeName,
+.tok-className,
+.tok-namespace,
+.tok-meta {
+  color: var(--code-type);
+}
+.tok-variableName.tok-definition,
+.tok-propertyName.tok-definition {
+  color: var(--code-function);
+}
+.tok-macroName {
+  color: var(--code-keyword);
+}

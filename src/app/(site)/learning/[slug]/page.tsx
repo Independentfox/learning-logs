@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { authEnabled } from "@/auth";
 import { categories, getCategory } from "@/content/categories";
 import { logsIn, topicsWithDays, type Log } from "@/content/logs";
+import { myStatuses } from "@/lib/progress";
 import { cn, delay, formatDate, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
@@ -87,6 +88,12 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
   const next = categories[index + 1];
   const viewer = await getViewer();
 
+  // Each topic's practice questions (a question set on two days counts once).
+  const questionIds = (days: Log[]) => [...new Set(days.flatMap((log) => log.questions.map((q) => q.id)))];
+  const allIds = questionIds(logs);
+  const mine = viewer ? await myStatuses(viewer.id, allIds) : {};
+  const solved = (ids: string[]) => ids.filter((id) => mine[id] === "solved").length;
+
   return (
     <>
       <header className="enter flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
@@ -109,6 +116,8 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
         <span className="eyebrow">
           {topics.length > 0 && `${topics.length} topics · `}
           {logs.length} {logs.length === 1 ? "log" : "logs"}
+          {allIds.length > 0 &&
+            (viewer ? ` · ${solved(allIds)}/${allIds.length} solved` : ` · ${allIds.length} questions`)}
         </span>
       </header>
 
@@ -140,6 +149,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
           <ol className="gap-4 lg:columns-2">
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
+              const ids = questionIds(topic.days);
               return (
                 <li
                   key={topic.name}
@@ -155,7 +165,15 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                     </h2>
                     <span className={cn("shrink-0 text-xs", started ? "text-link" : "text-subtle")}>
                       {started
-                        ? `${topic.days.length} ${topic.days.length === 1 ? "day" : "days"}`
+                        ? [
+                            `${topic.days.length} ${topic.days.length === 1 ? "day" : "days"}`,
+                            ids.length > 0 &&
+                              (viewer
+                                ? `${solved(ids)}/${ids.length} solved`
+                                : `${ids.length} ${ids.length === 1 ? "question" : "questions"}`),
+                          ]
+                            .filter(Boolean)
+                            .join(" · ")
                         : "Not started"}
                     </span>
                   </div>

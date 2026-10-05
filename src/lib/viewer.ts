@@ -3,6 +3,7 @@ import { auth, authEnabled } from "@/auth";
 import { getLearner, type Learner } from "@/lib/learners";
 
 export type Viewer = {
+  id: string;
   name?: string | null;
   email?: string | null;
   image?: string | null;
@@ -18,5 +19,11 @@ export const getViewer = cache(async (): Promise<Viewer> => {
   const session = await auth();
   const user = session?.user;
   if (!user?.id) return null;
-  return { name: user.name, email: user.email, image: user.image, learner: await getLearner(user.id) };
+  return {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    image: user.image,
+    learner: await getLearner(user.id),
+  };
 });

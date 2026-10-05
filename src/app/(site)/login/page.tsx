@@ -45,13 +45,17 @@ const perks: { Icon: LucideIcon; title: string; text: string; soon?: boolean }[]
   },
 ];
 
-function ProviderButton({ id }: { id: keyof typeof providers }) {
+/** Only same-site paths, so ?next= can't bounce people to another site. */
+const safeNext = (next: unknown) =>
+  typeof next === "string" && next.startsWith("/") && !next.startsWith("//") ? next : "/account";
+
+function ProviderButton({ id, redirectTo }: { id: keyof typeof providers; redirectTo: string }) {
   const { label, Icon } = providers[id];
   return (
     <form
       action={async () => {
         "use server";
-        await signIn(id, { redirectTo: "/account" });
+        await signIn(id, { redirectTo });
       }}
     >
       <button
@@ -78,10 +82,12 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
     );
   }
 
-  const session = await auth();
-  if (session?.user) redirect("/account");
+  const { error, next } = await searchParams;
+  const redirectTo = safeNext(next);
 
-  const { error } = await searchParams;
+  const session = await auth();
+  if (session?.user) redirect(redirectTo);
+
   const code = typeof error === "string" ? error : undefined;
   const count = await learnerCount();
 
@@ -149,7 +155,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
 
         <div className="mt-6 space-y-3">
           {providerIds.map((id) => (
-            <ProviderButton key={id} id={id} />
+            <ProviderButton key={id} id={id} redirectTo={redirectTo} />
           ))}
         </div>
 

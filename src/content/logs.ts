@@ -2,6 +2,19 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { getCategory, type Category } from "./categories";
+import { difficulties, platformFor, type Difficulty, type PlatformId } from "./platforms";
+
+export type Question = {
+  /** Stable id from the URL, e.g. "leetcode:/problems/two-sum" — solve counts are keyed on it. */
+  id: string;
+  title: string;
+  url: string;
+  platform: PlatformId;
+  difficulty: Difficulty;
+};
+
+/** One rendered page of Excalidraw notes (see scripts/notes.mjs). */
+export type NotesPage = { src: string; width: number; height: number };
 
 export type Log = {
   day: number;
@@ -16,11 +29,65 @@ export type Log = {
   linkedin?: string;
   /** Slug from projects.ts, on days you built something. */
   project?: string;
-  /** The notes, in Markdown. */
+  /** "Revise in 30 seconds": a few one-line takeaways. */
+  summary: string[];
+  /** Drawn notes, page by page. */
+  pages: NotesPage[];
+  /** The notes, in Markdown — explanation, complexity, code. */
   body: string;
+  /** Practice questions for the day. */
+  questions: Question[];
 };
 
 const DIR = path.join(process.cwd(), "content/days");
+const NOTES = path.join(process.cwd(), "content/notes");
+
+function parseSummary(raw: unknown, where: string): string[] {
+  if (raw == null) return [];
+  if (!Array.isArray(raw)) throw new Error(`${where}: "summary" must be a list of lines`);
+  return raw.map((line) => String(line).trim()).filter(Boolean);
+}
+
+function parseQuestions(raw: unknown, where: string): Question[] {
+  if (raw == null) return [];
+  if (!Array.isArray(raw)) throw new Error(`${where}: "questions" must be a list`);
+  return raw.map((item, i) => {
+    const at = `${where}: question ${i + 1}`;
+    const q = (item ?? {}) as Record<string, unknown>;
+
+    const title = String(q.title ?? "").trim();
+    if (!title) throw new Error(`${at}: "title" is missing`);
+
+    let url: URL;
+    try {
+      url = new URL(String(q.url));
+    } catch {
+      throw new Error(`${at}: "url" isn't a valid link`);
+    }
+    const platform = platformFor(url);
+    if (!platform) throw new Error(`${at}: ${url.hostname} isn't a known platform — add it in platforms.ts`);
+
+    const difficulty = String(q.difficulty ?? "").toLowerCase() as Difficulty;
+    if (!difficulties.includes(difficulty))
+      throw new Error(`${at}: "difficulty" must be easy, medium or hard`);
+
+    const slug = url.pathname
+      .toLowerCase()
+      .replace(/\/+$/, "")
+      .replace(/\/description$/, "");
+    return { id: `${platform}:${slug}`, title, url: url.href, platform, difficulty };
+  });
+}
+
+/** Pages rendered by `npm run notes:render`, listed in content/notes/<day>/rendered.json. */
+function readPages(day: number): NotesPage[] {
+  const manifest = path.join(NOTES, String(day), "rendered.json");
+  if (!fs.existsSync(manifest)) return [];
+  const { pages } = JSON.parse(fs.readFileSync(manifest, "utf8")) as {
+    pages: { file: string; width: number; height: number }[];
+  };
+  return pages.map(({ file, width, height }) => ({ src: `/notes/${day}/${file}`, width, height }));
+}
 
 /**
  * Reads every content/days/*.md. A malformed file fails the build with a
@@ -60,7 +127,19 @@ function load(): Log[] {
 
       const linkedin = data.linkedin ? String(data.linkedin) : undefined;
       const project = data.project ? String(data.project) : undefined;
-      return { day, date, title, category: category.slug, topic, linkedin, project, body: content.trim() };
+      return {
+        day,
+        date,
+        title,
+        category: category.slug,
+        topic,
+        linkedin,
+        project,
+        summary: parseSummary(data.summary, where),
+        pages: readPages(day),
+        body: content.trim(),
+        questions: parseQuestions(data.questions, where),
+      };
     })
     .sort((a, b) => a.day - b.day);
 
@@ -77,6 +156,14 @@ export const currentDay = logs.at(-1)?.day ?? 0;
 
 export function getLog(day: number) {
   return logs.find((log) => log.day === day);
+}
+
+/** Every practice question, by id, with the day it was set on (the first, if repeated). */
+export const questionsById = new Map<string, { question: Question; day: number }>();
+for (const log of logs) {
+  for (const question of log.questions) {
+    if (!questionsById.has(question.id)) questionsById.set(question.id, { question, day: log.day });
+  }
 }
 
 /** The logged days either side of `day`, skipping gaps. */
