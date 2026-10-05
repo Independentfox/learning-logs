@@ -12,7 +12,9 @@ export const people: Person[] = [
     name: "Devanshi Gupta",
     firstName: "Devanshi",
     role: "Builder",
-    links: {},
+    links: {
+      linkedin: "https://www.linkedin.com/in/devanshi-gupta-891a0b304/",
+    },
   },
   {
     name: "Manav Punjabi",

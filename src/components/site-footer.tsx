@@ -1,6 +1,38 @@
+import { Globe } from "lucide-react";
 import { Fragment } from "react";
-import { people, profileLink } from "@/content/site";
-import { cn, shell } from "@/lib/utils";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { people, profileLink, type Person } from "@/content/site";
+import { cn, rem, shell } from "@/lib/utils";
+
+const networks = [
+  { key: "linkedin", label: "LinkedIn", Icon: LinkedInIcon },
+  { key: "github", label: "GitHub", Icon: GitHubIcon },
+  { key: "portfolio", label: "portfolio", Icon: Globe },
+] as const;
+
+/** A person's name followed by an icon for each of their links. */
+function PersonLinks({ person }: { person: Person }) {
+  const links = networks.filter(({ key }) => person.links[key]);
+  if (links.length === 0) return null;
+  return (
+    <li className="flex items-center gap-1">
+      <span className="mr-1">{person.firstName}</span>
+      {links.map(({ key, label, Icon }) => (
+        <a
+          key={key}
+          href={person.links[key]}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${person.firstName}'s ${label}`}
+          title={`${person.firstName}'s ${label}`}
+          className="grid size-7 place-items-center rounded-full transition-colors hover:bg-card hover:text-fg"
+        >
+          <Icon size={rem(14)} aria-hidden />
+        </a>
+      ))}
+    </li>
+  );
+}
 
 export function SiteFooter() {
   return (
@@ -25,7 +57,11 @@ export function SiteFooter() {
           })}
           , one log at a time.
         </p>
-        <p>Learning in public, together.</p>
+        <ul aria-label="Find us elsewhere" className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          {people.map((person) => (
+            <PersonLinks key={person.name} person={person} />
+          ))}
+        </ul>
       </div>
     </footer>
   );
