@@ -3,14 +3,16 @@ import type { Metadata } from "next";
 import { GitHubIcon } from "@/components/icons";
 import { ProjectCard } from "@/components/project-card";
 import { projects } from "@/content/projects";
-import { site } from "@/content/site";
+import { people } from "@/content/site";
 import { rem } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Building Journey",
-  description: "Open-source projects I'm building in public, and the build logs behind them.",
+  description: "Open-source projects we're building in public, and the build logs behind them.",
   alternates: { canonical: "/building" },
 };
+
+const onGitHub = people.filter((person) => person.links.github);
 
 function EmptyState() {
   return (
@@ -22,18 +24,23 @@ function EmptyState() {
         The first build is on its way
       </h3>
       <p className="mx-auto mt-2 max-w-[27.5rem] text-[0.9375rem] leading-relaxed text-muted">
-        I&apos;ll be building open-source projects in public. Each one gets a card here with its repo, its
+        We&apos;ll be building open-source projects in public. Each one gets a card here with its repo, its
         progress and the build logs behind it.
       </p>
-      <a
-        href={site.links.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-6 inline-flex h-10 items-center gap-2 rounded-lg border border-line-strong px-4 text-sm font-medium text-fg transition-colors hover:bg-card active:scale-[0.98]"
-      >
-        <GitHubIcon size={rem(16)} />
-        Follow on GitHub
-      </a>
+      <div className="mt-6 flex flex-wrap justify-center gap-3">
+        {onGitHub.map((person) => (
+          <a
+            key={person.name}
+            href={person.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-10 items-center gap-2 rounded-lg border border-line-strong px-4 text-sm font-medium text-fg transition-colors hover:bg-card active:scale-[0.98]"
+          >
+            <GitHubIcon size={rem(16)} />
+            {onGitHub.length > 1 ? `${person.firstName} on GitHub` : "Follow on GitHub"}
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
@@ -43,7 +50,7 @@ export default function BuildingJourney() {
     <section aria-labelledby="building-title">
       <div className="mb-4 flex items-baseline justify-between">
         <h2 id="building-title" className="eyebrow">
-          What I&apos;m building
+          What we&apos;re building
         </h2>
         <span className="eyebrow">
           {projects.length} {projects.length === 1 ? "project" : "projects"}

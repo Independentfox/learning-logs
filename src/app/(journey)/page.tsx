@@ -7,7 +7,7 @@ export default function LearningJourney() {
     <section aria-labelledby="learning-title">
       <div className="mb-4 flex items-baseline justify-between">
         <h2 id="learning-title" className="eyebrow">
-          What I&apos;m learning
+          What we&apos;re learning
         </h2>
         <span className="eyebrow">
           {categories.length} topics · {logs.length} {logs.length === 1 ? "log" : "logs"}

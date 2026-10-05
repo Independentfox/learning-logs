@@ -1,8 +1,9 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
+import { site } from "@/content/site";
 
-export const alt = "Learning Logs — Manav Punjabi. Learning in public, one day at a time.";
+export const alt = `Learning Logs by ${site.authors}. Learning in public, one day at a time.`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +41,7 @@ export default async function Image() {
       <div
         style={{ display: "flex", fontFamily: "Geist Mono", fontSize: 22, letterSpacing: 3, color: SUBTLE }}
       >
-        MANAV PUNJABI · LEARNING LOGS
+        LEARNING LOGS · {site.byline.toUpperCase()}
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>

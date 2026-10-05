@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { authEnabled } from "@/auth";
 import { Avatar } from "@/components/avatar";
+import { site } from "@/content/site";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn, rem, shell } from "@/lib/utils";
 import type { Viewer } from "@/lib/viewer";
@@ -63,7 +64,7 @@ export function SiteHeader({ viewer }: { viewer: Viewer }) {
       <Link href="/" className="inline-flex items-center gap-2.5">
         <LogoMark />
         <span className="text-[0.9375rem] font-semibold tracking-[-0.01em] text-fg">Learning Logs</span>
-        <span className="hidden text-[0.9375rem] text-subtle sm:inline">by Manav Punjabi</span>
+        <span className="hidden text-[0.9375rem] text-subtle sm:inline">by {site.byline}</span>
       </Link>
       <div className="flex items-center gap-1.5">
         <Link

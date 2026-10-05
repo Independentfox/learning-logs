@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Figtree, Geist_Mono, Instrument_Serif } from "next/font/google";
-import { site } from "@/content/site";
+import { people, profileLink, site } from "@/content/site";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.author, url: site.links.portfolio }],
-  creator: site.author,
+  authors: people.map((person) => ({ name: person.name, url: profileLink(person) })),
+  creator: site.authors,
   keywords: [
-    "Manav Punjabi",
+    ...people.map((person) => person.name),
     "learning logs",
     "learning in public",
     "DSA",

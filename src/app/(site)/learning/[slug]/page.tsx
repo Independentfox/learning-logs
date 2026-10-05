@@ -129,7 +129,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             </span>
             <h2 className="mt-6 text-xl font-semibold tracking-[-0.015em] text-fg">First log coming soon</h2>
             <p className="mx-auto mt-2 max-w-[28.75rem] text-[0.9375rem] leading-relaxed text-muted">
-              Day-by-day notes on {name} will land here as I study it.
+              Day-by-day notes on {name} will land here as we study it.
             </p>
             {authEnabled && !viewer && (
               <Link

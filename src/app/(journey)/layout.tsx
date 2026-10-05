@@ -13,9 +13,11 @@ import { StatTile } from "@/components/stat-tile";
 import { StreakGrid } from "@/components/streak-grid";
 import { getCategory } from "@/content/categories";
 import { currentDay, logs } from "@/content/logs";
-import { site } from "@/content/site";
+import { people } from "@/content/site";
 import { cn, delay, rem, shell } from "@/lib/utils";
 import { getViewer, type Viewer } from "@/lib/viewer";
+
+const onLinkedIn = people.filter((person) => person.links.linkedin);
 
 /** Join for visitors, your learner number once you have one, and always a way to follow along. */
 function HeroActions({ viewer }: { viewer: Viewer }) {
@@ -43,15 +45,18 @@ function HeroActions({ viewer }: { viewer: Viewer }) {
           You&apos;re learner #{viewer.learner.number}
         </Link>
       )}
-      <a
-        href={site.links.linkedin}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-[0.9375rem] font-medium text-fg transition-colors hover:bg-card"
-      >
-        <LinkedInIcon size={rem(15)} />
-        Follow on LinkedIn
-      </a>
+      {onLinkedIn.map((person) => (
+        <a
+          key={person.name}
+          href={person.links.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-[0.9375rem] font-medium text-fg transition-colors hover:bg-card"
+        >
+          <LinkedInIcon size={rem(15)} />
+          {onLinkedIn.length > 1 ? `Follow ${person.firstName}` : "Follow on LinkedIn"}
+        </a>
+      ))}
     </div>
   );
 }
@@ -111,8 +116,8 @@ export default async function JourneyLayout({ children }: { children: ReactNode 
               className="enter mt-6 max-w-[37.5rem] text-[1.0625rem] leading-[1.75] text-muted"
               style={delay(80)}
             >
-              Every day I study something new — DSA, CS fundamentals, software engineering, AI &amp; LLMs —
-              and log what I learned here. Everything I build goes up in the open, too.
+              Every day we study something new — DSA, CS fundamentals, software engineering, AI &amp; LLMs —
+              and log what we learned here. Everything we build goes up in the open, too.
             </p>
             <HeroActions viewer={viewer} />
           </div>

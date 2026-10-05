@@ -247,7 +247,7 @@ export const categories = [
   {
     slug: "cool-things",
     name: "Cool Things to Know!",
-    blurb: "Fun, surprising things I picked up along the way.",
+    blurb: "Fun, surprising things we picked up along the way.",
     topics: [],
     freeform: true,
     Icon: Lightbulb,

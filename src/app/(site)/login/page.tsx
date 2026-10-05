@@ -96,7 +96,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
       <div>
         <p className="enter eyebrow">Join the learners</p>
         <h1 className="enter-rise mt-5 text-[2.6rem] leading-[1.04] font-semibold tracking-[-0.04em] text-fg sm:text-[3.5rem] xl:text-[4.25rem]">
-          Learn alongside me,
+          Learn alongside us,
           <br />
           <span className="font-serif font-normal text-link italic">day by day.</span>
         </h1>
@@ -160,7 +160,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
         </div>
 
         <p className="mt-6 border-t border-line pt-5 text-[0.8125rem] leading-relaxed text-subtle">
-          I only see your name, email and profile picture, and nothing is ever posted for you.
+          We only see your name, email and profile picture, and nothing is ever posted for you.
         </p>
       </section>
     </div>
