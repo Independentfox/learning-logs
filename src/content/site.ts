@@ -14,6 +14,7 @@ export const people: Person[] = [
     role: "Builder",
     links: {
       linkedin: "https://www.linkedin.com/in/devanshi-gupta-891a0b304/",
+      github: "https://github.com/gitgeek28",
     },
   },
   {

@@ -116,5 +116,5 @@ Env vars: `AUTH_SECRET`, plus `AUTH_GOOGLE_ID`/`AUTH_GOOGLE_SECRET` and
 
 OAuth callback URLs:
 
-- Google: `https://manav-learning-logs.vercel.app/api/auth/callback/google`
-- GitHub: `https://manav-learning-logs.vercel.app/api/auth/callback/github`
+- Google: `https://thelearninglogs.vercel.app/api/auth/callback/google`
+- GitHub: `https://thelearninglogs.vercel.app/api/auth/callback/github`
