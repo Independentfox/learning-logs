@@ -1,9 +1,12 @@
 # Learning Logs
 
 Learning in public, one day at a time — daily logs on DSA, CS fundamentals, software
-engineering and AI & LLMs, plus the open-source projects I build along the way.
+engineering and AI & LLMs, plus the open-source projects we build along the way.
 
-Next.js 16 · Tailwind CSS 4 · Upstash Redis (visit counter) · deployed on Vercel.
+Built by [Devanshi Gupta](https://github.com/gitgeek28) and [Manav Punjabi](https://github.com/Independentfox).
+Live at [thelearninglogs.vercel.app](https://thelearninglogs.vercel.app).
+
+Next.js 16 · Tailwind CSS 4 · Upstash Redis · deployed on Vercel.
 
 ## Run it
 
@@ -11,6 +14,13 @@ Next.js 16 · Tailwind CSS 4 · Upstash Redis (visit counter) · deployed on Ver
 npm install
 npm run dev        # http://localhost:3000
 ```
+
+## How changes reach the site
+
+Changes go through pull requests: work on a branch, open a PR against `main`, and merge it with
+a **merge commit** (not squash or rebase). Vercel deploys every push to `main`, but on the Hobby
+plan it only deploys commits by the project owner — the merge commit is the owner's, so that's
+the one that goes live. Commit messages are one line.
 
 ## Where things live
 
