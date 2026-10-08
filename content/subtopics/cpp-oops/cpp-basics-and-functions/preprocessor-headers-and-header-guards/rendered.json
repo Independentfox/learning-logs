@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "header-guard-flow.excalidraw",
+      "file": "header-guard-flow.svg",
+      "width": 944,
+      "height": 684,
+      "sha1": "378ddc4e1628792c04bd6a5fd18a123fdecae500"
+    },
+    {
+      "source": "header-structure.excalidraw",
+      "file": "header-structure.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "b03e87910f7b1619f411dd47b154ca339346a89c"
+    },
+    {
+      "source": "include-paste.excalidraw",
+      "file": "include-paste.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "f0397c6fc9385b169301ac8791bb0382767a5edc"
+    }
+  ]
+}
