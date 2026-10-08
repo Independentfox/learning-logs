@@ -105,7 +105,7 @@ function Summary({ lines }: { lines: string[] }) {
   return (
     <section
       aria-labelledby="summary-title"
-      className="enter mt-8 max-w-[46rem] rounded-2xl border border-tint-line bg-tint px-5 py-4"
+      className="enter mt-8 rounded-2xl border border-tint-line bg-tint px-5 py-4"
       style={delay(60)}
     >
       <h2 id="summary-title" className="font-mono text-xs tracking-[0.12em] text-link uppercase">
@@ -126,7 +126,7 @@ function Summary({ lines }: { lines: string[] }) {
 /** The Excalidraw pages, one under another. In dark mode they're inverted, as Excalidraw does. */
 function NotesPages({ day, pages }: { day: number; pages: NotesPage[] }) {
   return (
-    <section aria-labelledby="notes-title" className="enter mt-10 max-w-[46rem]" style={delay(100)}>
+    <section aria-labelledby="notes-title" className="enter mt-10" style={delay(100)}>
       <div className="mb-4 flex items-baseline justify-between">
         <h2 id="notes-title" className="eyebrow">
           Notes
@@ -195,7 +195,7 @@ export default async function DayPage({ params }: PageProps<"/day/[n]">) {
         </Link>
       </Breadcrumb>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
+      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-14">
         <article className="min-w-0">
           <p className="enter eyebrow">
             Day {day} · {log.topic}
@@ -206,7 +206,7 @@ export default async function DayPage({ params }: PageProps<"/day/[n]">) {
           {log.summary.length > 0 && <Summary lines={log.summary} />}
           {log.pages.length > 0 && <NotesPages day={day} pages={log.pages} />}
           {log.body && (
-            <div className="prose-log enter prose mt-10 max-w-[46rem]" style={delay(120)}>
+            <div className="prose-log enter prose mt-10 max-w-[52rem]" style={delay(120)}>
               <Markdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
