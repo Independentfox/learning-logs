@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "lifetime-timeline.excalidraw",
+      "file": "lifetime-timeline.svg",
+      "width": 944,
+      "height": 684,
+      "sha1": "62300290b6109c28b774f89804b0ba5e1cdbc24d"
+    },
+    {
+      "source": "refactor.excalidraw",
+      "file": "refactor.svg",
+      "width": 944,
+      "height": 684,
+      "sha1": "2eec39ca12a33c03ca2372827ccc6037f4db65f4"
+    },
+    {
+      "source": "scope-boxes.excalidraw",
+      "file": "scope-boxes.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "3d4db57330955e705fd999edddc0c2ff79d45859"
+    }
+  ]
+}
