@@ -159,7 +159,7 @@ C++ shows up wherever speed, control over memory or direct access to the hardwar
 
 ## Your first look at C++
 
-Here is a complete C++ program. Press **Run** to compile and run it, or **Edit** to change the message and try again.
+Here is a complete C++ program, along with what it prints. Press **Edit** to change it, or **Copy** to paste it into your own compiler and run it there.
 
 ```cpp title="hello.cpp"
 #include <iostream>
