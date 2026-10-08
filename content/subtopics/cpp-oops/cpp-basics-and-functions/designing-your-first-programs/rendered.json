@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "incremental-build.excalidraw",
+      "file": "incremental-build.svg",
+      "width": 944,
+      "height": 584,
+      "sha1": "594e8e28905a19a4511d8f4d1095de5c147ce7e3"
+    },
+    {
+      "source": "task-breakdown.excalidraw",
+      "file": "task-breakdown.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "39bf05b20c88bac17814b39ad0e237396ad617d8"
+    }
+  ]
+}
