@@ -68,8 +68,8 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
       </section>
 
       <section aria-label={`${guide.topic} subtopics`} className="enter mt-8" style={delay(80)}>
-        {/* A grid, not columns, so every block is the same width and height. */}
-        <ol className="grid auto-rows-fr gap-3 lg:grid-cols-2 xl:grid-cols-3">
+        {/* A grid, so every block is the same width, and from two columns up the same height too. */}
+        <ol className="grid gap-3 lg:auto-rows-fr lg:grid-cols-2 xl:grid-cols-3">
           {guide.subtopics.map((subtopic, i) => (
             <li
               key={subtopic}

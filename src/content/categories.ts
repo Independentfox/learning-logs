@@ -89,7 +89,7 @@ export const categories = [
       "Enums & Structs",
       "Classes & Objects (OOPS 1)",
       "std::vector & Arrays",
-      "Iterators & Algorithms",
+      "STL Containers, Iterators & Algorithms",
       "Dynamic Allocation",
       "Function Pointers, Recursion & Lambdas",
       "Operator Overloading (OOPS 2)",
