@@ -159,14 +159,18 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                       {guide ? (
                         <Link
                           href={`/learning/${category.slug}/${guide.slug}`}
-                          className="group inline-flex items-baseline gap-1.5 transition-colors hover:text-link"
+                          className="group transition-colors hover:text-link"
                         >
-                          {topic.name}
-                          <ArrowRight
-                            size={rem(14)}
-                            aria-hidden
-                            className="shrink-0 self-center text-subtle transition-transform group-hover:translate-x-0.5 group-hover:text-link"
-                          />
+                          {topic.name.slice(0, topic.name.lastIndexOf(" ") + 1)}
+                          {/* The arrow sticks to the last word, so it never wraps onto a line alone. */}
+                          <span className="whitespace-nowrap">
+                            {topic.name.slice(topic.name.lastIndexOf(" ") + 1)}
+                            <ArrowRight
+                              size={rem(14)}
+                              aria-hidden
+                              className="ml-1.5 inline-block align-middle text-subtle transition-transform group-hover:translate-x-0.5 group-hover:text-link"
+                            />
+                          </span>
                         </Link>
                       ) : (
                         topic.name
