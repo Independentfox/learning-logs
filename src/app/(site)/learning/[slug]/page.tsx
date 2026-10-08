@@ -146,7 +146,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             )}
           </div>
         ) : (
-          <ol className="gap-4 lg:columns-2">
+          <ol className="gap-4 lg:columns-2 xl:columns-3">
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
               const ids = questionIds(topic.days);

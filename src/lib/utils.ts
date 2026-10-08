@@ -11,8 +11,11 @@ export function delay(ms: number): CSSProperties {
   return { "--d": `${ms}ms` } as CSSProperties;
 }
 
-/** The page's content column: up to 85rem wide (1360px at a 16px root), with roomier gutters as it grows. */
-export const shell = "mx-auto w-full max-w-[85rem] px-6 md:px-10 xl:px-16";
+/**
+ * The page's content column: nearly full width, with a slim gutter. On laptops and
+ * monitors 1rem scales with the window (see globals.css), so this fills ~95% of any screen.
+ */
+export const shell = "mx-auto w-full max-w-[104rem] px-6 md:px-8 lg:px-10";
 
 /**
  * Converts a design size in px to rem. Everything is sized in rem so the whole

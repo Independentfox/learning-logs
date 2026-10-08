@@ -107,13 +107,13 @@ export default async function JourneyLayout({ children }: { children: ReactNode 
         <section className="grid items-end gap-10 pt-8 sm:pt-12 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-14 lg:pt-20 xl:gap-20">
           <div>
             <p className="enter eyebrow">A learn-in-public journal</p>
-            <h1 className="enter-rise mt-5 text-[2.75rem] leading-[1.02] font-semibold tracking-[-0.04em] text-fg sm:text-[4rem] xl:text-[5.25rem]">
+            <h1 className="enter-rise mt-5 text-[2.75rem] leading-[1.02] font-semibold tracking-[-0.04em] text-fg sm:text-[4rem] xl:text-[6.5rem]">
               Learning in public,
               <br />
               <span className="font-serif font-normal text-link italic">one day at a time.</span>
             </h1>
             <p
-              className="enter mt-6 max-w-[37.5rem] text-[1.0625rem] leading-[1.75] text-muted"
+              className="enter mt-6 max-w-[42rem] text-[1.0625rem] leading-[1.75] text-muted"
               style={delay(80)}
             >
               Every day we study something new — DSA, CS fundamentals, software engineering, AI &amp; LLMs —
