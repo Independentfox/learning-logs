@@ -169,7 +169,7 @@ export function CodeBlock({
       {editing ? (
         <div
           className="code-panel-editor"
-          style={{ height: `calc(${Math.min(Math.max(lines + 1, 6), 32)} * 1.65 * 0.875rem + 1.5rem)` }}
+          style={{ height: `calc(${Math.min(Math.max(lines + 1, 6), 32)} * 1.65 * 0.9375rem + 1.5rem)` }}
         >
           <CodeEditor
             key={resets}
@@ -181,7 +181,7 @@ export function CodeBlock({
           />
         </div>
       ) : (
-        <div className="flex overflow-x-auto py-3 font-mono text-[0.875rem] leading-[1.65]">
+        <div className="flex overflow-x-auto py-3.5 font-mono text-[0.9375rem] leading-[1.65]">
           <span
             aria-hidden
             className="sticky left-0 shrink-0 bg-[var(--panel-bg)] pr-4 pl-4 text-right text-[var(--panel-gutter)] select-none"
@@ -234,7 +234,7 @@ export function OutputBlock({ text, title }: { text: string; title: string }) {
         <SquareTerminal size={rem(13)} aria-hidden />
         {title}
       </figcaption>
-      <pre className="m-0 overflow-x-auto px-4 py-3 font-mono text-[0.8125rem] leading-[1.65] whitespace-pre">
+      <pre className="m-0 overflow-x-auto px-4 py-3 font-mono text-[0.875rem] leading-[1.65] whitespace-pre">
         {text}
       </pre>
     </figure>

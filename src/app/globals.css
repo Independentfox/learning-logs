@@ -430,3 +430,7 @@
 .dark .alert[data-alert="CAUTION"] {
   --alert: #fb7185;
 }
+
+.code-panel-editor .cm-editor {
+  font-size: 0.9375rem;
+}

@@ -110,11 +110,11 @@ function Alert({ type, children }: { type: AlertType; children: ReactNode }) {
   const { label, Icon } = ALERTS[type];
   return (
     <aside data-alert={type} className="alert not-prose my-6 rounded-xl border-l-4 px-5 py-4">
-      <p className="alert-title flex items-center gap-2 text-sm font-semibold">
-        <Icon size={rem(16)} aria-hidden />
+      <p className="alert-title flex items-center gap-2 text-base font-semibold">
+        <Icon size={rem(17)} aria-hidden />
         {label}
       </p>
-      <div className="alert-body prose-log prose mt-1.5 max-w-none text-[0.9375rem] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+      <div className="alert-body prose-log prose mt-1.5 max-w-none text-[1.0625rem] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
         {children}
       </div>
     </aside>
@@ -158,10 +158,17 @@ export function SubtopicArticle({ page, runner }: { page: SubtopicPage; runner: 
               className="block h-auto w-full"
             />
           </a>
-          {alt && <figcaption className="mt-2 text-center text-sm text-subtle">{alt}</figcaption>}
+          {alt && <figcaption className="mt-2.5 text-center text-[0.9375rem] text-subtle">{alt}</figcaption>}
         </figure>
       );
     },
+
+    // Wide tables scroll inside their own box instead of widening the page on phones.
+    table: ({ children }) => (
+      <div className="my-8 overflow-x-auto">
+        <table className="my-0">{children}</table>
+      </div>
+    ),
 
     blockquote: ({ node, children }) => {
       const type = (node as HastNode | undefined)?.properties?.dataAlert as AlertType | undefined;
@@ -201,7 +208,7 @@ export function SubtopicArticle({ page, runner }: { page: SubtopicPage; runner: 
   };
 
   return (
-    <div className="prose-log prose max-w-none">
+    <div className="prose-log prose max-w-none lg:prose-lg">
       <Markdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeAlerts]}
