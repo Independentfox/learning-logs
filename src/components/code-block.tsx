@@ -29,8 +29,8 @@ const action =
 
 /**
  * A code sample in a VS Code-style panel: file tab, line numbers, syntax colours, Copy and
- * Edit. Runnable samples (`language` set) also get Run, which compiles and runs the code as
- * it currently stands — edits included — through /api/run.
+ * Edit. Runnable samples (`language` set) also get Run and Input once a compiler is configured,
+ * compiling and running the code as it currently stands — edits included — through /api/run.
  */
 export function CodeBlock({
   code,
@@ -58,6 +58,8 @@ export function CodeBlock({
   const [error, setError] = useState<string | null>(null);
 
   const lines = code.split("\n").length;
+  // Without a compiler a program is copy-and-edit like any other sample: no Run, no Input.
+  const runnable = Boolean(language) && runner.enabled;
 
   const copy = async () => {
     try {
@@ -123,7 +125,7 @@ export function CodeBlock({
               <span className="hidden sm:inline">Edit</span>
             </button>
           )}
-          {language && (
+          {runnable && (
             <>
               <button
                 type="button"
@@ -135,7 +137,7 @@ export function CodeBlock({
                 <SquareTerminal size={rem(13)} aria-hidden />
                 <span className="hidden sm:inline">Input</span>
               </button>
-              {runner.enabled && !runner.signedIn ? (
+              {!runner.signedIn ? (
                 <Link
                   href={runner.loginHref}
                   className="ml-1 inline-flex h-7 items-center gap-1.5 rounded-md bg-[var(--panel-accent)] px-2.5 text-xs font-semibold text-[#06201c] transition-[filter] hover:brightness-110"
@@ -147,8 +149,8 @@ export function CodeBlock({
                 <button
                   type="button"
                   onClick={run}
-                  disabled={!runner.enabled || running}
-                  title={runner.enabled ? "Compile and run" : "The compiler is coming soon"}
+                  disabled={running}
+                  title="Compile and run"
                   className="ml-1 inline-flex h-7 items-center gap-1.5 rounded-md bg-[var(--panel-accent)] px-2.5 text-xs font-semibold text-[#06201c] transition-[filter,opacity] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100"
                 >
                   {running ? (
@@ -156,7 +158,7 @@ export function CodeBlock({
                   ) : (
                     <Play size={rem(12)} aria-hidden />
                   )}
-                  {runner.enabled ? "Run" : "Run · coming soon"}
+                  Run
                 </button>
               )}
             </>
@@ -196,7 +198,7 @@ export function CodeBlock({
         </div>
       )}
 
-      {language && showInput && (
+      {runnable && showInput && (
         <div className="border-t border-[var(--panel-line)]">
           <label className="block px-4 pt-2.5 font-mono text-[0.6875rem] tracking-[0.12em] text-[var(--panel-muted)] uppercase">
             Input
@@ -212,7 +214,7 @@ export function CodeBlock({
         </div>
       )}
 
-      {language && (running || result || error) && (
+      {runnable && (running || result || error) && (
         <div className="border-t border-[var(--panel-line)] bg-[var(--panel-bar)]">
           <p className="px-4 pt-2.5 font-mono text-[0.6875rem] tracking-[0.12em] text-[var(--panel-muted)] uppercase">
             Output
