@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useOptimistic, useTransition } from "react";
 import { ProgressBar } from "@/components/progress-bar";
 import { markSubtopicRead } from "@/lib/reading-actions";
-import { cn, rem } from "@/lib/utils";
+import { cn, columnGrid, rem } from "@/lib/utils";
 
 type Item = { id: string; name: string };
 type Change = { id: string; read: boolean };
@@ -74,7 +74,8 @@ export function SubtopicChecklist({
         )}
       </div>
 
-      <ol className="grid gap-3 lg:auto-rows-fr lg:grid-cols-2 xl:grid-cols-3">
+      {/* Numbered down each column, with every block the same size. */}
+      <ol {...columnGrid(items.length)}>
         {items.map(({ id, name }, i) => {
           const checked = read.has(id);
           return (
