@@ -11,7 +11,7 @@ import { pagesIn } from "@/content/subtopic-pages";
 import { guideFor, guidesIn } from "@/content/subtopics";
 import { myStatuses } from "@/lib/progress";
 import { guideProgress, readSubtopics, trackProgress } from "@/lib/reading";
-import { cn, columnGrid, delay, rem } from "@/lib/utils";
+import { cn, delay, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
 export const dynamicParams = false;
@@ -161,10 +161,8 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             )}
           </div>
         ) : (
-          // Numbered down each column. Until a day is logged every card is just its name, so all
-          // rows are the same height; after that a card grows to list its days and only its own
-          // row follows.
-          <ol {...columnGrid(topics.length, { equalRows: logs.length === 0 })}>
+          // One topic per row, in syllabus order.
+          <ol className="grid gap-3">
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
               const ids = questionIds(topic.days);
@@ -175,9 +173,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                   className={cn(
                     "rounded-2xl border px-6 py-5",
                     // A card that's just a name sits centred when its row is taller than it.
-                    started
-                      ? "border-line bg-card"
-                      : "flex flex-col justify-center border-dashed border-line",
+                    started ? "border-line bg-card" : "border-dashed border-line",
                   )}
                 >
                   <div className="flex items-baseline gap-3">
