@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "compile-vs-interpret.excalidraw",
+      "file": "compile-vs-interpret.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "6d5d81d96ec1724428dfb9c993354b765996c9ba"
+    },
+    {
+      "source": "cpp-timeline.excalidraw",
+      "file": "cpp-timeline.svg",
+      "width": 944,
+      "height": 964,
+      "sha1": "339fe9bdca23d9f1373e9f60e7751845259836b2"
+    },
+    {
+      "source": "language-ladder.excalidraw",
+      "file": "language-ladder.svg",
+      "width": 944,
+      "height": 884,
+      "sha1": "97732e68cdcfa38119e2a7cde1787966a8256444"
+    }
+  ]
+}
