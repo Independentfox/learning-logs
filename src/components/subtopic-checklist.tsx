@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useOptimistic, useTransition } from "react";
 import { ProgressBar } from "@/components/progress-bar";
 import { markSubtopicRead } from "@/lib/reading-actions";
-import { cn, columnGrid, rem } from "@/lib/utils";
+import { cn, rem } from "@/lib/utils";
 
 /** A subtopic; `href` is set once it has its own page. */
 type Item = { id: string; name: string; href?: string };
@@ -75,8 +75,8 @@ export function SubtopicChecklist({
         )}
       </div>
 
-      {/* Numbered down each column, with every block the same size. */}
-      <ol {...columnGrid(items.length)}>
+      {/* One subtopic per row, in study order. */}
+      <ol className="grid gap-3">
         {items.map(({ id, name, href }, i) => {
           const checked = read.has(id);
           return (

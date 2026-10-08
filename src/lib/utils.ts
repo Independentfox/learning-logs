@@ -35,17 +35,3 @@ export function formatDate(date: string) {
     timeZone: "UTC",
   });
 }
-
-/**
- * A numbered grid that reads down each column, then on to the next: one column on phones,
- * two from `lg`, three from `xl`. With `equalRows`, every row is as tall as the tallest, so
- * the cards stay the same size. Spread the result onto the list element.
- */
-export function columnGrid(count: number, { equalRows = true } = {}) {
-  return {
-    className: equalRows
-      ? "grid gap-3 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-[repeat(var(--rows-lg),minmax(0,1fr))] xl:grid-cols-3 xl:grid-rows-[repeat(var(--rows-xl),minmax(0,1fr))]"
-      : "grid gap-3 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-[repeat(var(--rows-lg),auto)] xl:grid-cols-3 xl:grid-rows-[repeat(var(--rows-xl),auto)]",
-    style: { "--rows-lg": Math.ceil(count / 2), "--rows-xl": Math.ceil(count / 3) } as CSSProperties,
-  };
-}
