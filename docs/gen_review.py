@@ -6,7 +6,7 @@ import json, os, re, sys
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://thelearninglogs.vercel.app"
 L = "https://www.learncpp.com/cpp-tutorial/"
-CPPREF = "https://en.cppreference.com/w/cpp/"
+CPPREF = "https://en.cppreference.com/cpp/"
 
 # number -> (title, url slug) for every learncpp lesson
 LESSONS = {}
