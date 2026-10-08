@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "declaration-vs-definition.excalidraw",
+      "file": "declaration-vs-definition.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "b42afdfa772b9a533f653b359772d8193e15be5f"
+    },
+    {
+      "source": "multi-file-declarations.excalidraw",
+      "file": "multi-file-declarations.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "267c0d1c9b7069af065f74acd37226d731ef24e6"
+    },
+    {
+      "source": "odr-rules.excalidraw",
+      "file": "odr-rules.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "4e488569d2c7d92d977370a955b92984510784d6"
+    }
+  ]
+}
