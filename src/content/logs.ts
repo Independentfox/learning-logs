@@ -44,8 +44,25 @@ const NOTES = path.join(process.cwd(), "content/notes");
 
 export function parseSummary(raw: unknown, where: string): string[] {
   if (raw == null) return [];
-  if (!Array.isArray(raw)) throw new Error(`${where}: "summary" must be a list of lines`);
-  return raw.map((line) => String(line).trim()).filter(Boolean);
+  return parseStringList(raw, where, "summary");
+}
+
+/**
+ * A front-matter list where every item must be plain text. YAML reads an unquoted line
+ * containing ": " as a key–value pair, which would otherwise reach the page as
+ * "[object Object]" — so that fails the build with a hint instead.
+ */
+export function parseStringList(raw: unknown, where: string, field: string): string[] {
+  if (!Array.isArray(raw)) throw new Error(`${where}: "${field}" must be a list`);
+  return raw
+    .map((item, i) => {
+      if (typeof item === "string") return item.trim();
+      if (typeof item === "number" || typeof item === "boolean") return String(item);
+      throw new Error(
+        `${where}: "${field}" item ${i + 1} isn't plain text — if it contains ": ", wrap the whole line in quotes`,
+      );
+    })
+    .filter(Boolean);
 }
 
 export function parseQuestions(raw: unknown, where: string): Question[] {
