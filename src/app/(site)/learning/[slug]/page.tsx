@@ -127,7 +127,12 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             )}
           </div>
         ) : (
-          <ol className="gap-4 lg:columns-2 xl:columns-3">
+          // A grid, so every card is the same width and the columns line up row by row. Until a
+          // day is logged every card is just its name, so they're all the same height too; after
+          // that a card grows to list its days and only its own row follows.
+          <ol
+            className={cn("grid gap-3 lg:grid-cols-2 xl:grid-cols-3", logs.length === 0 && "lg:auto-rows-fr")}
+          >
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
               const ids = questionIds(topic.days);
@@ -136,8 +141,11 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                 <li
                   key={topic.name}
                   className={cn(
-                    "mb-3 break-inside-avoid rounded-2xl border px-6 py-5",
-                    started ? "border-line bg-card" : "border-dashed border-line",
+                    "rounded-2xl border px-6 py-5",
+                    // A card that's just a name sits centred when its row is taller than it.
+                    started
+                      ? "border-line bg-card"
+                      : "flex flex-col justify-center border-dashed border-line",
                   )}
                 >
                   <div className="flex items-baseline gap-3">
