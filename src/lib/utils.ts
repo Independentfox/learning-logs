@@ -13,7 +13,7 @@ export function delay(ms: number): CSSProperties {
 
 /**
  * The page's content column: nearly full width, with a slim gutter. On laptops and
- * monitors 1rem scales with the window (see globals.css), so this fills ~95% of any screen.
+ * monitors 1rem scales with the screen (see globals.css), so this fills ~95% of any screen.
  */
 export const shell = "mx-auto w-full max-w-[104rem] px-6 md:px-8 lg:px-10";
 

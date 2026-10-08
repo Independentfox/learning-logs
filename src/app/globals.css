@@ -83,15 +83,16 @@
   }
 
   /*
-   * On laptops and monitors the whole page scales with the window, so it fills
-   * the same share of the screen everywhere — the design at 85% zoom: 1rem is
-   * 13.6px on a 1440px laptop, 18px on a 1920px monitor, 24px on a 2560px one.
-   * Everything is sized in rem, so text, spacing and icons all scale together.
-   * Phones and tablets keep the normal 16px.
+   * On laptops and monitors the whole page scales with the screen, so it fills
+   * the same share of any display — the design at 85% zoom: 1rem is 13.6px on a
+   * 1440px laptop, 18px on a 1920px monitor, 24px on a 2560px one. The size comes
+   * from the screen, not the window (scaleScript in layout.tsx sets --root-size),
+   * so browser zoom still works. Everything is sized in rem, so text, spacing and
+   * icons all scale together. Phones and tablets keep the normal 16px.
    */
   @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
     html {
-      font-size: clamp(13.6px, calc(100vw / 105.88), 28px);
+      font-size: var(--root-size, 13.6px);
     }
   }
 
