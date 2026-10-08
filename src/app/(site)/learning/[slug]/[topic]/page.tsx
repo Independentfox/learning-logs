@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -37,7 +37,6 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
   const { Icon } = category;
   const number = pad(category.topics.indexOf(guide.topic) + 1);
   const days = logsIn(category.slug).filter((log) => log.topic === guide.topic);
-  const lessons = guide.subtopics.reduce((count, subtopic) => count + subtopic.lessons.length, 0);
 
   return (
     <>
@@ -59,51 +58,25 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
           <span className="shrink-0 font-semibold text-fg">Topic {number}</span>
         </div>
         <span className="eyebrow">
-          {guide.subtopics.length} subtopics · {lessons} lessons · {days.length}{" "}
-          {days.length === 1 ? "log" : "logs"}
+          {guide.subtopics.length} subtopics · {days.length} {days.length === 1 ? "log" : "logs"}
         </span>
       </header>
 
       <section className="enter mt-10 max-w-[52rem]" style={delay(40)}>
-        <p className="eyebrow">
-          {guide.source.covers} ·{" "}
-          <a href={guide.source.url} target="_blank" rel="noopener noreferrer" className="hover:text-link">
-            {guide.source.name}
-          </a>
-        </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-[-0.02em] text-fg">{guide.topic}</h1>
+        <h1 className="text-3xl font-semibold tracking-[-0.02em] text-fg">{guide.topic}</h1>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">{guide.blurb}</p>
       </section>
 
       <section aria-label={`${guide.topic} subtopics`} className="enter mt-8" style={delay(80)}>
-        <ol className="gap-4 lg:columns-2 xl:columns-3">
+        {/* A grid, not columns, so every block is the same width and height. */}
+        <ol className="grid auto-rows-fr gap-3 lg:grid-cols-2 xl:grid-cols-3">
           {guide.subtopics.map((subtopic, i) => (
             <li
-              key={subtopic.name}
-              className="mb-3 flex break-inside-avoid items-baseline gap-3 rounded-2xl border border-line bg-card px-6 py-5"
+              key={subtopic}
+              className="flex items-baseline gap-3 rounded-2xl border border-line bg-card px-6 py-5"
             >
               <span className="font-mono text-sm text-subtle">{pad(i + 1)}</span>
-              <div className="min-w-0 flex-1">
-                <h2 className="text-lg font-medium text-fg lg:text-xl">{subtopic.name}</h2>
-                <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted">{subtopic.about}</p>
-                <ul aria-label="Lessons" className="mt-3 flex flex-wrap gap-1.5">
-                  {subtopic.lessons.map((lesson) => (
-                    <li key={lesson.number}>
-                      <a
-                        href={lesson.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={`Lesson ${lesson.number} on ${guide.source.name}`}
-                        aria-label={`Lesson ${lesson.number} on ${guide.source.name}`}
-                        className="inline-flex h-7 items-center gap-1 rounded-md border border-line px-2.5 font-mono text-sm text-muted transition-colors hover:border-tint-line hover:bg-tint hover:text-link"
-                      >
-                        {lesson.number}
-                        <ArrowUpRight size={rem(12)} aria-hidden />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h2 className="min-w-0 flex-1 text-lg font-medium text-fg lg:text-xl">{subtopic}</h2>
             </li>
           ))}
         </ol>
