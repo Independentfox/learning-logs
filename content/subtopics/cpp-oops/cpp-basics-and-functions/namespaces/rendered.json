@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "namespace-regions.excalidraw",
+      "file": "namespace-regions.svg",
+      "width": 944,
+      "height": 684,
+      "sha1": "6d064ec753d5c7c3a57456c7d70fe054271c0af6"
+    },
+    {
+      "source": "using-namespace-std.excalidraw",
+      "file": "using-namespace-std.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "39d2596d8030c5faea7801229cde16f70704cdad"
+    }
+  ]
+}
