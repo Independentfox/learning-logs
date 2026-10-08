@@ -10,7 +10,7 @@ import { logsIn, topicsWithDays, type Log } from "@/content/logs";
 import { guideFor, guidesIn } from "@/content/subtopics";
 import { myStatuses } from "@/lib/progress";
 import { guideProgress, readSubtopics, trackProgress } from "@/lib/reading";
-import { cn, delay, rem } from "@/lib/utils";
+import { cn, columnGrid, delay, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
 export const dynamicParams = false;
@@ -158,12 +158,10 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             )}
           </div>
         ) : (
-          // A grid, so every card is the same width and the columns line up row by row. Until a
-          // day is logged every card is just its name, so they're all the same height too; after
-          // that a card grows to list its days and only its own row follows.
-          <ol
-            className={cn("grid gap-3 lg:grid-cols-2 xl:grid-cols-3", logs.length === 0 && "lg:auto-rows-fr")}
-          >
+          // Numbered down each column. Until a day is logged every card is just its name, so all
+          // rows are the same height; after that a card grows to list its days and only its own
+          // row follows.
+          <ol {...columnGrid(topics.length, { equalRows: logs.length === 0 })}>
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
               const ids = questionIds(topic.days);

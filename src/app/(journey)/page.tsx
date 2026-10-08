@@ -16,7 +16,7 @@ export default async function LearningJourney() {
           What we&apos;re learning
         </h2>
         <span className="eyebrow">
-          {categories.length} topics · {logs.length} {logs.length === 1 ? "log" : "logs"}
+          {categories.length} tracks · {logs.length} {logs.length === 1 ? "log" : "logs"}
         </span>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
