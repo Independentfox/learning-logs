@@ -7,6 +7,7 @@ import { DayLink } from "@/components/day-link";
 import { ProgressBar } from "@/components/progress-bar";
 import { categories, getCategory } from "@/content/categories";
 import { logsIn, topicsWithDays, type Log } from "@/content/logs";
+import { pagesIn } from "@/content/subtopic-pages";
 import { guideFor, guidesIn } from "@/content/subtopics";
 import { myStatuses } from "@/lib/progress";
 import { guideProgress, readSubtopics, trackProgress } from "@/lib/reading";
@@ -66,6 +67,8 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
   const category = categories[index];
   const { Icon, name } = category;
   const logs = logsIn(category.slug);
+  // One published subtopic page is one log.
+  const published = pagesIn(category.slug);
   const topics = topicsWithDays(category);
   const prev = categories[index - 1];
   const next = categories[index + 1];
@@ -103,7 +106,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
         </div>
         <span className="eyebrow">
           {topics.length > 0 && `${topics.length} topics · `}
-          {logs.length} {logs.length === 1 ? "log" : "logs"}
+          {published.length} {published.length === 1 ? "log" : "logs"}
           {allIds.length > 0 &&
             (viewer ? ` · ${solved(allIds)}/${allIds.length} solved` : ` · ${allIds.length} questions`)}
         </span>

@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
   },
   // Day notes are read from content/days at request time; ship them with every function.
   outputFileTracingIncludes: {
-    "/*": ["./content/days/**/*"],
+    "/*": ["./content/days/**/*", "./content/subtopics/**/index.md", "./content/subtopics/**/rendered.json"],
   },
   turbopack: {
     root: path.resolve(__dirname),

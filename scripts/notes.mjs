@@ -1,78 +1,111 @@
 #!/usr/bin/env node
 /**
- * Excalidraw notes → SVG pages for the site.
+ * Excalidraw drawings → SVGs for the site.
  *
- *   npm run notes:render   content/notes/<day>/<n>.excalidraw → public/notes/<day>/<n>.svg
- *                          (needs Google Chrome; CHROME_PATH overrides where it looks)
- *   npm run notes:check    fails if any page is missing or out of date — runs before every build
+ *   npm run notes:render   renders every drawing that's new or changed (needs Google Chrome;
+ *                          CHROME_PATH overrides where it looks)
+ *   npm run notes:check    fails if any drawing is missing or out of date — runs before every build
  *
- * A source can be a normal Excalidraw file, or a quick draft with `"skeleton": true`
- * whose elements use Excalidraw's element-skeleton format. Drafts are expanded into a
- * full scene on render and written back, so every source ends up openable on
- * excalidraw.com.
+ * Two kinds of folders hold drawings:
+ *   content/notes/<day>/<n>.excalidraw          → public/notes/<day>/<n>.svg      (a day's pages)
+ *   content/subtopics/<…>/<name>.excalidraw     → public/diagrams/<…>/<name>.svg  (diagrams in a
+ *                                                                                  subtopic page)
  *
- * Each day's rendered pages are listed in content/notes/<day>/rendered.json, with the
- * source hash they were made from — that's how `check` spots stale pages.
+ * A source can be a normal Excalidraw file, or a quick draft with `"skeleton": true` whose
+ * elements use Excalidraw's element-skeleton format. Drafts are expanded into a full scene on
+ * render and written back, so every source ends up openable on excalidraw.com.
+ *
+ * Each folder's rendered drawings are listed in its rendered.json, with the source hash they
+ * were made from — that's how `check` spots stale ones.
  */
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
 const ROOT = process.cwd();
-const SRC = path.join(ROOT, "content/notes");
-const OUT = path.join(ROOT, "public/notes");
 const EXCALIDRAW = "https://esm.sh/@excalidraw/excalidraw@0.18.1";
 const CHROME = process.env.CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 const sha1 = (text) => createHash("sha1").update(text).digest("hex");
 const byNumber = (a, b) => Number.parseInt(a, 10) - Number.parseInt(b, 10);
+const rel = (p) => path.relative(ROOT, p);
 
-/** Every day folder with its page sources, in order. */
+/** Every folder of drawings: where its sources are, where its SVGs go, and its files in order. */
 function scan() {
-  if (!fs.existsSync(SRC)) return [];
-  return fs
-    .readdirSync(SRC)
-    .filter((day) => /^\d+$/.test(day))
-    .sort(byNumber)
-    .map((day) => ({
-      day,
-      pages: fs
-        .readdirSync(path.join(SRC, day))
-        .filter((file) => /^\d+\.excalidraw$/.test(file))
-        .sort(byNumber),
-    }));
+  const groups = [];
+
+  const notes = path.join(ROOT, "content/notes");
+  if (fs.existsSync(notes)) {
+    for (const day of fs
+      .readdirSync(notes)
+      .filter((d) => /^\d+$/.test(d))
+      .sort(byNumber)) {
+      const src = path.join(notes, day);
+      groups.push({
+        src,
+        out: path.join(ROOT, "public/notes", day),
+        files: fs
+          .readdirSync(src)
+          .filter((f) => /^\d+\.excalidraw$/.test(f))
+          .sort(byNumber),
+      });
+    }
+  }
+
+  const subtopics = path.join(ROOT, "content/subtopics");
+  const walk = (dir) => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    const files = entries
+      .filter((e) => e.isFile() && e.name.endsWith(".excalidraw"))
+      .map((e) => e.name)
+      .sort();
+    const manifest = fs.existsSync(path.join(dir, "rendered.json"));
+    if (files.length || manifest) {
+      groups.push({
+        src: dir,
+        out: path.join(ROOT, "public/diagrams", path.relative(subtopics, dir)),
+        files,
+      });
+    }
+    for (const e of entries) if (e.isDirectory()) walk(path.join(dir, e.name));
+  };
+  if (fs.existsSync(subtopics)) walk(subtopics);
+
+  return groups;
 }
 
-const manifestPath = (day) => path.join(SRC, day, "rendered.json");
-const readManifest = (day) =>
-  fs.existsSync(manifestPath(day)) ? JSON.parse(fs.readFileSync(manifestPath(day), "utf8")) : { pages: [] };
+const manifestPath = (group) => path.join(group.src, "rendered.json");
+const readManifest = (group) =>
+  fs.existsSync(manifestPath(group))
+    ? JSON.parse(fs.readFileSync(manifestPath(group), "utf8"))
+    : { pages: [] };
 
 function check() {
   const problems = [];
-  for (const { day, pages } of scan()) {
-    const rendered = new Map(readManifest(day).pages.map((p) => [p.source, p]));
-    for (const file of pages) {
-      const source = fs.readFileSync(path.join(SRC, day, file), "utf8");
+  for (const group of scan()) {
+    const where = rel(group.src);
+    const rendered = new Map(readManifest(group).pages.map((p) => [p.source, p]));
+    for (const file of group.files) {
+      const source = fs.readFileSync(path.join(group.src, file), "utf8");
       const entry = rendered.get(file);
-      if (!entry) problems.push(`day ${day}: ${file} has never been rendered`);
-      else if (entry.sha1 !== sha1(source))
-        problems.push(`day ${day}: ${file} changed since it was rendered`);
-      else if (!fs.existsSync(path.join(OUT, day, entry.file)))
-        problems.push(`day ${day}: ${entry.file} is missing`);
+      if (!entry) problems.push(`${where}: ${file} has never been rendered`);
+      else if (entry.sha1 !== sha1(source)) problems.push(`${where}: ${file} changed since it was rendered`);
+      else if (!fs.existsSync(path.join(group.out, entry.file)))
+        problems.push(`${where}: ${entry.file} is missing`);
     }
     for (const file of rendered.keys()) {
-      if (!pages.includes(file)) problems.push(`day ${day}: ${file} was deleted but is still listed`);
+      if (!group.files.includes(file)) problems.push(`${where}: ${file} was deleted but is still listed`);
     }
   }
   if (problems.length) {
-    console.error(`Notes are out of date — run \`npm run notes:render\`:\n  ${problems.join("\n  ")}`);
+    console.error(`Drawings are out of date — run \`npm run notes:render\`:\n  ${problems.join("\n  ")}`);
     process.exit(1);
   }
   console.log("Notes are up to date.");
 }
 
 async function render() {
-  const days = scan();
+  const groups = scan();
   const { default: puppeteer } = await import("puppeteer-core");
   const browser = await puppeteer.launch({ executablePath: CHROME, headless: true });
   const tab = await browser.newPage();
@@ -80,18 +113,18 @@ async function render() {
   await tab.goto("https://esm.sh/", { waitUntil: "domcontentloaded" });
 
   try {
-    for (const { day, pages } of days) {
-      const before = new Map(readManifest(day).pages.map((p) => [p.source, p]));
+    for (const group of groups) {
+      const before = new Map(readManifest(group).pages.map((p) => [p.source, p]));
       const after = [];
-      fs.mkdirSync(path.join(OUT, day), { recursive: true });
+      fs.mkdirSync(group.out, { recursive: true });
 
-      for (const file of pages) {
-        const sourcePath = path.join(SRC, day, file);
+      for (const file of group.files) {
+        const sourcePath = path.join(group.src, file);
         let source = fs.readFileSync(sourcePath, "utf8");
         const svgFile = file.replace(/\.excalidraw$/, ".svg");
         const previous = before.get(file);
 
-        if (previous?.sha1 === sha1(source) && fs.existsSync(path.join(OUT, day, svgFile))) {
+        if (previous?.sha1 === sha1(source) && fs.existsSync(path.join(group.out, svgFile))) {
           after.push(previous);
           continue;
         }
@@ -142,7 +175,7 @@ async function render() {
           fs.writeFileSync(sourcePath, source);
         }
 
-        fs.writeFileSync(path.join(OUT, day, svgFile), result.svg);
+        fs.writeFileSync(path.join(group.out, svgFile), result.svg);
         after.push({
           source: file,
           file: svgFile,
@@ -151,15 +184,17 @@ async function render() {
           sha1: sha1(source),
         });
         console.log(
-          `day ${day}: ${file} → public/notes/${day}/${svgFile} (${result.width}×${result.height})`,
+          `${rel(sourcePath)} → ${rel(path.join(group.out, svgFile))} (${result.width}×${result.height})`,
         );
       }
 
-      // Drop pages whose source was deleted.
+      // Drop drawings whose source was deleted.
       for (const [file, entry] of before) {
-        if (!pages.includes(file)) fs.rmSync(path.join(OUT, day, entry.file), { force: true });
+        if (!group.files.includes(file)) fs.rmSync(path.join(group.out, entry.file), { force: true });
       }
-      fs.writeFileSync(manifestPath(day), `${JSON.stringify({ pages: after }, null, 2)}\n`);
+      if (after.length)
+        fs.writeFileSync(manifestPath(group), `${JSON.stringify({ pages: after }, null, 2)}\n`);
+      else fs.rmSync(manifestPath(group), { force: true });
     }
   } finally {
     await browser.close();

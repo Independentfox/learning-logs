@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/content/categories";
 import { logs } from "@/content/logs";
+import { pageHref, subtopicPages } from "@/content/subtopic-pages";
 import { guides } from "@/content/subtopics";
 import { siteUrl } from "@/lib/site-url";
 
@@ -17,6 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/learning/${category}/${slug}`,
       changeFrequency: "weekly" as const,
       priority: 0.65,
+    })),
+    ...subtopicPages.map((page) => ({
+      url: `${siteUrl}${pageHref(page)}`,
+      lastModified: page.published,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     ...logs.map((log) => ({
       url: `${siteUrl}/day/${log.day}`,

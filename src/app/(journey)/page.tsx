@@ -1,6 +1,6 @@
 import { CategoryCard } from "@/components/category-card";
 import { categories } from "@/content/categories";
-import { logs } from "@/content/logs";
+import { subtopicPages } from "@/content/subtopic-pages";
 import { guides } from "@/content/subtopics";
 import { readSubtopics, trackProgress } from "@/lib/reading";
 import { getViewer } from "@/lib/viewer";
@@ -16,7 +16,7 @@ export default async function LearningJourney() {
           What we&apos;re learning
         </h2>
         <span className="eyebrow">
-          {categories.length} tracks · {logs.length} {logs.length === 1 ? "log" : "logs"}
+          {categories.length} tracks · {subtopicPages.length} {subtopicPages.length === 1 ? "log" : "logs"}
         </span>
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

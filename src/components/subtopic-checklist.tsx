@@ -1,6 +1,6 @@
 "use client";
 
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useOptimistic, useTransition } from "react";
@@ -8,7 +8,8 @@ import { ProgressBar } from "@/components/progress-bar";
 import { markSubtopicRead } from "@/lib/reading-actions";
 import { cn, columnGrid, rem } from "@/lib/utils";
 
-type Item = { id: string; name: string };
+/** A subtopic; `href` is set once it has its own page. */
+type Item = { id: string; name: string; href?: string };
 type Change = { id: string; read: boolean };
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -76,7 +77,7 @@ export function SubtopicChecklist({
 
       {/* Numbered down each column, with every block the same size. */}
       <ol {...columnGrid(items.length)}>
-        {items.map(({ id, name }, i) => {
+        {items.map(({ id, name, href }, i) => {
           const checked = read.has(id);
           return (
             <li key={id} className="flex">
@@ -101,7 +102,22 @@ export function SubtopicChecklist({
                   />
                 </span>
                 <span className="font-mono text-sm text-subtle">{pad(i + 1)}</span>
-                <span className="min-w-0 flex-1 text-lg font-medium text-fg lg:text-xl">{name}</span>
+                {href ? (
+                  // A link inside a label navigates instead of ticking the box.
+                  <Link
+                    href={href}
+                    className="group/link min-w-0 flex-1 text-lg font-medium text-fg transition-colors hover:text-link lg:text-xl"
+                  >
+                    {name}
+                    <ArrowRight
+                      size={rem(15)}
+                      aria-hidden
+                      className="ml-1.5 inline-block align-middle text-subtle transition-transform group-hover/link:translate-x-0.5 group-hover/link:text-link"
+                    />
+                  </Link>
+                ) : (
+                  <span className="min-w-0 flex-1 text-lg font-medium text-muted lg:text-xl">{name}</span>
+                )}
               </label>
             </li>
           );

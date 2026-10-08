@@ -42,13 +42,13 @@ export type Log = {
 const DIR = path.join(process.cwd(), "content/days");
 const NOTES = path.join(process.cwd(), "content/notes");
 
-function parseSummary(raw: unknown, where: string): string[] {
+export function parseSummary(raw: unknown, where: string): string[] {
   if (raw == null) return [];
   if (!Array.isArray(raw)) throw new Error(`${where}: "summary" must be a list of lines`);
   return raw.map((line) => String(line).trim()).filter(Boolean);
 }
 
-function parseQuestions(raw: unknown, where: string): Question[] {
+export function parseQuestions(raw: unknown, where: string): Question[] {
   if (raw == null) return [];
   if (!Array.isArray(raw)) throw new Error(`${where}: "questions" must be a list`);
   return raw.map((item, i) => {
@@ -156,14 +156,6 @@ export const currentDay = logs.at(-1)?.day ?? 0;
 
 export function getLog(day: number) {
   return logs.find((log) => log.day === day);
-}
-
-/** Every practice question, by id, with the day it was set on (the first, if repeated). */
-export const questionsById = new Map<string, { question: Question; day: number }>();
-for (const log of logs) {
-  for (const question of log.questions) {
-    if (!questionsById.has(question.id)) questionsById.set(question.id, { question, day: log.day });
-  }
 }
 
 /** The logged days either side of `day`, skipping gaps. */

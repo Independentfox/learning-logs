@@ -26,7 +26,8 @@ const write = (key: string, value: string) => {
 /**
  * A CodeMirror editor that keeps a draft in this browser under `storageKey`.
  * The current code is mirrored into `docRef`; ⌘/Ctrl+Enter calls `onRun`.
- * Remount it (change its `key`) to switch language or reset.
+ * Remount it (change its `key`) to switch language or reset. Pass `storageKey={null}`
+ * to start from `starter` every time without saving a draft.
  */
 export function CodeEditor({
   language,
@@ -36,7 +37,7 @@ export function CodeEditor({
   onRun,
 }: {
   language: LanguageId;
-  storageKey: string;
+  storageKey: string | null;
   starter: string;
   docRef: RefObject<string>;
   onRun: () => void;
@@ -70,7 +71,7 @@ export function CodeEditor({
       ]);
       if (cancelled || !host.current) return;
 
-      const doc = read(storageKey) ?? starter;
+      const doc = (storageKey && read(storageKey)) || starter;
       docRef.current = doc;
 
       const view = new EditorView({
@@ -88,7 +89,7 @@ export function CodeEditor({
               if (!update.docChanged) return;
               const text = update.state.doc.toString();
               docRef.current = text;
-              write(storageKey, text);
+              if (storageKey) write(storageKey, text);
             }),
             EditorView.theme({
               "&": {

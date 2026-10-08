@@ -5,7 +5,7 @@ import { authEnabled } from "@/auth";
 import { PlatformLogo } from "@/components/platform-logo";
 import { Playground } from "@/components/playground";
 import { DifficultyTag } from "@/components/practice";
-import { questionsById } from "@/content/logs";
+import { questionsById } from "@/content/questions";
 import { platforms } from "@/content/platforms";
 import { rem } from "@/lib/utils";
 import { runnerEnabled } from "@/lib/runner";
@@ -28,11 +28,11 @@ export default async function CodePage({ searchParams }: PageProps<"/code">) {
     <>
       <header className="enter flex min-w-0 items-center gap-2.5 text-sm">
         <Link
-          href={entry ? `/day/${entry.day}` : "/"}
+          href={entry ? entry.href : "/"}
           className="inline-flex shrink-0 items-center gap-1.5 text-muted transition-colors hover:text-fg"
         >
           <ArrowLeft size={rem(15)} aria-hidden />
-          {entry ? `Day ${entry.day}` : "Learning Journey"}
+          {entry ? entry.label : "Learning Journey"}
         </Link>
         <span aria-hidden className="text-subtle">
           /

@@ -231,12 +231,12 @@
   --tw-prose-td-borders: var(--line);
 }
 
-.prose-log :where(pre) {
+.prose-log :where(pre):not(:where(.code-panel, .code-panel *)) {
   border: 1px solid var(--line);
   border-radius: 0.875rem;
 }
 
-.prose-log :where(code):not(:where(pre code)) {
+.prose-log :where(code):not(:where(pre code, .code-panel *)) {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 0.375rem;
@@ -244,8 +244,8 @@
   font-weight: 500;
 }
 
-.prose-log :where(code):not(:where(pre code))::before,
-.prose-log :where(code):not(:where(pre code))::after {
+.prose-log :where(code):not(:where(pre code, .code-panel *))::before,
+.prose-log :where(code):not(:where(pre code, .code-panel *))::after {
   content: none;
 }
 
@@ -351,4 +351,82 @@
 }
 .tok-macroName {
   color: var(--code-keyword);
+}
+
+/* ------------------------------------------------------------------ */
+/* Code panels in subtopic pages — always dark, like VS Code, in both  */
+/* themes. Syntax colours and the editor read the same variables.     */
+/* ------------------------------------------------------------------ */
+
+.code-panel {
+  --panel-bg: #1e1e1e;
+  --panel-bar: #181818;
+  --panel-term: #141414;
+  --panel-line: #2b2b2b;
+  --panel-fg: #d4d4d4;
+  --panel-muted: #9d9d9d;
+  --panel-gutter: #6e7681;
+  --panel-accent: #2a9d8f;
+
+  /* What the editor and the highlighted code inherit. */
+  --fg: var(--panel-fg);
+  --subtle: var(--panel-gutter);
+  --muted: var(--panel-muted);
+  --link: #4fc1b5;
+  --canvas: var(--panel-bg);
+  --card: var(--panel-bar);
+  --line: var(--panel-line);
+  --line-strong: #3c3c3c;
+  --code-keyword: #c586c0;
+  --code-string: #ce9178;
+  --code-number: #b5cea8;
+  --code-comment: #6a9955;
+  --code-function: #dcdcaa;
+  --code-type: #4ec9b0;
+  color-scheme: dark;
+}
+
+.code-panel .hljs-meta,
+.code-panel .hljs-meta .hljs-keyword {
+  color: #c586c0;
+}
+.code-panel .hljs-meta .hljs-string {
+  color: #ce9178;
+}
+.code-panel .hljs-built_in {
+  color: #4ec9b0;
+}
+
+/* Callouts: `> [!NOTE]` and friends. */
+.alert {
+  --alert: var(--link);
+  border-left-color: var(--alert);
+  background: color-mix(in srgb, var(--alert) 8%, transparent);
+}
+.alert-title {
+  color: var(--alert);
+}
+.alert[data-alert="TIP"] {
+  --alert: #16a34a;
+}
+.alert[data-alert="IMPORTANT"] {
+  --alert: #8b5cf6;
+}
+.alert[data-alert="WARNING"] {
+  --alert: #d97706;
+}
+.alert[data-alert="CAUTION"] {
+  --alert: #e11d48;
+}
+.dark .alert[data-alert="TIP"] {
+  --alert: #4ade80;
+}
+.dark .alert[data-alert="IMPORTANT"] {
+  --alert: #a78bfa;
+}
+.dark .alert[data-alert="WARNING"] {
+  --alert: #fbbf24;
+}
+.dark .alert[data-alert="CAUTION"] {
+  --alert: #fb7185;
 }

@@ -37,7 +37,8 @@ function Panel({
   );
 }
 
-function Output({
+/** A run's status, timings and output, or what's happening instead. */
+export function RunOutput({
   result,
   error,
   running,
@@ -237,7 +238,7 @@ export function Playground({
           />
         </Panel>
         <Panel title="Output" className="min-h-[12rem]">
-          <Output result={result} error={error} running={running} />
+          <RunOutput result={result} error={error} running={running} />
         </Panel>
       </div>
     </div>
