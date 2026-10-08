@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { authEnabled } from "@/auth";
 import { DaySearch } from "@/components/day-search";
 import { Glow } from "@/components/glow";
-import { LinkedInIcon } from "@/components/icons";
 import { JourneyTabs } from "@/components/journey-tabs";
 import { LiveStats } from "@/components/live-stats";
 import { SiteFooter } from "@/components/site-footer";
@@ -13,14 +12,12 @@ import { StatTile } from "@/components/stat-tile";
 import { StreakGrid } from "@/components/streak-grid";
 import { getCategory } from "@/content/categories";
 import { currentDay, logs } from "@/content/logs";
-import { people } from "@/content/site";
 import { cn, delay, rem, shell } from "@/lib/utils";
 import { getViewer, type Viewer } from "@/lib/viewer";
 
-const onLinkedIn = people.filter((person) => person.links.linkedin);
-
-/** Join for visitors, your learner number once you have one, and always a way to follow along. */
+/** "Join the learners" for visitors, your learner number once you're in. */
 function HeroActions({ viewer }: { viewer: Viewer }) {
+  if (!(authEnabled && !viewer) && !viewer?.learner) return null;
   return (
     <div className="enter mt-9 flex flex-wrap items-center gap-3" style={delay(140)}>
       {authEnabled && !viewer && (
@@ -45,18 +42,6 @@ function HeroActions({ viewer }: { viewer: Viewer }) {
           You&apos;re learner #{viewer.learner.number}
         </Link>
       )}
-      {onLinkedIn.map((person) => (
-        <a
-          key={person.name}
-          href={person.links.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-11 items-center gap-2 rounded-xl border border-line-strong px-4 text-[0.9375rem] font-medium text-fg transition-colors hover:bg-card"
-        >
-          <LinkedInIcon size={rem(15)} />
-          {onLinkedIn.length > 1 ? `Follow ${person.firstName}` : "Follow on LinkedIn"}
-        </a>
-      ))}
     </div>
   );
 }
