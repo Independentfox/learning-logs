@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "chaining-cout.excalidraw",
+      "file": "chaining-cout.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "5bc247d5963cdc80ffea6f2c09491943bce34a2b"
+    },
+    {
+      "source": "expression-tree.excalidraw",
+      "file": "expression-tree.svg",
+      "width": 944,
+      "height": 704,
+      "sha1": "487bfaaa0763d9d462349f0b228a226e31f6e422"
+    },
+    {
+      "source": "operator-arity.excalidraw",
+      "file": "operator-arity.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "264b001bce6ba31f1e6028960a9f67b9afff825d"
+    }
+  ]
+}
