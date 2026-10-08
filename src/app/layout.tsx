@@ -28,6 +28,10 @@ const mono = Geist_Mono({
 // Runs before first paint so the stored theme never flashes. Dark is the default.
 const themeScript = `(function(){try{var t=localStorage.getItem("theme");document.documentElement.classList.toggle("dark",t?t==="dark":true)}catch(e){}})()`;
 
+// Sizes 1rem from the screen (see globals.css). Chrome and Safari report screen.width
+// without the browser zoom applied, so ⌘+ / ⌘− still make everything bigger or smaller.
+const scaleScript = `(function(){function s(){try{document.documentElement.style.setProperty("--root-size",Math.min(28,Math.max(13.6,screen.width/105.88))+"px")}catch(e){}}s();addEventListener("resize",s)})()`;
+
 export const viewport: Viewport = {
   themeColor: "#111111",
 };
@@ -78,6 +82,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: scaleScript }} />
       </head>
       <body>{children}</body>
     </html>
