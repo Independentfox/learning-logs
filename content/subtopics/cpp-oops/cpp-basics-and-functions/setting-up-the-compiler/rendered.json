@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "compiler-flags.excalidraw",
+      "file": "compiler-flags.svg",
+      "width": 944,
+      "height": 924,
+      "sha1": "22a5d3a97cf30ef256dd6f62df15fd353595f984"
+    },
+    {
+      "source": "debug-vs-release.excalidraw",
+      "file": "debug-vs-release.svg",
+      "width": 944,
+      "height": 704,
+      "sha1": "3a2ba1c8332a93ca9f50ba870cef4cd6e60025c2"
+    },
+    {
+      "source": "toolchain-choices.excalidraw",
+      "file": "toolchain-choices.svg",
+      "width": 944,
+      "height": 824,
+      "sha1": "7520840c6b5ccc4a0734b96213615253a439b8d0"
+    }
+  ]
+}
