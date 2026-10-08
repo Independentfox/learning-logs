@@ -91,7 +91,7 @@ function Neighbour({ page, direction }: { page?: SubtopicPage; direction: "prev"
           />
         )}
       </span>
-      <span className="font-medium text-fg">{page.name}</span>
+      <span className="text-lg font-medium text-fg">{page.name}</span>
     </Link>
   );
 }
@@ -144,13 +144,13 @@ export default async function SubtopicPageRoute({
         </span>
       </header>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-14">
+      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-14">
         <article className="min-w-0">
-          <h1 className="enter-rise text-[2.25rem] leading-[1.08] font-semibold tracking-[-0.035em] text-fg sm:text-[2.75rem]">
+          <h1 className="enter-rise text-[2.5rem] leading-[1.08] font-semibold tracking-[-0.035em] text-fg sm:text-[3.25rem]">
             {page.name}
           </h1>
           <div className="enter mt-5 flex flex-wrap items-center gap-x-5 gap-y-3" style={delay(40)}>
-            <span className="text-sm text-subtle">
+            <span className="text-[0.9375rem] text-subtle">
               Published <time dateTime={page.published}>{formatDate(page.published)}</time>
             </span>
             {authEnabled && (
@@ -166,7 +166,7 @@ export default async function SubtopicPageRoute({
           {page.summary.length > 0 && (
             <section
               aria-labelledby="summary-title"
-              className="enter mt-8 max-w-[56rem] rounded-2xl border border-tint-line bg-tint px-5 py-4"
+              className="enter mt-8 max-w-[60rem] rounded-2xl border border-tint-line bg-tint px-6 py-5"
               style={delay(60)}
             >
               <h2 id="summary-title" className="font-mono text-xs tracking-[0.12em] text-link uppercase">
@@ -174,7 +174,7 @@ export default async function SubtopicPageRoute({
               </h2>
               <ul className="mt-3 space-y-2">
                 {page.summary.map((line) => (
-                  <li key={line} className="flex gap-3 text-[0.9375rem] leading-relaxed text-fg">
+                  <li key={line} className="flex gap-3 text-[1.0625rem] leading-relaxed text-fg lg:text-lg">
                     <span aria-hidden className="mt-[0.6em] size-1.5 shrink-0 rounded-full bg-link" />
                     <span>
                       <SummaryLine text={line} />
@@ -185,7 +185,7 @@ export default async function SubtopicPageRoute({
             </section>
           )}
 
-          <div className="enter mt-10 max-w-[56rem]" style={delay(80)}>
+          <div className="enter mt-10 max-w-[60rem]" style={delay(80)}>
             <SubtopicArticle
               page={page}
               runner={{ enabled: runnerEnabled && authEnabled, signedIn: Boolean(viewer), loginHref }}
@@ -216,16 +216,16 @@ export default async function SubtopicPageRoute({
                 className="mt-3"
               />
             )}
-            <ol className="mt-4 max-h-[60vh] space-y-0.5 overflow-y-auto pr-1 text-sm">
+            <ol className="mt-4 max-h-[65vh] space-y-0.5 overflow-y-auto pr-1 text-base">
               {subtopicsOf(guide).map(({ id, name }, i) => {
                 const target = published.get(name);
                 const current = target === page;
                 const done = read?.has(id);
                 const content = (
                   <>
-                    <span className="w-5 shrink-0 font-mono text-xs text-subtle">{pad(i + 1)}</span>
+                    <span className="w-6 shrink-0 pt-px font-mono text-sm text-subtle">{pad(i + 1)}</span>
                     <span className="min-w-0 flex-1">{name}</span>
-                    {done && <Check size={rem(13)} aria-label="Read" className="mt-0.5 shrink-0 text-link" />}
+                    {done && <Check size={rem(15)} aria-label="Read" className="mt-1 shrink-0 text-link" />}
                   </>
                 );
                 return (
@@ -233,7 +233,7 @@ export default async function SubtopicPageRoute({
                     {target && !current ? (
                       <Link
                         href={pageHref(target)}
-                        className="flex gap-2 rounded-lg px-2 py-1.5 text-fg transition-colors hover:bg-canvas"
+                        className="flex gap-2.5 rounded-lg px-2.5 py-2 text-fg transition-colors hover:bg-canvas"
                       >
                         {content}
                       </Link>
@@ -241,7 +241,7 @@ export default async function SubtopicPageRoute({
                       <span
                         aria-current={current ? "page" : undefined}
                         className={cn(
-                          "flex gap-2 rounded-lg px-2 py-1.5",
+                          "flex gap-2.5 rounded-lg px-2.5 py-2",
                           current ? "bg-tint font-medium text-link" : "text-subtle",
                         )}
                       >
