@@ -585,14 +585,45 @@ export const guides: readonly TopicGuide[] = [
   ),
 ];
 
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/\+/g, "p")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+/** A short, stable fingerprint of a string (FNV-1a), so ids stay unique when slugs collide. */
+const fingerprint = (text: string) => {
+  let hash = 0x811c9dc5;
+  for (const char of text) hash = Math.imul(hash ^ char.codePointAt(0)!, 0x01000193);
+  return (hash >>> 0).toString(36).padStart(7, "0").slice(-6);
+};
+
+/**
+ * A subtopic's id, e.g. "cpp-oops/debugging/reading-compiler-error-messages-1x9k2a". The slug
+ * keeps it readable; the fingerprint keeps "Overloading [] and ()" and "Overloading -> and *"
+ * apart. Learners' read progress is stored against it, so renaming a live subtopic resets that
+ * one checkbox.
+ */
+export const subtopicId = (guide: TopicGuide, name: string) =>
+  `${guide.category}/${guide.slug}/${slugify(name).slice(0, 48)}-${fingerprint(name)}`;
+
+/** A guide's subtopics with their ids, in study order. */
+export const subtopicsOf = (guide: TopicGuide) =>
+  guide.subtopics.map((name) => ({ id: subtopicId(guide, name), name }));
+
 // A guide must point at a real syllabus topic, so a renamed topic fails the build — and its
-// subtopic names double as React keys, so they must be unique.
+// subtopic names double as React keys and progress ids, so they must be unique.
 for (const guide of guides) {
   if (!getCategory(guide.category)?.topics.includes(guide.topic))
     throw new Error(`subtopics.ts: "${guide.topic}" isn't a topic of "${guide.category}" in categories.ts`);
-  const repeated = guide.subtopics.find((name, i) => guide.subtopics.indexOf(name) !== i);
+  const ids = guide.subtopics.map((name) => subtopicId(guide, name));
+  const repeated = guide.subtopics.find((_, i) => ids.indexOf(ids[i]) !== i);
   if (repeated) throw new Error(`subtopics.ts: "${repeated}" is listed twice under "${guide.topic}"`);
 }
+
+/** Every subtopic id on the site, so a progress update can't store anything else. */
+export const allSubtopicIds = new Set(guides.flatMap((guide) => subtopicsOf(guide).map(({ id }) => id)));
 
 export function getGuide(category: string, slug: string) {
   return guides.find((guide) => guide.category === category && guide.slug === slug);
@@ -601,4 +632,9 @@ export function getGuide(category: string, slug: string) {
 /** The guide for a syllabus topic, if it has one. */
 export function guideFor(category: string, topic: string) {
   return guides.find((guide) => guide.category === category && guide.topic === topic);
+}
+
+/** A category's guides, in syllabus order. */
+export function guidesIn(category: string) {
+  return guides.filter((guide) => guide.category === category);
 }

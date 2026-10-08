@@ -3,10 +3,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DayLink } from "@/components/day-link";
+import { SubtopicChecklist } from "@/components/subtopic-checklist";
 import { getCategory } from "@/content/categories";
 import { logsIn } from "@/content/logs";
-import { getGuide, guides } from "@/content/subtopics";
+import { getGuide, guides, subtopicsOf } from "@/content/subtopics";
+import { readSubtopics } from "@/lib/reading";
 import { delay, rem } from "@/lib/utils";
+import { getViewer } from "@/lib/viewer";
 
 export const dynamicParams = false;
 
@@ -37,6 +40,8 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
   const { Icon } = category;
   const number = pad(category.topics.indexOf(guide.topic) + 1);
   const days = logsIn(category.slug).filter((log) => log.topic === guide.topic);
+  const viewer = await getViewer();
+  const read = viewer ? await readSubtopics(viewer.id) : null;
 
   return (
     <>
@@ -68,18 +73,13 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
       </section>
 
       <section aria-label={`${guide.topic} subtopics`} className="enter mt-8" style={delay(80)}>
-        {/* A grid, so every block is the same width, and from two columns up the same height too. */}
-        <ol className="grid gap-3 lg:auto-rows-fr lg:grid-cols-2 xl:grid-cols-3">
-          {guide.subtopics.map((subtopic, i) => (
-            <li
-              key={subtopic}
-              className="flex items-baseline gap-3 rounded-2xl border border-line bg-card px-6 py-5"
-            >
-              <span className="font-mono text-sm text-subtle">{pad(i + 1)}</span>
-              <h2 className="min-w-0 flex-1 text-lg font-medium text-fg lg:text-xl">{subtopic}</h2>
-            </li>
-          ))}
-        </ol>
+        <SubtopicChecklist
+          topic={guide.topic}
+          items={subtopicsOf(guide)}
+          initialRead={read ? subtopicsOf(guide).flatMap(({ id }) => (read.has(id) ? [id] : [])) : []}
+          signedIn={Boolean(viewer)}
+          loginHref={`/login?next=${encodeURIComponent(`/learning/${slug}/${topic}`)}`}
+        />
       </section>
 
       <section aria-labelledby="days-title" className="enter mt-12 max-w-[52rem]" style={delay(120)}>
