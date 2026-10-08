@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "path-lookup.excalidraw",
+      "file": "path-lookup.svg",
+      "width": 944,
+      "height": 704,
+      "sha1": "8f8f1811209741a139795d2ad6a56252dfbcda7d"
+    },
+    {
+      "source": "separate-compilation.excalidraw",
+      "file": "separate-compilation.svg",
+      "width": 944,
+      "height": 744,
+      "sha1": "7683ba54008f3ce47251f1496ffb49890604576b"
+    },
+    {
+      "source": "streams-redirect.excalidraw",
+      "file": "streams-redirect.svg",
+      "width": 944,
+      "height": 764,
+      "sha1": "66509d0bf62496a39807210b45b04801ad58b2af"
+    }
+  ]
+}
