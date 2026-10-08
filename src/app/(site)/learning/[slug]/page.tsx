@@ -4,10 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { authEnabled } from "@/auth";
 import { DayLink } from "@/components/day-link";
+import { ProgressBar } from "@/components/progress-bar";
 import { categories, getCategory } from "@/content/categories";
 import { logsIn, topicsWithDays, type Log } from "@/content/logs";
-import { guideFor } from "@/content/subtopics";
+import { guideFor, guidesIn } from "@/content/subtopics";
 import { myStatuses } from "@/lib/progress";
+import { guideProgress, readSubtopics, trackProgress } from "@/lib/reading";
 import { cn, delay, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
@@ -75,6 +77,11 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
   const mine = viewer ? await myStatuses(viewer.id, allIds) : {};
   const solved = (ids: string[]) => ids.filter((id) => mine[id] === "solved").length;
 
+  // Subtopics this learner has ticked off, for the topic and track progress bars.
+  const hasGuides = guidesIn(category.slug).length > 0;
+  const read = viewer && hasGuides ? await readSubtopics(viewer.id) : null;
+  const track = read ? trackProgress(category.slug, read) : null;
+
   return (
     <>
       <header className="enter flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
@@ -101,6 +108,30 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             (viewer ? ` · ${solved(allIds)}/${allIds.length} solved` : ` · ${allIds.length} questions`)}
         </span>
       </header>
+
+      {track ? (
+        <div className="enter mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-tint-line bg-tint px-5 py-4">
+          <span className="text-sm text-muted">
+            Your progress · <span className="font-medium text-fg tabular-nums">{track.read}</span> of{" "}
+            {track.total} subtopics read
+          </span>
+          <ProgressBar progress={track} label={`${name}: subtopics read`} className="min-w-[12rem] flex-1" />
+        </div>
+      ) : (
+        hasGuides &&
+        authEnabled &&
+        !viewer && (
+          <p className="enter mt-6 text-sm text-muted">
+            <Link
+              href={`/login?next=${encodeURIComponent(`/learning/${category.slug}`)}`}
+              className="inline-link"
+            >
+              Sign in
+            </Link>{" "}
+            to track how much of each topic you&apos;ve read.
+          </p>
+        )
+      )}
 
       <section aria-label={`${name} topics`} className="enter mt-6" style={delay(80)}>
         {topics.length === 0 ? (
@@ -192,6 +223,13 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                           : "Not started"}
                     </span>
                   </div>
+                  {guide && read && (
+                    <ProgressBar
+                      progress={guideProgress(guide, read)}
+                      label={`${topic.name}: subtopics read`}
+                      className="mt-3.5"
+                    />
+                  )}
                   {started && (
                     <ul className="mt-2 divide-y divide-line border-t border-line">
                       {topic.days.map((log) => (

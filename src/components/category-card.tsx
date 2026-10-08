@@ -1,12 +1,23 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ProgressBar } from "@/components/progress-bar";
 import type { Category } from "@/content/categories";
 import { logsIn } from "@/content/logs";
+import type { Progress } from "@/lib/reading";
 import { rem } from "@/lib/utils";
 
 const SHOWN_TOPICS = 4;
 
-export function CategoryCard({ category, index }: { category: Category; index: number }) {
+export function CategoryCard({
+  category,
+  index,
+  progress,
+}: {
+  category: Category;
+  index: number;
+  /** The signed-in learner's progress through this track's subtopics, if it has any. */
+  progress?: Progress | null;
+}) {
   const { Icon, name, blurb, topics } = category;
   const logs = logsIn(category.slug);
   const latest = logs.at(-1);
@@ -41,6 +52,15 @@ export function CategoryCard({ category, index }: { category: Category; index: n
       )}
 
       <div className="mt-auto pt-6">
+        {progress && (
+          <div className="mb-4">
+            <p className="mb-1.5 text-xs text-muted">
+              Your progress · <span className="text-fg tabular-nums">{progress.read}</span> of{" "}
+              {progress.total}
+            </p>
+            <ProgressBar progress={progress} label={`${category.name}: subtopics read`} />
+          </div>
+        )}
         <div className="flex items-center justify-between border-t border-line pt-4 text-[0.8125rem]">
           <span className="text-muted">
             <span className="font-medium text-fg tabular-nums">{logs.length}</span>{" "}
