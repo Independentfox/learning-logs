@@ -25,6 +25,17 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  // Tracks that were merged or removed, so old links still land somewhere useful.
+  async redirects() {
+    return [
+      {
+        source: "/learning/distributed-systems",
+        destination: "/learning/system-design-hld",
+        permanent: true,
+      },
+      { source: "/learning/system-internals", destination: "/", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
