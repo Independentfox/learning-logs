@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "behavior-spectrum.excalidraw",
+      "file": "behavior-spectrum.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "14b4608b03460c0d84c142ea4f51cef108346a4d"
+    },
+    {
+      "source": "compiler-assumes.excalidraw",
+      "file": "compiler-assumes.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "9ad528691ce81ded41bb2d6cce8cf45f20b8eeb9"
+    },
+    {
+      "source": "garbage-values.excalidraw",
+      "file": "garbage-values.svg",
+      "width": 944,
+      "height": 684,
+      "sha1": "e7f76087da0e3d11f7c35431312a54d3b5697c81"
+    }
+  ]
+}
