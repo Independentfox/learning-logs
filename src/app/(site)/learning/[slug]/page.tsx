@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { authEnabled } from "@/auth";
+import { DayLink } from "@/components/day-link";
 import { categories, getCategory } from "@/content/categories";
 import { logsIn, topicsWithDays, type Log } from "@/content/logs";
+import { guideFor } from "@/content/subtopics";
 import { myStatuses } from "@/lib/progress";
-import { cn, delay, formatDate, rem } from "@/lib/utils";
+import { cn, delay, rem } from "@/lib/utils";
 import { getViewer } from "@/lib/viewer";
 
 export const dynamicParams = false;
@@ -23,27 +25,6 @@ export async function generateMetadata({ params }: PageProps<"/learning/[slug]">
     description: category.blurb,
     alternates: { canonical: `/learning/${category.slug}` },
   };
-}
-
-function DayLink({ log }: { log: Log }) {
-  return (
-    <li>
-      <Link href={`/day/${log.day}`} className="group flex items-baseline gap-4 py-3">
-        <span className="w-16 shrink-0 font-mono text-sm text-link">Day {log.day}</span>
-        <span className="min-w-0 flex-1 truncate text-fg transition-colors group-hover:text-link">
-          {log.title}
-        </span>
-        <time dateTime={log.date} className="hidden shrink-0 text-xs text-subtle sm:block">
-          {formatDate(log.date)}
-        </time>
-        <ArrowRight
-          size={rem(14)}
-          aria-hidden
-          className="shrink-0 self-center text-subtle transition-transform group-hover:translate-x-0.5 group-hover:text-link"
-        />
-      </Link>
-    </li>
-  );
 }
 
 function TopicLink({ slug, name, direction }: { slug: string; name: string; direction: "prev" | "next" }) {
@@ -150,6 +131,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
             {topics.map((topic, i) => {
               const started = topic.days.length > 0;
               const ids = questionIds(topic.days);
+              const guide = guideFor(category.slug, topic.name);
               return (
                 <li
                   key={topic.name}
@@ -160,8 +142,24 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                 >
                   <div className="flex items-baseline gap-3">
                     <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
-                    <h2 className={cn("min-w-0 flex-1 font-medium", started ? "text-fg" : "text-muted")}>
-                      {topic.name}
+                    <h2
+                      className={cn("min-w-0 flex-1 font-medium", started || guide ? "text-fg" : "text-muted")}
+                    >
+                      {guide ? (
+                        <Link
+                          href={`/learning/${category.slug}/${guide.slug}`}
+                          className="group inline-flex items-baseline gap-1.5 transition-colors hover:text-link"
+                        >
+                          {topic.name}
+                          <ArrowRight
+                            size={rem(14)}
+                            aria-hidden
+                            className="shrink-0 self-center text-subtle transition-transform group-hover:translate-x-0.5 group-hover:text-link"
+                          />
+                        </Link>
+                      ) : (
+                        topic.name
+                      )}
                     </h2>
                     <span className={cn("shrink-0 text-xs", started ? "text-link" : "text-subtle")}>
                       {started
@@ -174,7 +172,9 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                           ]
                             .filter(Boolean)
                             .join(" · ")
-                        : "Not started"}
+                        : guide
+                          ? `${guide.subtopics.length} subtopics`
+                          : "Not started"}
                     </span>
                   </div>
                   {started && (
