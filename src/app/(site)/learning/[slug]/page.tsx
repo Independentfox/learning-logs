@@ -136,14 +136,17 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                 <li
                   key={topic.name}
                   className={cn(
-                    "mb-3 break-inside-avoid rounded-2xl border px-5 py-4",
+                    "mb-3 break-inside-avoid rounded-2xl border px-6 py-5",
                     started ? "border-line bg-card" : "border-dashed border-line",
                   )}
                 >
                   <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-xs text-subtle">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-mono text-sm text-subtle">{String(i + 1).padStart(2, "0")}</span>
                     <h2
-                      className={cn("min-w-0 flex-1 font-medium", started || guide ? "text-fg" : "text-muted")}
+                      className={cn(
+                        "min-w-0 flex-1 text-lg font-medium lg:text-xl",
+                        started || guide ? "text-fg" : "text-muted",
+                      )}
                     >
                       {guide ? (
                         <Link
@@ -161,7 +164,7 @@ export default async function CategoryPage({ params }: PageProps<"/learning/[slu
                         topic.name
                       )}
                     </h2>
-                    <span className={cn("shrink-0 text-xs", started ? "text-link" : "text-subtle")}>
+                    <span className={cn("shrink-0 text-sm", started ? "text-link" : "text-subtle")}>
                       {started
                         ? [
                             `${topic.days.length} ${topic.days.length === 1 ? "day" : "days"}`,

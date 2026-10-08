@@ -80,12 +80,12 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
           {guide.subtopics.map((subtopic, i) => (
             <li
               key={subtopic.name}
-              className="mb-3 flex break-inside-avoid items-baseline gap-3 rounded-2xl border border-line bg-card px-5 py-4"
+              className="mb-3 flex break-inside-avoid items-baseline gap-3 rounded-2xl border border-line bg-card px-6 py-5"
             >
-              <span className="font-mono text-xs text-subtle">{pad(i + 1)}</span>
+              <span className="font-mono text-sm text-subtle">{pad(i + 1)}</span>
               <div className="min-w-0 flex-1">
-                <h2 className="font-medium text-fg">{subtopic.name}</h2>
-                <p className="mt-1 text-sm leading-relaxed text-muted">{subtopic.about}</p>
+                <h2 className="text-lg font-medium text-fg lg:text-xl">{subtopic.name}</h2>
+                <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-muted">{subtopic.about}</p>
                 <ul aria-label="Lessons" className="mt-3 flex flex-wrap gap-1.5">
                   {subtopic.lessons.map((lesson) => (
                     <li key={lesson.number}>
@@ -95,10 +95,10 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
                         rel="noopener noreferrer"
                         title={`Lesson ${lesson.number} on ${guide.source.name}`}
                         aria-label={`Lesson ${lesson.number} on ${guide.source.name}`}
-                        className="inline-flex h-6 items-center gap-1 rounded-md border border-line px-2 font-mono text-xs text-muted transition-colors hover:border-tint-line hover:bg-tint hover:text-link"
+                        className="inline-flex h-7 items-center gap-1 rounded-md border border-line px-2.5 font-mono text-sm text-muted transition-colors hover:border-tint-line hover:bg-tint hover:text-link"
                       >
                         {lesson.number}
-                        <ArrowUpRight size={rem(11)} aria-hidden />
+                        <ArrowUpRight size={rem(12)} aria-hidden />
                       </a>
                     </li>
                   ))}

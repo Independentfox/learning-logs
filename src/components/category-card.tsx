@@ -28,15 +28,15 @@ export function CategoryCard({ category, index }: { category: Category; index: n
       <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">{blurb}</p>
 
       {category.freeform ? (
-        <p className="mt-4 text-xs text-subtle">Topics added as I go</p>
+        <p className="mt-4 text-[0.8125rem] text-subtle">Topics added as we go</p>
       ) : (
         <ul className="mt-4 flex flex-wrap gap-1.5" aria-label={`${name} topics`}>
           {topics.slice(0, SHOWN_TOPICS).map((topic) => (
-            <li key={topic} className="rounded-md border border-line px-2 py-0.5 text-xs text-muted">
+            <li key={topic} className="rounded-md border border-line px-2.5 py-1 text-[0.8125rem] text-muted">
               {topic}
             </li>
           ))}
-          {more > 0 && <li className="px-1 py-0.5 text-xs text-subtle">+{more} more</li>}
+          {more > 0 && <li className="px-1 py-1 text-[0.8125rem] text-subtle">+{more} more</li>}
         </ul>
       )}
 
