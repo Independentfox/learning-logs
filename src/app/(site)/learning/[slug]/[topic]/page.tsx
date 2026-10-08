@@ -2,10 +2,8 @@ import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { DayLink } from "@/components/day-link";
 import { SubtopicChecklist } from "@/components/subtopic-checklist";
 import { getCategory } from "@/content/categories";
-import { logsIn } from "@/content/logs";
 import { getGuide, guides, subtopicsOf } from "@/content/subtopics";
 import { readSubtopics } from "@/lib/reading";
 import { delay, rem } from "@/lib/utils";
@@ -39,7 +37,6 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
 
   const { Icon } = category;
   const number = pad(category.topics.indexOf(guide.topic) + 1);
-  const days = logsIn(category.slug).filter((log) => log.topic === guide.topic);
   const viewer = await getViewer();
   const read = viewer ? await readSubtopics(viewer.id) : null;
 
@@ -62,9 +59,7 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
           </span>
           <span className="shrink-0 font-semibold text-fg">Topic {number}</span>
         </div>
-        <span className="eyebrow">
-          {guide.subtopics.length} subtopics · {days.length} {days.length === 1 ? "log" : "logs"}
-        </span>
+        <span className="eyebrow">{guide.subtopics.length} subtopics</span>
       </header>
 
       <section className="enter mt-10 max-w-[52rem]" style={delay(40)}>
@@ -80,23 +75,6 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
           signedIn={Boolean(viewer)}
           loginHref={`/login?next=${encodeURIComponent(`/learning/${slug}/${topic}`)}`}
         />
-      </section>
-
-      <section aria-labelledby="days-title" className="enter mt-12 max-w-[52rem]" style={delay(120)}>
-        <h2 id="days-title" className="eyebrow">
-          Days on this topic
-        </h2>
-        {days.length > 0 ? (
-          <ul className="mt-3 divide-y divide-line border-t border-line">
-            {days.map((log) => (
-              <DayLink key={log.day} log={log} />
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-3 rounded-2xl border border-dashed border-line px-5 py-4 text-sm text-muted">
-            No days logged yet. They&apos;ll show up here as we work through these subtopics.
-          </p>
-        )}
       </section>
     </>
   );
