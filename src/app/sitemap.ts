@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/content/categories";
 import { logs } from "@/content/logs";
+import { guides } from "@/content/subtopics";
 import { siteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/learning/${slug}`,
       changeFrequency: "weekly" as const,
       priority: 0.7,
+    })),
+    ...guides.map(({ category, slug }) => ({
+      url: `${siteUrl}/learning/${category}/${slug}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
     })),
     ...logs.map((log) => ({
       url: `${siteUrl}/day/${log.day}`,
