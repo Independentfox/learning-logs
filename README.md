@@ -24,17 +24,17 @@ the one that goes live. Commit messages are one line.
 
 ## Where things live
 
-| What                                                                  | File                           |
-| --------------------------------------------------------------------- | ------------------------------ |
-| Learning topics (the 14 cards, and a page each at `/learning/<slug>`) | `src/content/categories.ts`    |
-| Building Journey cards                                                | `src/content/projects.ts`      |
-| Daily logs — one Markdown file per day (format below)                 | `content/days/*.md`            |
-| Site name, links                                                      | `src/content/site.ts`          |
-| Home: hero, stats panel, tabs                                         | `src/app/(journey)/layout.tsx` |
-| Topic, day, code, login and account pages                             | `src/app/(site)/`              |
-| Visit counter API                                                     | `src/app/api/visit/route.ts`   |
-| Sign-in config (Google, GitHub)                                       | `src/auth.ts`                  |
-| Learner numbers, email opt-in                                         | `src/lib/learners.ts`          |
+| What                                                                 | File                           |
+| -------------------------------------------------------------------- | ------------------------------ |
+| Learning tracks (a card each, and a page each at `/learning/<slug>`) | `src/content/categories.ts`    |
+| Building Journey cards                                               | `src/content/projects.ts`      |
+| Daily logs — one Markdown file per day (format below)                | `content/days/*.md`            |
+| Site name, links                                                     | `src/content/site.ts`          |
+| Home: hero, stats panel, tabs                                        | `src/app/(journey)/layout.tsx` |
+| Topic, day, code, login and account pages                            | `src/app/(site)/`              |
+| Visit counter API                                                    | `src/app/api/visit/route.ts`   |
+| Sign-in config (Google, GitHub)                                      | `src/auth.ts`                  |
+| Learner numbers, email opt-in                                        | `src/lib/learners.ts`          |
 
 ## Logging a day
 
