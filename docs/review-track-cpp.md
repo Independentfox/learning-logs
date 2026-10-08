@@ -8,7 +8,7 @@ in our own words; this file is only for reviewing that nothing was missed. It is
 - **Reference** — official docs (cppreference, GCC, Clang…) for material learncpp doesn't cover.
 - ✅ = page is live (link opens it) · ⏳ = not written yet
 
-**9 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
+**10 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
 
 Every learncpp lesson is covered by at least one subtopic, except: [A.4 C++ FAQ](https://www.learncpp.com/cpp-tutorial/cpp-faq/).
 
@@ -16,7 +16,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 
 ## 01 · C++ Basics & Functions
 
-[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 9/18 live
+[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 10/18 live
 
 - **01 · What C++ is** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/what-cpp-is)
   - learncpp: [0.1 Introduction to these tutorials](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/) · [0.2 Introduction to programs and programming languages](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/) · [0.3 Introduction to C/C++](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
@@ -37,7 +37,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [1.6 Uninitialized variables and undefined behavior](https://www.learncpp.com/cpp-tutorial/uninitialized-variables-and-undefined-behavior/)
 - **09 · Identifiers, keywords and formatting** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/identifiers-keywords-and-formatting)
   - learncpp: [1.7 Keywords and naming identifiers](https://www.learncpp.com/cpp-tutorial/keywords-and-naming-identifiers/) · [1.8 Whitespace and basic formatting](https://www.learncpp.com/cpp-tutorial/whitespace-and-basic-formatting/)
-- **10 · Literals, operators and expressions** · ⏳
+- **10 · Literals, operators and expressions** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/literals-operators-and-expressions)
   - learncpp: [1.9 Introduction to literals and operators](https://www.learncpp.com/cpp-tutorial/introduction-to-literals-and-operators/) · [1.10 Introduction to expressions](https://www.learncpp.com/cpp-tutorial/introduction-to-expressions/)
 - **11 · Functions, return values and parameters** · ⏳
   - learncpp: [2.1 Introduction to functions](https://www.learncpp.com/cpp-tutorial/introduction-to-functions/) · [2.2 Function return values (value-returning functions)](https://www.learncpp.com/cpp-tutorial/function-return-values-value-returning-functions/) · [2.3 Void functions (non-value returning functions)](https://www.learncpp.com/cpp-tutorial/void-functions-non-value-returning-functions/) · [2.4 Introduction to function parameters and arguments](https://www.learncpp.com/cpp-tutorial/introduction-to-function-parameters-and-arguments/)
