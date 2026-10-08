@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "cmake-flow.excalidraw",
+      "file": "cmake-flow.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "f2bf6e00f7bb686eb98af10039b4ce9d36af39cb"
+    },
+    {
+      "source": "make-dependencies.excalidraw",
+      "file": "make-dependencies.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "1cbddc556d2f31d570ff5b6d5d81fa3d3df980d9"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ in our own words; this file is only for reviewing that nothing was missed. It is
 - **Reference** — official docs (cppreference, GCC, Clang…) for material learncpp doesn't cover.
 - ✅ = page is live (link opens it) · ⏳ = not written yet
 
-**16 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
+**17 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
 
 Every learncpp lesson is covered by at least one subtopic, except: [A.4 C++ FAQ](https://www.learncpp.com/cpp-tutorial/cpp-faq/).
 
@@ -16,7 +16,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 
 ## 01 · C++ Basics & Functions
 
-[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 16/18 live
+[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 17/18 live
 
 - **01 · What C++ is** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/what-cpp-is)
   - learncpp: [0.1 Introduction to these tutorials](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/) · [0.2 Introduction to programs and programming languages](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/) · [0.3 Introduction to C/C++](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
@@ -51,7 +51,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [2.10 Introduction to the preprocessor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-preprocessor/) · [2.11 Header files](https://www.learncpp.com/cpp-tutorial/header-files/) · [2.12 Header guards](https://www.learncpp.com/cpp-tutorial/header-guards/)
 - **16 · Static and dynamic libraries** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/static-and-dynamic-libraries)
   - learncpp: [A.1 Static and dynamic libraries](https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/) · [A.2 Using libraries with Visual Studio](https://www.learncpp.com/cpp-tutorial/a2-using-libraries-with-visual-studio-2005-express/) · [A.3 Using libraries with Code::Blocks](https://www.learncpp.com/cpp-tutorial/a3-using-libraries-with-codeblocks/)
-- **17 · Build systems: Make and CMake** · ⏳
+- **17 · Build systems: Make and CMake** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/build-systems-make-and-cmake)
   - Related: [A.1 Static and dynamic libraries](https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/)
   - Reference: [GNU Make manual](https://www.gnu.org/software/make/manual/make.html) · [CMake tutorial](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 - **18 · Designing your first programs** · ⏳
