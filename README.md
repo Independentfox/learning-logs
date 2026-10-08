@@ -48,6 +48,50 @@ are deleted once merged.
 | Sign-in config (Google, GitHub)                                      | `src/auth.ts`                  |
 | Learner numbers, email opt-in                                        | `src/lib/learners.ts`          |
 
+## Writing a subtopic page
+
+Each subtopic can have its own page — one published page is **one log**. A page is a folder:
+
+```text
+content/subtopics/<category>/<guide slug>/<subtopic slug>/
+  index.md
+  <diagram>.excalidraw      (zero or more)
+```
+
+and lives at `/learning/<category>/<guide slug>/<subtopic slug>`. The folder name is the URL, in
+lowercase-with-hyphens. `index.md`:
+
+```md
+---
+subtopic: What C++ is # exactly as in that guide's list in src/content/subtopics.ts
+published: 2026-10-09
+summary: # optional — "Revise in 30 seconds"
+  - C++ compiles straight to machine code.
+sources: # required, never shown — what the page was cross-checked against
+  - https://…
+questions: # optional — same format as a day's questions
+  - title: Watermelon
+    url: https://codeforces.com/problemset/problem/4/A
+    difficulty: easy
+---
+
+The write-up, in Markdown.
+```
+
+In the body:
+
+- **Diagrams** — `![Caption](diagram:compile-pipeline)` shows `compile-pipeline.excalidraw` from
+  the same folder. Run `npm run notes:render` after adding or changing one; the build fails if a
+  diagram is missing or stale.
+- **Code** — every fenced block is a VS Code-style panel with Copy and Edit. C++, Java and Python
+  programs (anything with a `main`) also get **Run**, which compiles through `/api/run`. Set the
+  file tab with ` ```cpp title="vector.cpp" `.
+- **Expected output** — ` ```text title="Output" ` right after a program shows a terminal panel.
+- **Callouts** — `> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`, `> [!WARNING]`, `> [!CAUTION]`.
+
+The subtopic's name on its topic page becomes a link, readers get **Mark as read** (the same tick
+as the checkbox), and the page counts towards the track's and the home page's logs.
+
 ## Logging a day
 
 Each day is one Markdown file in `content/days/`, named by its number (`001.md`, `002.md`, …):

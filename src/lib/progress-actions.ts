@@ -2,7 +2,7 @@
 
 import { refresh } from "next/cache";
 import { auth } from "@/auth";
-import { questionsById } from "@/content/logs";
+import { questionsById } from "@/content/questions";
 import { setStatus, type Status } from "@/lib/progress";
 
 /** Marks a question attempted or solved for the signed-in learner (null clears it). */

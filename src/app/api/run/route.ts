@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { questionsById } from "@/content/logs";
+import { questionsById } from "@/content/questions";
 import { isLanguage } from "@/lib/languages";
 import { markAttempted } from "@/lib/progress";
 import { redis } from "@/lib/redis";

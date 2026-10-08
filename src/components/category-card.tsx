@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { ProgressBar } from "@/components/progress-bar";
 import type { Category } from "@/content/categories";
-import { logsIn } from "@/content/logs";
+import { pagesIn } from "@/content/subtopic-pages";
 import type { Progress } from "@/lib/reading";
 import { rem } from "@/lib/utils";
 
@@ -19,7 +19,8 @@ export function CategoryCard({
   progress?: Progress | null;
 }) {
   const { Icon, name, blurb, topics } = category;
-  const logs = logsIn(category.slug);
+  // One published subtopic page is one log.
+  const logs = pagesIn(category.slug);
   const latest = logs.at(-1);
   const more = topics.length - SHOWN_TOPICS;
 
@@ -67,7 +68,9 @@ export function CategoryCard({
             {logs.length === 1 ? "log" : "logs"}
           </span>
           <span className="inline-flex items-center gap-1 text-subtle transition-colors group-hover:text-link">
-            {latest ? `Latest · Day ${latest.day}` : "Coming soon"}
+            <span className="max-w-[11rem] truncate">
+              {latest ? `Latest · ${latest.name}` : "Coming soon"}
+            </span>
             <ArrowRight
               size={rem(14)}
               aria-hidden

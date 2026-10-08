@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SubtopicChecklist } from "@/components/subtopic-checklist";
 import { getCategory } from "@/content/categories";
+import { pageHref, pagesByName } from "@/content/subtopic-pages";
 import { getGuide, guides, subtopicsOf } from "@/content/subtopics";
 import { readSubtopics } from "@/lib/reading";
 import { delay, rem } from "@/lib/utils";
@@ -38,6 +39,7 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
   const { Icon } = category;
   const number = pad(category.topics.indexOf(guide.topic) + 1);
   const viewer = await getViewer();
+  const published = pagesByName(guide);
   const read = viewer ? await readSubtopics(viewer.id) : null;
 
   return (
@@ -70,7 +72,10 @@ export default async function TopicPage({ params }: PageProps<"/learning/[slug]/
       <section aria-label={`${guide.topic} subtopics`} className="enter mt-8" style={delay(80)}>
         <SubtopicChecklist
           topic={guide.topic}
-          items={subtopicsOf(guide)}
+          items={subtopicsOf(guide).map((item) => {
+            const page = published.get(item.name);
+            return page ? { ...item, href: pageHref(page) } : item;
+          })}
           initialRead={read ? subtopicsOf(guide).flatMap(({ id }) => (read.has(id) ? [id] : [])) : []}
           signedIn={Boolean(viewer)}
           loginHref={`/login?next=${encodeURIComponent(`/learning/${slug}/${topic}`)}`}
