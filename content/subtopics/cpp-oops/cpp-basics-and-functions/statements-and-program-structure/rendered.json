@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "comment-nesting.excalidraw",
+      "file": "comment-nesting.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "051dd3e110c75e0d862ac0b8fbe1edac37ac5275"
+    },
+    {
+      "source": "program-anatomy.excalidraw",
+      "file": "program-anatomy.svg",
+      "width": 944,
+      "height": 534,
+      "sha1": "30153528aba569e51c3320d6d5c068c30bdf3075"
+    },
+    {
+      "source": "statement-kinds.excalidraw",
+      "file": "statement-kinds.svg",
+      "width": 944,
+      "height": 784,
+      "sha1": "db01e72bc5f89ec45368e0707b8a5000accfde51"
+    }
+  ]
+}

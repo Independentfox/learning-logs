@@ -74,6 +74,35 @@ function rehypeAlerts() {
 }
 
 // ---------------------------------------------------------------------------------------------
+// Keyboard keys: `<kbd>Ctrl</kbd>` becomes a real <kbd>. Raw HTML is otherwise shown as text, and
+// this is the only tag we let through.
+// ---------------------------------------------------------------------------------------------
+
+type MdNode = { type: string; value?: string; children?: MdNode[]; data?: { hName?: string } };
+
+function remarkKbd() {
+  const visit = (node: MdNode) => {
+    const kids = node.children;
+    if (!kids) return;
+    for (let i = 0; i < kids.length; i++) {
+      if (kids[i].type !== "html" || kids[i].value?.trim().toLowerCase() !== "<kbd>") continue;
+      const end = kids.findIndex(
+        (k, j) => j > i && k.type === "html" && k.value?.trim().toLowerCase() === "</kbd>",
+      );
+      if (end === -1) continue;
+      // An emphasis node renamed to <kbd>, holding whatever was between the tags.
+      kids.splice(i, end - i + 1, {
+        type: "emphasis",
+        data: { hName: "kbd" },
+        children: kids.slice(i + 1, end),
+      });
+    }
+    kids.forEach(visit);
+  };
+  return (tree: MdNode) => visit(tree);
+}
+
+// ---------------------------------------------------------------------------------------------
 // Code
 // ---------------------------------------------------------------------------------------------
 
@@ -219,7 +248,7 @@ export function SubtopicArticle({ page, runner }: { page: SubtopicPage; runner: 
   return (
     <div className="prose-log prose max-w-none lg:prose-lg xl:prose-xl">
       <Markdown
-        remarkPlugins={[remarkGfm]}
+        remarkPlugins={[remarkGfm, remarkKbd]}
         rehypePlugins={[rehypeAlerts]}
         urlTransform={(url) => (url.startsWith("diagram:") ? url : defaultUrlTransform(url))}
         components={components}

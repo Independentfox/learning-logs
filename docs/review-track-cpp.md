@@ -8,7 +8,7 @@ in our own words; this file is only for reviewing that nothing was missed. It is
 - **Reference** — official docs (cppreference, GCC, Clang…) for material learncpp doesn't cover.
 - ✅ = page is live (link opens it) · ⏳ = not written yet
 
-**4 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
+**5 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
 
 Every learncpp lesson is covered by at least one subtopic, except: [A.4 C++ FAQ](https://www.learncpp.com/cpp-tutorial/cpp-faq/).
 
@@ -16,7 +16,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 
 ## 01 · C++ Basics & Functions
 
-[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 4/18 live
+[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions) · 5/18 live
 
 - **01 · What C++ is** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/what-cpp-is)
   - learncpp: [0.1 Introduction to these tutorials](https://www.learncpp.com/cpp-tutorial/introduction-to-these-tutorials/) · [0.2 Introduction to programs and programming languages](https://www.learncpp.com/cpp-tutorial/introduction-to-programming-languages/) · [0.3 Introduction to C/C++](https://www.learncpp.com/cpp-tutorial/introduction-to-cplusplus/)
@@ -27,7 +27,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 - **04 · Compiling from the command line** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/compiling-from-the-command-line)
   - Related: [0.5 Introduction to the compiler, linker, and libraries](https://www.learncpp.com/cpp-tutorial/introduction-to-the-compiler-linker-and-libraries/) · [0.7 Compiling your first program](https://www.learncpp.com/cpp-tutorial/compiling-your-first-program/) · [0.9 Configuring your compiler: Build configurations](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-build-configurations/) · [0.11 Configuring your compiler: Warning and error levels](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/) · [0.12 Configuring your compiler: Choosing a language standard](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-choosing-a-language-standard/) · [2.8 Programs with multiple code files](https://www.learncpp.com/cpp-tutorial/programs-with-multiple-code-files/) · [A.1 Static and dynamic libraries](https://www.learncpp.com/cpp-tutorial/a1-static-and-dynamic-libraries/)
   - Reference: [GCC manual: Invoking GCC](https://gcc.gnu.org/onlinedocs/gcc/Invoking-GCC.html) · [GCC: Overall options (-c, -o, -E, -S)](https://gcc.gnu.org/onlinedocs/gcc/Overall-Options.html)
-- **05 · Statements and program structure** · ⏳
+- **05 · Statements and program structure** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/cpp-basics-and-functions/statements-and-program-structure)
   - learncpp: [1.1 Statements and the structure of a program](https://www.learncpp.com/cpp-tutorial/statements-and-the-structure-of-a-program/) · [1.2 Comments](https://www.learncpp.com/cpp-tutorial/comments/)
 - **06 · Variables and initialization** · ⏳
   - learncpp: [1.3 Introduction to objects and variables](https://www.learncpp.com/cpp-tutorial/introduction-to-objects-and-variables/) · [1.4 Variable assignment and initialization](https://www.learncpp.com/cpp-tutorial/variable-assignment-and-initialization/)
@@ -111,7 +111,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [4.6 Fixed-width integers and size_t](https://www.learncpp.com/cpp-tutorial/fixed-width-integers-and-size-t/)
 - **07 · Type limits with std::numeric_limits** · ⏳
   - Related: [4.3 Object sizes and the sizeof operator](https://www.learncpp.com/cpp-tutorial/object-sizes-and-the-sizeof-operator/) · [4.4 Signed integers](https://www.learncpp.com/cpp-tutorial/signed-integers/)
-  - Reference: [cppreference: std::numeric_limits](https://en.cppreference.com/w/cpp/types/numeric_limits)
+  - Reference: [cppreference: std::numeric_limits](https://en.cppreference.com/cpp/types/numeric_limits)
 - **08 · Scientific notation** · ⏳
   - learncpp: [4.7 Introduction to scientific notation](https://www.learncpp.com/cpp-tutorial/introduction-to-scientific-notation/)
 - **09 · Floating-point numbers and precision** · ⏳
@@ -138,18 +138,18 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [5.7 Introduction to std::string](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/)
 - **20 · Working with std::string** · ⏳
   - learncpp: [D.22.1 std::string and std::wstring (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-and-stdwstring/) · [D.22.2 std::string construction and destruction (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-construction-and-destruction/) · [D.22.3 std::string length and capacity (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-length-and-capacity/) · [D.22.4 std::string character access and conversion to C-style arrays (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-character-access-and-conversion-to-c-style-arrays/) · [D.22.5 std::string assignment and swapping (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-assignment-and-swapping/) · [D.22.6 std::string appending (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-appending/) · [D.22.7 std::string inserting (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-inserting/)
-  - Reference: [cppreference: std::basic_string](https://en.cppreference.com/w/cpp/string/basic_string)
+  - Reference: [cppreference: std::basic_string](https://en.cppreference.com/cpp/string/basic_string)
 - **21 · std::string_view** · ⏳
   - learncpp: [5.8 Introduction to std::string_view](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring_view/) · [5.9 std::string_view (part 2)](https://www.learncpp.com/cpp-tutorial/stdstring_view-part-2/) · [5.x Chapter 5 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-5-summary-and-quiz/)
 - **22 · Converting between strings and numbers** · ⏳
   - Related: [5.7 Introduction to std::string](https://www.learncpp.com/cpp-tutorial/introduction-to-stdstring/)
-  - Reference: [cppreference: std::stoi / std::stol](https://en.cppreference.com/w/cpp/string/basic_string/stol) · [cppreference: std::to_string](https://en.cppreference.com/w/cpp/string/basic_string/to_string) · [cppreference: std::from_chars](https://en.cppreference.com/w/cpp/utility/from_chars)
+  - Reference: [cppreference: std::stoi / std::stol](https://en.cppreference.com/cpp/string/basic_string/stol) · [cppreference: std::to_string](https://en.cppreference.com/cpp/string/basic_string/to_string) · [cppreference: std::from_chars](https://en.cppreference.com/cpp/utility/from_chars)
 - **23 · Character handling with <cctype>** · ⏳
   - Related: [4.11 Chars](https://www.learncpp.com/cpp-tutorial/chars/)
-  - Reference: [cppreference: <cctype>](https://en.cppreference.com/w/cpp/header/cctype)
+  - Reference: [cppreference: <cctype>](https://en.cppreference.com/cpp/header/cctype)
 - **24 · Unicode and wide character types** · ⏳
   - Related: [4.11 Chars](https://www.learncpp.com/cpp-tutorial/chars/) · [D.22.1 std::string and std::wstring (archived)](https://www.learncpp.com/cpp-tutorial/stdstring-and-stdwstring/)
-  - Reference: [cppreference: fundamental types (character types)](https://en.cppreference.com/w/cpp/language/types)
+  - Reference: [cppreference: fundamental types (character types)](https://en.cppreference.com/cpp/language/types)
 
 ## 04 · Operators & Bit Manipulation
 
@@ -165,7 +165,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [6.4 Increment/decrement operators, and side effects](https://www.learncpp.com/cpp-tutorial/increment-decrement-operators-and-side-effects/)
 - **05 · Order of evaluation pitfalls** · ⏳
   - Related: [6.1 Operator precedence and associativity](https://www.learncpp.com/cpp-tutorial/operator-precedence-and-associativity/) · [6.4 Increment/decrement operators, and side effects](https://www.learncpp.com/cpp-tutorial/increment-decrement-operators-and-side-effects/)
-  - Reference: [cppreference: order of evaluation](https://en.cppreference.com/w/cpp/language/eval_order)
+  - Reference: [cppreference: order of evaluation](https://en.cppreference.com/cpp/language/eval_order)
 - **06 · The comma operator** · ⏳
   - learncpp: [6.5 The comma operator](https://www.learncpp.com/cpp-tutorial/the-comma-operator/)
 - **07 · The conditional operator ?:** · ⏳
@@ -184,7 +184,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [O.4 Converting integers between binary and decimal representation](https://www.learncpp.com/cpp-tutorial/converting-integers-between-binary-and-decimal-representation/)
 - **14 · The <bit> header (C++20)** · ⏳
   - Related: [O.1 Bit flags and bit manipulation via std::bitset](https://www.learncpp.com/cpp-tutorial/bit-flags-and-bit-manipulation-via-stdbitset/) · [O.2 Bitwise operators](https://www.learncpp.com/cpp-tutorial/bitwise-operators/) · [O.3 Bit manipulation with bitwise operators and bit masks](https://www.learncpp.com/cpp-tutorial/bit-manipulation-with-bitwise-operators-and-bit-masks/)
-  - Reference: [cppreference: <bit>](https://en.cppreference.com/w/cpp/header/bit)
+  - Reference: [cppreference: <bit>](https://en.cppreference.com/cpp/header/bit)
 
 ## 05 · Scope, Duration & Linkage
 
@@ -208,7 +208,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [7.8 Why (non-const) global variables are evil](https://www.learncpp.com/cpp-tutorial/why-non-const-global-variables-are-evil/)
 - **09 · The One Definition Rule** · ⏳
   - Related: [2.7 Forward declarations and definitions](https://www.learncpp.com/cpp-tutorial/forward-declarations/) · [7.9 Inline functions and variables](https://www.learncpp.com/cpp-tutorial/inline-functions-and-variables/)
-  - Reference: [cppreference: definitions and the ODR](https://en.cppreference.com/w/cpp/language/definition)
+  - Reference: [cppreference: definitions and the ODR](https://en.cppreference.com/cpp/language/definition)
 - **10 · Inline functions and variables** · ⏳
   - learncpp: [7.9 Inline functions and variables](https://www.learncpp.com/cpp-tutorial/inline-functions-and-variables/)
 - **11 · Sharing constants across files** · ⏳
@@ -217,17 +217,17 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [7.11 Static local variables](https://www.learncpp.com/cpp-tutorial/static-local-variables/)
 - **13 · Static initialization order** · ⏳
   - Related: [7.8 Why (non-const) global variables are evil](https://www.learncpp.com/cpp-tutorial/why-non-const-global-variables-are-evil/)
-  - Reference: [cppreference: static initialization order fiasco](https://en.cppreference.com/w/cpp/language/siof)
+  - Reference: [cppreference: static initialization order fiasco](https://en.cppreference.com/cpp/language/siof)
 - **14 · thread_local variables** · ⏳
   - Related: [7.12 Scope, duration, and linkage summary](https://www.learncpp.com/cpp-tutorial/scope-duration-and-linkage-summary/)
-  - Reference: [cppreference: storage duration](https://en.cppreference.com/w/cpp/language/storage_duration)
+  - Reference: [cppreference: storage duration](https://en.cppreference.com/cpp/language/storage_duration)
 - **15 · using declarations and directives** · ⏳
   - learncpp: [7.13 Using declarations and using directives](https://www.learncpp.com/cpp-tutorial/using-declarations-and-using-directives/)
 - **16 · Unnamed and inline namespaces** · ⏳
   - learncpp: [7.14 Unnamed and inline namespaces](https://www.learncpp.com/cpp-tutorial/unnamed-and-inline-namespaces/)
 - **17 · Name mangling and extern "C"** · ⏳
   - Related: [7.7 External linkage and variable forward declarations](https://www.learncpp.com/cpp-tutorial/external-linkage-and-variable-forward-declarations/)
-  - Reference: [cppreference: language linkage](https://en.cppreference.com/w/cpp/language/language_linkage)
+  - Reference: [cppreference: language linkage](https://en.cppreference.com/cpp/language/language_linkage)
 - **18 · Scope, duration and linkage recap** · ⏳
   - learncpp: [7.12 Scope, duration, and linkage summary](https://www.learncpp.com/cpp-tutorial/scope-duration-and-linkage-summary/) · [7.x Chapter 7 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-7-summary-and-quiz/)
 
@@ -243,7 +243,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [8.3 Common if statement problems](https://www.learncpp.com/cpp-tutorial/common-if-statement-problems/)
 - **04 · if and switch with initializers** · ⏳
   - Related: [8.2 If statements and blocks](https://www.learncpp.com/cpp-tutorial/if-statements-and-blocks/) · [8.5 Switch statement basics](https://www.learncpp.com/cpp-tutorial/switch-statement-basics/)
-  - Reference: [cppreference: if statement](https://en.cppreference.com/w/cpp/language/if) · [cppreference: switch statement](https://en.cppreference.com/w/cpp/language/switch)
+  - Reference: [cppreference: if statement](https://en.cppreference.com/cpp/language/if) · [cppreference: switch statement](https://en.cppreference.com/cpp/language/switch)
 - **05 · if constexpr** · ⏳
   - learncpp: [8.4 Constexpr if statements](https://www.learncpp.com/cpp-tutorial/constexpr-if-statements/)
 - **06 · switch statements** · ⏳
@@ -302,10 +302,10 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [10.6 Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/)
 - **07 · const_cast and reinterpret_cast** · ⏳
   - Related: [10.6 Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/)
-  - Reference: [cppreference: const_cast](https://en.cppreference.com/w/cpp/language/const_cast) · [cppreference: reinterpret_cast](https://en.cppreference.com/w/cpp/language/reinterpret_cast)
+  - Reference: [cppreference: const_cast](https://en.cppreference.com/cpp/language/const_cast) · [cppreference: reinterpret_cast](https://en.cppreference.com/cpp/language/reinterpret_cast)
 - **08 · Why to avoid C-style casts** · ⏳
   - learncpp: [10.6 Explicit type conversion (casting) and static_cast](https://www.learncpp.com/cpp-tutorial/explicit-type-conversion-casting-and-static-cast/)
-  - Reference: [cppreference: explicit type conversion](https://en.cppreference.com/w/cpp/language/explicit_cast)
+  - Reference: [cppreference: explicit type conversion](https://en.cppreference.com/cpp/language/explicit_cast)
 - **09 · typedefs and type aliases** · ⏳
   - learncpp: [10.7 Typedefs and type aliases](https://www.learncpp.com/cpp-tutorial/typedefs-and-type-aliases/)
 - **10 · auto for variables** · ⏳
@@ -314,7 +314,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [10.9 Type deduction for functions](https://www.learncpp.com/cpp-tutorial/type-deduction-for-functions/) · [10.x Chapter 10 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-10-summary-and-quiz/)
 - **12 · decltype and decltype(auto)** · ⏳
   - Related: [10.8 Type deduction for objects using the auto keyword](https://www.learncpp.com/cpp-tutorial/type-deduction-for-objects-using-the-auto-keyword/) · [10.9 Type deduction for functions](https://www.learncpp.com/cpp-tutorial/type-deduction-for-functions/)
-  - Reference: [cppreference: decltype](https://en.cppreference.com/w/cpp/language/decltype)
+  - Reference: [cppreference: decltype](https://en.cppreference.com/cpp/language/decltype)
 
 ## 08 · Overloading, Templates & constexpr
 
@@ -350,7 +350,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [F.3 Constexpr functions (part 3) and consteval](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/) · [F.x Chapter F summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-f-summary-and-quiz/)
 - **15 · constinit** · ⏳
   - Related: [F.3 Constexpr functions (part 3) and consteval](https://www.learncpp.com/cpp-tutorial/constexpr-functions-part-3-and-consteval/) · [5.6 Constexpr variables](https://www.learncpp.com/cpp-tutorial/constexpr-variables/)
-  - Reference: [cppreference: constinit](https://en.cppreference.com/w/cpp/language/constinit)
+  - Reference: [cppreference: constinit](https://en.cppreference.com/cpp/language/constinit)
 
 ## 09 · References & Pointers
 
@@ -382,10 +382,10 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [12.13 In and out parameters](https://www.learncpp.com/cpp-tutorial/in-and-out-parameters/)
 - **13 · Dangling pointers and references** · ⏳
   - Related: [12.3 Lvalue references](https://www.learncpp.com/cpp-tutorial/lvalue-references/) · [12.12 Return by reference and return by address](https://www.learncpp.com/cpp-tutorial/return-by-reference-and-return-by-address/)
-  - Reference: [cppreference: references (dangling references)](https://en.cppreference.com/w/cpp/language/reference)
+  - Reference: [cppreference: references (dangling references)](https://en.cppreference.com/cpp/language/reference)
 - **14 · Pointers vs references** · ⏳
   - Related: [12.7 Introduction to pointers](https://www.learncpp.com/cpp-tutorial/introduction-to-pointers/) · [12.10 Pass by address](https://www.learncpp.com/cpp-tutorial/pass-by-address/)
-  - Reference: [cppreference: pointer declaration](https://en.cppreference.com/w/cpp/language/pointer)
+  - Reference: [cppreference: pointer declaration](https://en.cppreference.com/cpp/language/pointer)
 - **15 · auto with references and pointers** · ⏳
   - learncpp: [12.14 Type deduction with pointers, references, and const](https://www.learncpp.com/cpp-tutorial/type-deduction-with-pointers-references-and-const/)
 - **16 · std::optional** · ⏳
@@ -413,24 +413,24 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [13.8 Struct aggregate initialization](https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/)
 - **09 · Designated initializers** · ⏳
   - learncpp: [13.8 Struct aggregate initialization](https://www.learncpp.com/cpp-tutorial/struct-aggregate-initialization/)
-  - Reference: [cppreference: aggregate initialization (designated initializers)](https://en.cppreference.com/w/cpp/language/aggregate_initialization)
+  - Reference: [cppreference: aggregate initialization (designated initializers)](https://en.cppreference.com/cpp/language/aggregate_initialization)
 - **10 · Default member initializers** · ⏳
   - learncpp: [13.9 Default member initialization](https://www.learncpp.com/cpp-tutorial/default-member-initialization/)
 - **11 · Passing and returning structs** · ⏳
   - learncpp: [13.10 Passing and returning structs](https://www.learncpp.com/cpp-tutorial/passing-and-returning-structs/)
 - **12 · Padding and alignment** · ⏳
   - learncpp: [13.11 Struct miscellany](https://www.learncpp.com/cpp-tutorial/struct-miscellany/)
-  - Reference: [cppreference: object alignment](https://en.cppreference.com/w/cpp/language/object)
+  - Reference: [cppreference: object alignment](https://en.cppreference.com/cpp/language/object)
 - **13 · Member access through pointers** · ⏳
   - learncpp: [13.12 Member selection with pointers and references](https://www.learncpp.com/cpp-tutorial/member-selection-with-pointers-and-references/)
 - **14 · Structured bindings** · ⏳
   - Related: [13.10 Passing and returning structs](https://www.learncpp.com/cpp-tutorial/passing-and-returning-structs/)
-  - Reference: [cppreference: structured bindings](https://en.cppreference.com/w/cpp/language/structured_binding)
+  - Reference: [cppreference: structured bindings](https://en.cppreference.com/cpp/language/structured_binding)
 - **15 · std::pair and std::tuple** · ⏳
   - Related: [13.13 Class templates](https://www.learncpp.com/cpp-tutorial/class-templates/)
-  - Reference: [cppreference: std::pair](https://en.cppreference.com/w/cpp/utility/pair) · [cppreference: std::tuple](https://en.cppreference.com/w/cpp/utility/tuple)
+  - Reference: [cppreference: std::pair](https://en.cppreference.com/cpp/utility/pair) · [cppreference: std::tuple](https://en.cppreference.com/cpp/utility/tuple)
 - **16 · Unions** · ⏳
-  - Reference: [cppreference: union declaration](https://en.cppreference.com/w/cpp/language/union)
+  - Reference: [cppreference: union declaration](https://en.cppreference.com/cpp/language/union)
 - **17 · A first look at class templates** · ⏳
   - learncpp: [13.13 Class templates](https://www.learncpp.com/cpp-tutorial/class-templates/)
 - **18 · CTAD and deduction guides** · ⏳
@@ -454,7 +454,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [14.4 Const class objects and const member functions](https://www.learncpp.com/cpp-tutorial/const-class-objects-and-const-member-functions/)
 - **05 · mutable members** · ⏳
   - Related: [14.4 Const class objects and const member functions](https://www.learncpp.com/cpp-tutorial/const-class-objects-and-const-member-functions/)
-  - Reference: [cppreference: cv and mutable specifiers](https://en.cppreference.com/w/cpp/language/cv)
+  - Reference: [cppreference: cv and mutable specifiers](https://en.cppreference.com/cpp/language/cv)
 - **06 · Access specifiers** · ⏳
   - learncpp: [14.5 Public and private members and access specifiers](https://www.learncpp.com/cpp-tutorial/public-and-private-members-and-access-specifiers/)
 - **07 · Getters and setters** · ⏳
@@ -481,7 +481,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [14.16 Converting constructors and the explicit keyword](https://www.learncpp.com/cpp-tutorial/converting-constructors-and-the-explicit-keyword/)
 - **18 · = default and = delete** · ⏳
   - Related: [14.11 Default constructors and default arguments](https://www.learncpp.com/cpp-tutorial/default-constructors-and-default-arguments/) · [14.14 Introduction to the copy constructor](https://www.learncpp.com/cpp-tutorial/introduction-to-the-copy-constructor/) · [11.4 Deleting functions](https://www.learncpp.com/cpp-tutorial/deleting-functions/)
-  - Reference: [cppreference: function definition (defaulted and deleted)](https://en.cppreference.com/w/cpp/language/function)
+  - Reference: [cppreference: function definition (defaulted and deleted)](https://en.cppreference.com/cpp/language/function)
 - **19 · constexpr classes** · ⏳
   - learncpp: [14.17 Constexpr aggregates and classes](https://www.learncpp.com/cpp-tutorial/constexpr-aggregates-and-classes/) · [14.x Chapter 14 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-14-summary-and-quiz/)
 - **20 · The this pointer and chaining** · ⏳
@@ -529,7 +529,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [16.10 std::vector resizing and capacity](https://www.learncpp.com/cpp-tutorial/stdvector-resizing-and-capacity/)
 - **10 · push_back vs emplace_back** · ⏳
   - learncpp: [16.11 std::vector and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
-  - Reference: [cppreference: std::vector::emplace_back](https://en.cppreference.com/w/cpp/container/vector/emplace_back)
+  - Reference: [cppreference: std::vector::emplace_back](https://en.cppreference.com/cpp/container/vector/emplace_back)
 - **11 · Using a vector as a stack** · ⏳
   - learncpp: [16.11 std::vector and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
 - **12 · std::vector<bool>** · ⏳
@@ -560,7 +560,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [17.13 Multidimensional std::array](https://www.learncpp.com/cpp-tutorial/multidimensional-stdarray/) · [17.x Chapter 17 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-17-summary-and-quiz/)
 - **25 · std::span** · ⏳
   - Related: [17.8 C-style array decay](https://www.learncpp.com/cpp-tutorial/c-style-array-decay/)
-  - Reference: [cppreference: std::span](https://en.cppreference.com/w/cpp/container/span)
+  - Reference: [cppreference: std::span](https://en.cppreference.com/cpp/container/span)
 
 ## 13 · STL Containers, Iterators & Algorithms
 
@@ -574,48 +574,48 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [18.2 Introduction to iterators](https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/) · [D.21.3 STL iterators overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-iterators-overview/)
 - **04 · Iterator categories** · ⏳
   - Related: [D.21.3 STL iterators overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-iterators-overview/)
-  - Reference: [cppreference: iterator library](https://en.cppreference.com/w/cpp/iterator)
+  - Reference: [cppreference: iterator library](https://en.cppreference.com/cpp/iterator)
 - **05 · Iterator invalidation** · ⏳
   - Related: [18.2 Introduction to iterators](https://www.learncpp.com/cpp-tutorial/introduction-to-iterators/)
-  - Reference: [cppreference: containers library (iterator invalidation)](https://en.cppreference.com/w/cpp/container)
+  - Reference: [cppreference: containers library (iterator invalidation)](https://en.cppreference.com/cpp/container)
 - **06 · deque, list and forward_list** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/)
-  - Reference: [cppreference: std::deque](https://en.cppreference.com/w/cpp/container/deque) · [cppreference: std::list](https://en.cppreference.com/w/cpp/container/list) · [cppreference: std::forward_list](https://en.cppreference.com/w/cpp/container/forward_list)
+  - Reference: [cppreference: std::deque](https://en.cppreference.com/cpp/container/deque) · [cppreference: std::list](https://en.cppreference.com/cpp/container/list) · [cppreference: std::forward_list](https://en.cppreference.com/cpp/container/forward_list)
 - **07 · stack, queue and priority_queue** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/) · [16.11 std::vector and stack behavior](https://www.learncpp.com/cpp-tutorial/stdvector-and-stack-behavior/)
-  - Reference: [cppreference: std::stack](https://en.cppreference.com/w/cpp/container/stack) · [cppreference: std::queue](https://en.cppreference.com/w/cpp/container/queue) · [cppreference: std::priority_queue](https://en.cppreference.com/w/cpp/container/priority_queue)
+  - Reference: [cppreference: std::stack](https://en.cppreference.com/cpp/container/stack) · [cppreference: std::queue](https://en.cppreference.com/cpp/container/queue) · [cppreference: std::priority_queue](https://en.cppreference.com/cpp/container/priority_queue)
 - **08 · set and multiset** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/)
-  - Reference: [cppreference: std::set](https://en.cppreference.com/w/cpp/container/set) · [cppreference: std::multiset](https://en.cppreference.com/w/cpp/container/multiset)
+  - Reference: [cppreference: std::set](https://en.cppreference.com/cpp/container/set) · [cppreference: std::multiset](https://en.cppreference.com/cpp/container/multiset)
 - **09 · map and multimap** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/)
-  - Reference: [cppreference: std::map](https://en.cppreference.com/w/cpp/container/map) · [cppreference: std::multimap](https://en.cppreference.com/w/cpp/container/multimap)
+  - Reference: [cppreference: std::map](https://en.cppreference.com/cpp/container/map) · [cppreference: std::multimap](https://en.cppreference.com/cpp/container/multimap)
 - **10 · unordered_set and unordered_map** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/)
-  - Reference: [cppreference: std::unordered_set](https://en.cppreference.com/w/cpp/container/unordered_set) · [cppreference: std::unordered_map](https://en.cppreference.com/w/cpp/container/unordered_map)
+  - Reference: [cppreference: std::unordered_set](https://en.cppreference.com/cpp/container/unordered_set) · [cppreference: std::unordered_map](https://en.cppreference.com/cpp/container/unordered_map)
 - **11 · Custom comparators and hashes** · ⏳
   - Related: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
-  - Reference: [cppreference: Compare requirement](https://en.cppreference.com/w/cpp/named_req/Compare) · [cppreference: std::hash](https://en.cppreference.com/w/cpp/utility/hash)
+  - Reference: [cppreference: Compare requirement](https://en.cppreference.com/cpp/named_req/Compare) · [cppreference: std::hash](https://en.cppreference.com/cpp/utility/hash)
 - **12 · Choosing the right container** · ⏳
   - Related: [D.21.2 STL containers overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-containers-overview/)
-  - Reference: [cppreference: containers library](https://en.cppreference.com/w/cpp/container)
+  - Reference: [cppreference: containers library](https://en.cppreference.com/cpp/container)
 - **13 · Standard algorithms** · ⏳
   - learncpp: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/) · [D.21.4 STL algorithms overview (archived)](https://www.learncpp.com/cpp-tutorial/stl-algorithms-overview/)
 - **14 · Sorting and searching algorithms** · ⏳
   - Related: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
-  - Reference: [cppreference: std::sort](https://en.cppreference.com/w/cpp/algorithm/sort) · [cppreference: std::lower_bound](https://en.cppreference.com/w/cpp/algorithm/lower_bound)
+  - Reference: [cppreference: std::sort](https://en.cppreference.com/cpp/algorithm/sort) · [cppreference: std::lower_bound](https://en.cppreference.com/cpp/algorithm/lower_bound)
 - **15 · Modifying algorithms and erase-remove** · ⏳
   - Related: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
-  - Reference: [cppreference: std::remove](https://en.cppreference.com/w/cpp/algorithm/remove) · [cppreference: std::erase / std::erase_if (vector)](https://en.cppreference.com/w/cpp/container/vector/erase2)
+  - Reference: [cppreference: std::remove](https://en.cppreference.com/cpp/algorithm/remove) · [cppreference: std::erase / std::erase_if (vector)](https://en.cppreference.com/cpp/container/vector/erase2)
 - **16 · Numeric algorithms** · ⏳
   - Related: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
-  - Reference: [cppreference: <numeric>](https://en.cppreference.com/w/cpp/header/numeric)
+  - Reference: [cppreference: <numeric>](https://en.cppreference.com/cpp/header/numeric)
 - **17 · Heap and partition algorithms** · ⏳
   - Related: [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
-  - Reference: [cppreference: std::make_heap](https://en.cppreference.com/w/cpp/algorithm/make_heap) · [cppreference: std::partition](https://en.cppreference.com/w/cpp/algorithm/partition) · [cppreference: std::nth_element](https://en.cppreference.com/w/cpp/algorithm/nth_element)
+  - Reference: [cppreference: std::make_heap](https://en.cppreference.com/cpp/algorithm/make_heap) · [cppreference: std::partition](https://en.cppreference.com/cpp/algorithm/partition) · [cppreference: std::nth_element](https://en.cppreference.com/cpp/algorithm/nth_element)
 - **18 · Ranges and views (C++20)** · ⏳
   - Related: [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/)
-  - Reference: [cppreference: ranges library](https://en.cppreference.com/w/cpp/ranges)
+  - Reference: [cppreference: ranges library](https://en.cppreference.com/cpp/ranges)
 - **19 · Timing your code** · ⏳
   - learncpp: [18.4 Timing your code](https://www.learncpp.com/cpp-tutorial/timing-your-code/)
 
@@ -642,13 +642,13 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - Reference: [Clang: AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)
 - **09 · new/delete vs malloc/free** · ⏳
   - Related: [19.1 Dynamic memory allocation with new and delete](https://www.learncpp.com/cpp-tutorial/dynamic-memory-allocation-with-new-and-delete/)
-  - Reference: [cppreference: std::malloc](https://en.cppreference.com/w/cpp/memory/c/malloc)
+  - Reference: [cppreference: std::malloc](https://en.cppreference.com/cpp/memory/c/malloc)
 - **10 · Placement new** · ⏳
-  - Reference: [cppreference: new expression (placement new)](https://en.cppreference.com/w/cpp/language/new)
+  - Reference: [cppreference: new expression (placement new)](https://en.cppreference.com/cpp/language/new)
 - **11 · Overloading new and delete** · ⏳
-  - Reference: [cppreference: operator new](https://en.cppreference.com/w/cpp/memory/new/operator_new)
+  - Reference: [cppreference: operator new](https://en.cppreference.com/cpp/memory/new/operator_new)
 - **12 · Allocators and memory pools** · ⏳
-  - Reference: [cppreference: Allocator requirement](https://en.cppreference.com/w/cpp/named_req/Allocator) · [cppreference: std::pmr::polymorphic_allocator](https://en.cppreference.com/w/cpp/memory/polymorphic_allocator)
+  - Reference: [cppreference: Allocator requirement](https://en.cppreference.com/cpp/named_req/Allocator) · [cppreference: std::pmr::polymorphic_allocator](https://en.cppreference.com/cpp/memory/polymorphic_allocator)
 
 ## 15 · Function Pointers, Recursion & Lambdas
 
@@ -658,7 +658,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [20.1 Function Pointers](https://www.learncpp.com/cpp-tutorial/function-pointers/)
 - **02 · Callbacks and std::function** · ⏳
   - learncpp: [20.1 Function Pointers](https://www.learncpp.com/cpp-tutorial/function-pointers/)
-  - Reference: [cppreference: std::function](https://en.cppreference.com/w/cpp/utility/functional/function)
+  - Reference: [cppreference: std::function](https://en.cppreference.com/cpp/utility/functional/function)
 - **03 · Recursion** · ⏳
   - learncpp: [20.3 Recursion](https://www.learncpp.com/cpp-tutorial/recursion/)
 - **04 · Command-line arguments** · ⏳
@@ -674,7 +674,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 - **09 · Lambdas with STL algorithms** · ⏳
   - learncpp: [20.6 Introduction to lambdas (anonymous functions)](https://www.learncpp.com/cpp-tutorial/introduction-to-lambdas-anonymous-functions/) · [18.3 Introduction to standard library algorithms](https://www.learncpp.com/cpp-tutorial/introduction-to-standard-library-algorithms/)
 - **10 · std::invoke and std::bind** · ⏳
-  - Reference: [cppreference: std::invoke](https://en.cppreference.com/w/cpp/utility/functional/invoke) · [cppreference: std::bind](https://en.cppreference.com/w/cpp/utility/functional/bind)
+  - Reference: [cppreference: std::invoke](https://en.cppreference.com/cpp/utility/functional/invoke) · [cppreference: std::bind](https://en.cppreference.com/cpp/utility/functional/bind)
 
 ## 16 · Operator Overloading (OOPS 2)
 
@@ -696,7 +696,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [21.7 Overloading the comparison operators](https://www.learncpp.com/cpp-tutorial/overloading-the-comparison-operators/)
 - **08 · The spaceship operator <=>** · ⏳
   - Related: [21.7 Overloading the comparison operators](https://www.learncpp.com/cpp-tutorial/overloading-the-comparison-operators/) · [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/)
-  - Reference: [cppreference: default comparisons](https://en.cppreference.com/w/cpp/language/default_comparisons)
+  - Reference: [cppreference: default comparisons](https://en.cppreference.com/cpp/language/default_comparisons)
 - **09 · Increment and decrement** · ⏳
   - learncpp: [21.8 Overloading the increment and decrement operators](https://www.learncpp.com/cpp-tutorial/overloading-the-increment-and-decrement-operators/)
 - **10 · The subscript operator []** · ⏳
@@ -706,20 +706,20 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 - **12 · Conversion operators** · ⏳
   - learncpp: [21.11 Overloading typecasts](https://www.learncpp.com/cpp-tutorial/overloading-typecasts/)
 - **13 · Overloading -> and *** · ⏳
-  - Reference: [cppreference: operator overloading](https://en.cppreference.com/w/cpp/language/operators)
+  - Reference: [cppreference: operator overloading](https://en.cppreference.com/cpp/language/operators)
 - **14 · The assignment operator** · ⏳
   - learncpp: [21.12 Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/)
 - **15 · Shallow vs deep copy** · ⏳
   - learncpp: [21.13 Shallow vs. deep copying](https://www.learncpp.com/cpp-tutorial/shallow-vs-deep-copying/)
 - **16 · The copy-and-swap idiom** · ⏳
   - Related: [21.12 Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/)
-  - Reference: [cppreference: copy assignment operator](https://en.cppreference.com/w/cpp/language/copy_assignment)
+  - Reference: [cppreference: copy assignment operator](https://en.cppreference.com/cpp/language/copy_assignment)
 - **17 · Operators and function templates** · ⏳
   - learncpp: [21.14 Overloading operators and function templates](https://www.learncpp.com/cpp-tutorial/overloading-operators-and-function-templates/)
 - **18 · Rules and good practice** · ⏳
   - learncpp: [21.x Chapter 21 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-21-summary-and-quiz/)
   - Related: [21.1 Introduction to operator overloading](https://www.learncpp.com/cpp-tutorial/introduction-to-operator-overloading/)
-  - Reference: [cppreference: operator overloading](https://en.cppreference.com/w/cpp/language/operators)
+  - Reference: [cppreference: operator overloading](https://en.cppreference.com/cpp/language/operators)
 - **19 · Project: a fully overloaded class** · ⏳
   - learncpp: [21.y Chapter 21 project](https://www.learncpp.com/cpp-tutorial/chapter-21-project/)
 
@@ -731,7 +731,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [22.1 Introduction to smart pointers and move semantics](https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/)
 - **02 · RAII** · ⏳
   - Related: [19.3 Destructors](https://www.learncpp.com/cpp-tutorial/destructors/) · [22.1 Introduction to smart pointers and move semantics](https://www.learncpp.com/cpp-tutorial/introduction-to-smart-pointers-move-semantics/)
-  - Reference: [cppreference: RAII](https://en.cppreference.com/w/cpp/language/raii)
+  - Reference: [cppreference: RAII](https://en.cppreference.com/cpp/language/raii)
 - **03 · Rvalue references** · ⏳
   - learncpp: [22.2 R-value references](https://www.learncpp.com/cpp-tutorial/rvalue-references/)
 - **04 · Move constructor and move assignment** · ⏳
@@ -740,7 +740,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [22.4 std::move](https://www.learncpp.com/cpp-tutorial/stdmove/)
 - **06 · The rule of three, five and zero** · ⏳
   - Related: [21.12 Overloading the assignment operator](https://www.learncpp.com/cpp-tutorial/overloading-the-assignment-operator/) · [22.3 Move constructors and move assignment](https://www.learncpp.com/cpp-tutorial/move-constructors-and-move-assignment/)
-  - Reference: [cppreference: the rule of three/five/zero](https://en.cppreference.com/w/cpp/language/rule_of_three)
+  - Reference: [cppreference: the rule of three/five/zero](https://en.cppreference.com/cpp/language/rule_of_three)
 - **07 · std::unique_ptr** · ⏳
   - learncpp: [22.5 std::unique_ptr](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/)
 - **08 · std::shared_ptr** · ⏳
@@ -748,15 +748,15 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 - **09 · make_unique and make_shared** · ⏳
   - learncpp: [22.5 std::unique_ptr](https://www.learncpp.com/cpp-tutorial/stdunique_ptr/) · [22.6 std::shared_ptr](https://www.learncpp.com/cpp-tutorial/stdshared_ptr/)
 - **10 · Custom deleters** · ⏳
-  - Reference: [cppreference: std::unique_ptr](https://en.cppreference.com/w/cpp/memory/unique_ptr)
+  - Reference: [cppreference: std::unique_ptr](https://en.cppreference.com/cpp/memory/unique_ptr)
 - **11 · std::weak_ptr and reference cycles** · ⏳
   - learncpp: [22.7 Circular dependency issues with std::shared_ptr, and std::weak_ptr](https://www.learncpp.com/cpp-tutorial/circular-dependency-issues-with-stdshared_ptr-and-stdweak_ptr/) · [22.x Chapter 22 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-22-summary-and-quiz/)
 - **12 · Forwarding references** · ⏳
   - Related: [22.2 R-value references](https://www.learncpp.com/cpp-tutorial/rvalue-references/)
-  - Reference: [cppreference: references (forwarding references)](https://en.cppreference.com/w/cpp/language/reference)
+  - Reference: [cppreference: references (forwarding references)](https://en.cppreference.com/cpp/language/reference)
 - **13 · Perfect forwarding with std::forward** · ⏳
   - Related: [22.4 std::move](https://www.learncpp.com/cpp-tutorial/stdmove/)
-  - Reference: [cppreference: std::forward](https://en.cppreference.com/w/cpp/utility/forward)
+  - Reference: [cppreference: std::forward](https://en.cppreference.com/cpp/utility/forward)
 
 ## 18 · Object Relationships (OOPS 3)
 
@@ -797,7 +797,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [24.4 Constructors and initialization of derived classes](https://www.learncpp.com/cpp-tutorial/constructors-and-initialization-of-derived-classes/)
 - **05 · Inheriting constructors** · ⏳
   - Related: [24.4 Constructors and initialization of derived classes](https://www.learncpp.com/cpp-tutorial/constructors-and-initialization-of-derived-classes/)
-  - Reference: [cppreference: using-declaration (inheriting constructors)](https://en.cppreference.com/w/cpp/language/using_declaration)
+  - Reference: [cppreference: using-declaration (inheriting constructors)](https://en.cppreference.com/cpp/language/using_declaration)
 - **06 · Access specifiers in inheritance** · ⏳
   - learncpp: [24.5 Inheritance and access specifiers](https://www.learncpp.com/cpp-tutorial/inheritance-and-access-specifiers/)
 - **07 · Adding to a derived class** · ⏳
@@ -827,7 +827,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [25.6 The virtual table](https://www.learncpp.com/cpp-tutorial/the-virtual-table/)
 - **07 · Virtual calls in constructors** · ⏳
   - Related: [25.2 Virtual functions and polymorphism](https://www.learncpp.com/cpp-tutorial/virtual-functions/)
-  - Reference: [cppreference: virtual functions (during construction and destruction)](https://en.cppreference.com/w/cpp/language/virtual)
+  - Reference: [cppreference: virtual functions (during construction and destruction)](https://en.cppreference.com/cpp/language/virtual)
 - **08 · Pure virtual functions and interfaces** · ⏳
   - learncpp: [25.7 Pure virtual functions, abstract base classes, and interface classes](https://www.learncpp.com/cpp-tutorial/pure-virtual-functions-abstract-base-classes-and-interface-classes/)
 - **09 · Virtual base classes and the diamond** · ⏳
@@ -838,16 +838,16 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [25.10 Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/)
 - **12 · RTTI and typeid** · ⏳
   - Related: [25.10 Dynamic casting](https://www.learncpp.com/cpp-tutorial/dynamic-casting/)
-  - Reference: [cppreference: typeid](https://en.cppreference.com/w/cpp/language/typeid)
+  - Reference: [cppreference: typeid](https://en.cppreference.com/cpp/language/typeid)
 - **13 · Printing derived classes with <<** · ⏳
   - learncpp: [25.11 Printing inherited classes using operator<<](https://www.learncpp.com/cpp-tutorial/printing-inherited-classes-using-operator/) · [25.x Chapter 25 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-25-summary-and-quiz/)
 - **14 · Static polymorphism with CRTP** · ⏳
-  - Reference: [cppreference: CRTP](https://en.cppreference.com/w/cpp/language/crtp)
+  - Reference: [cppreference: CRTP](https://en.cppreference.com/cpp/language/crtp)
 - **15 · The cost of virtual calls** · ⏳
   - Related: [25.6 The virtual table](https://www.learncpp.com/cpp-tutorial/the-virtual-table/)
   - _Our own material._
 - **16 · Type erasure** · ⏳
-  - Reference: [cppreference: std::function](https://en.cppreference.com/w/cpp/utility/functional/function) · [cppreference: std::any](https://en.cppreference.com/w/cpp/utility/any)
+  - Reference: [cppreference: std::function](https://en.cppreference.com/cpp/utility/functional/function) · [cppreference: std::any](https://en.cppreference.com/cpp/utility/any)
 
 ## 21 · Templates & Classes (OOPS 6)
 
@@ -866,22 +866,22 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 - **06 · Partial specialization for pointers** · ⏳
   - learncpp: [26.6 Partial template specialization for pointers](https://www.learncpp.com/cpp-tutorial/partial-template-specialization-for-pointers/) · [26.x Chapter 26 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-26-summary-and-quiz/)
 - **07 · Dependent names and typename** · ⏳
-  - Reference: [cppreference: dependent names](https://en.cppreference.com/w/cpp/language/dependent_name)
+  - Reference: [cppreference: dependent names](https://en.cppreference.com/cpp/language/dependent_name)
 - **08 · Variadic templates** · ⏳
-  - Reference: [cppreference: parameter packs](https://en.cppreference.com/w/cpp/language/parameter_pack)
+  - Reference: [cppreference: parameter packs](https://en.cppreference.com/cpp/language/parameter_pack)
 - **09 · Fold expressions** · ⏳
-  - Reference: [cppreference: fold expressions](https://en.cppreference.com/w/cpp/language/fold)
+  - Reference: [cppreference: fold expressions](https://en.cppreference.com/cpp/language/fold)
 - **10 · Template template parameters** · ⏳
-  - Reference: [cppreference: template parameters](https://en.cppreference.com/w/cpp/language/template_parameters)
+  - Reference: [cppreference: template parameters](https://en.cppreference.com/cpp/language/template_parameters)
 - **11 · Type traits** · ⏳
-  - Reference: [cppreference: metaprogramming library](https://en.cppreference.com/w/cpp/meta)
+  - Reference: [cppreference: metaprogramming library](https://en.cppreference.com/cpp/meta)
 - **12 · SFINAE and enable_if** · ⏳
-  - Reference: [cppreference: SFINAE](https://en.cppreference.com/w/cpp/language/sfinae) · [cppreference: std::enable_if](https://en.cppreference.com/w/cpp/types/enable_if)
+  - Reference: [cppreference: SFINAE](https://en.cppreference.com/cpp/language/sfinae) · [cppreference: std::enable_if](https://en.cppreference.com/cpp/types/enable_if)
 - **13 · Concepts and requires** · ⏳
   - Related: [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/)
-  - Reference: [cppreference: constraints and concepts](https://en.cppreference.com/w/cpp/language/constraints)
+  - Reference: [cppreference: constraints and concepts](https://en.cppreference.com/cpp/language/constraints)
 - **14 · Template metaprogramming basics** · ⏳
-  - Reference: [cppreference: metaprogramming library](https://en.cppreference.com/w/cpp/meta)
+  - Reference: [cppreference: metaprogramming library](https://en.cppreference.com/cpp/meta)
 
 ## 22 · Exceptions
 
@@ -899,7 +899,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [27.5 Exceptions, classes, and inheritance](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
 - **06 · The standard exception types** · ⏳
   - learncpp: [27.5 Exceptions, classes, and inheritance](https://www.learncpp.com/cpp-tutorial/exceptions-classes-and-inheritance/)
-  - Reference: [cppreference: std::exception](https://en.cppreference.com/w/cpp/error/exception)
+  - Reference: [cppreference: std::exception](https://en.cppreference.com/cpp/error/exception)
 - **07 · Rethrowing exceptions** · ⏳
   - learncpp: [27.6 Rethrowing exceptions](https://www.learncpp.com/cpp-tutorial/rethrowing-exceptions/)
 - **08 · Function try blocks** · ⏳
@@ -914,10 +914,10 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [27.10 std::move_if_noexcept](https://www.learncpp.com/cpp-tutorial/stdmove_if_noexcept/) · [27.x Chapter 27 summary and quiz](https://www.learncpp.com/cpp-tutorial/chapter-27-summary-and-quiz/)
 - **13 · Exception safety guarantees** · ⏳
   - Related: [27.9 Exception specifications and noexcept](https://www.learncpp.com/cpp-tutorial/exception-specifications-and-noexcept/)
-  - Reference: [cppreference: exceptions (exception safety)](https://en.cppreference.com/w/cpp/language/exceptions)
+  - Reference: [cppreference: exceptions (exception safety)](https://en.cppreference.com/cpp/language/exceptions)
 - **14 · Alternatives: error codes and expected** · ⏳
   - Related: [9.4 Detecting and handling errors](https://www.learncpp.com/cpp-tutorial/detecting-and-handling-errors/) · [B.5 Introduction to C++23](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
-  - Reference: [cppreference: std::expected](https://en.cppreference.com/w/cpp/utility/expected)
+  - Reference: [cppreference: std::expected](https://en.cppreference.com/cpp/utility/expected)
 
 ## 23 · Input/Output & Streams
 
@@ -939,15 +939,15 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [28.7 Random file I/O](https://www.learncpp.com/cpp-tutorial/random-file-io/)
 - **08 · Binary file I/O** · ⏳
   - Related: [28.6 Basic file I/O](https://www.learncpp.com/cpp-tutorial/basic-file-io/)
-  - Reference: [cppreference: std::basic_ostream::write](https://en.cppreference.com/w/cpp/io/basic_ostream/write) · [cppreference: std::basic_istream::read](https://en.cppreference.com/w/cpp/io/basic_istream/read)
+  - Reference: [cppreference: std::basic_ostream::write](https://en.cppreference.com/cpp/io/basic_ostream/write) · [cppreference: std::basic_istream::read](https://en.cppreference.com/cpp/io/basic_istream/read)
 - **09 · std::format and std::print** · ⏳
   - Related: [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/) · [B.5 Introduction to C++23](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
-  - Reference: [cppreference: std::format](https://en.cppreference.com/w/cpp/utility/format/format) · [cppreference: std::print](https://en.cppreference.com/w/cpp/io/print)
+  - Reference: [cppreference: std::format](https://en.cppreference.com/cpp/utility/format/format) · [cppreference: std::print](https://en.cppreference.com/cpp/io/print)
 - **10 · std::filesystem** · ⏳
   - Related: [B.3 Introduction to C++17](https://www.learncpp.com/cpp-tutorial/introduction-to-c17/)
-  - Reference: [cppreference: filesystem library](https://en.cppreference.com/w/cpp/filesystem)
+  - Reference: [cppreference: filesystem library](https://en.cppreference.com/cpp/filesystem)
 - **11 · Fast I/O for competitive programming** · ⏳
-  - Reference: [cppreference: sync_with_stdio](https://en.cppreference.com/w/cpp/io/ios_base/sync_with_stdio)
+  - Reference: [cppreference: sync_with_stdio](https://en.cppreference.com/cpp/io/ios_base/sync_with_stdio)
 
 ## 24 · Modern C++ (11–23)
 
@@ -965,27 +965,27 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [B.5 Introduction to C++23](https://www.learncpp.com/cpp-tutorial/introduction-to-c23/)
 - **06 · std::variant and std::any** · ⏳
   - Related: [B.3 Introduction to C++17](https://www.learncpp.com/cpp-tutorial/introduction-to-c17/)
-  - Reference: [cppreference: std::variant](https://en.cppreference.com/w/cpp/utility/variant) · [cppreference: std::any](https://en.cppreference.com/w/cpp/utility/any)
+  - Reference: [cppreference: std::variant](https://en.cppreference.com/cpp/utility/variant) · [cppreference: std::any](https://en.cppreference.com/cpp/utility/any)
 - **07 · Time with std::chrono** · ⏳
   - Related: [18.4 Timing your code](https://www.learncpp.com/cpp-tutorial/timing-your-code/)
-  - Reference: [cppreference: date and time library](https://en.cppreference.com/w/cpp/chrono)
+  - Reference: [cppreference: date and time library](https://en.cppreference.com/cpp/chrono)
 - **08 · Regular expressions with <regex>** · ⏳
-  - Reference: [cppreference: regular expressions library](https://en.cppreference.com/w/cpp/regex)
+  - Reference: [cppreference: regular expressions library](https://en.cppreference.com/cpp/regex)
 - **09 · Threads: std::thread and std::jthread** · ⏳
-  - Reference: [cppreference: std::thread](https://en.cppreference.com/w/cpp/thread/thread) · [cppreference: std::jthread](https://en.cppreference.com/w/cpp/thread/jthread)
+  - Reference: [cppreference: std::thread](https://en.cppreference.com/cpp/thread/thread) · [cppreference: std::jthread](https://en.cppreference.com/cpp/thread/jthread)
 - **10 · Mutexes and locks** · ⏳
-  - Reference: [cppreference: std::mutex](https://en.cppreference.com/w/cpp/thread/mutex) · [cppreference: std::scoped_lock](https://en.cppreference.com/w/cpp/thread/scoped_lock)
+  - Reference: [cppreference: std::mutex](https://en.cppreference.com/cpp/thread/mutex) · [cppreference: std::scoped_lock](https://en.cppreference.com/cpp/thread/scoped_lock)
 - **11 · Condition variables** · ⏳
-  - Reference: [cppreference: std::condition_variable](https://en.cppreference.com/w/cpp/thread/condition_variable)
+  - Reference: [cppreference: std::condition_variable](https://en.cppreference.com/cpp/thread/condition_variable)
 - **12 · Atomics and the memory model** · ⏳
-  - Reference: [cppreference: std::atomic](https://en.cppreference.com/w/cpp/atomic/atomic) · [cppreference: std::memory_order](https://en.cppreference.com/w/cpp/atomic/memory_order)
+  - Reference: [cppreference: std::atomic](https://en.cppreference.com/cpp/atomic/atomic) · [cppreference: std::memory_order](https://en.cppreference.com/cpp/atomic/memory_order)
 - **13 · Futures, promises and std::async** · ⏳
-  - Reference: [cppreference: std::future](https://en.cppreference.com/w/cpp/thread/future) · [cppreference: std::async](https://en.cppreference.com/w/cpp/thread/async)
+  - Reference: [cppreference: std::future](https://en.cppreference.com/cpp/thread/future) · [cppreference: std::async](https://en.cppreference.com/cpp/thread/async)
 - **14 · Coroutines** · ⏳
   - Related: [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/)
-  - Reference: [cppreference: coroutines](https://en.cppreference.com/w/cpp/language/coroutines)
+  - Reference: [cppreference: coroutines](https://en.cppreference.com/cpp/language/coroutines)
 - **15 · Modules** · ⏳
   - Related: [B.4 Introduction to C++20](https://www.learncpp.com/cpp-tutorial/introduction-to-c20/)
-  - Reference: [cppreference: modules](https://en.cppreference.com/w/cpp/language/modules)
+  - Reference: [cppreference: modules](https://en.cppreference.com/cpp/language/modules)
 - **16 · Looking ahead to C++26** · ⏳
-  - Reference: [cppreference: C++26](https://en.cppreference.com/w/cpp/26)
+  - Reference: [cppreference: C++26](https://en.cppreference.com/cpp/26)
