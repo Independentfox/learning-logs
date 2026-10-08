@@ -434,3 +434,9 @@
 .code-panel-editor .cm-editor {
   font-size: 0.9375rem;
 }
+
+@media (min-width: 1280px) {
+  .code-panel-editor .cm-editor {
+    font-size: 1rem;
+  }
+}

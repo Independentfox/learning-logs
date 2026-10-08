@@ -181,7 +181,7 @@ export function CodeBlock({
           />
         </div>
       ) : (
-        <div className="flex overflow-x-auto py-3.5 font-mono text-[0.9375rem] leading-[1.65]">
+        <div className="flex overflow-x-auto py-3.5 font-mono text-[0.9375rem] leading-[1.65] xl:text-base">
           <span
             aria-hidden
             className="sticky left-0 shrink-0 bg-[var(--panel-bg)] pr-4 pl-4 text-right text-[var(--panel-gutter)] select-none"
@@ -234,7 +234,7 @@ export function OutputBlock({ text, title }: { text: string; title: string }) {
         <SquareTerminal size={rem(13)} aria-hidden />
         {title}
       </figcaption>
-      <pre className="m-0 overflow-x-auto px-4 py-3 font-mono text-[0.875rem] leading-[1.65] whitespace-pre">
+      <pre className="m-0 overflow-x-auto px-4 py-3 font-mono text-[0.875rem] leading-[1.65] whitespace-pre xl:text-[0.9375rem]">
         {text}
       </pre>
     </figure>

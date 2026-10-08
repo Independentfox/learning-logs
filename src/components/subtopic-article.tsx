@@ -114,7 +114,7 @@ function Alert({ type, children }: { type: AlertType; children: ReactNode }) {
         <Icon size={rem(17)} aria-hidden />
         {label}
       </p>
-      <div className="alert-body prose-log prose mt-1.5 max-w-none text-[1.0625rem] [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+      <div className="alert-body prose-log prose mt-1.5 max-w-none text-[1.0625rem] xl:text-lg [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
         {children}
       </div>
     </aside>
@@ -132,6 +132,15 @@ export function SubtopicArticle({ page, runner }: { page: SubtopicPage; runner: 
       ) : (
         <a href={href}>{children}</a>
       ),
+
+    // A diagram on its own line is a paragraph holding just an image. Its <figure> can't sit
+    // inside a <p> — the browser would split them apart and React would then fail to hydrate.
+    p: ({ node, children }) => {
+      const kids = ((node as HastNode | undefined)?.children ?? []).filter(
+        (c) => !(c.type === "text" && !c.value?.trim()),
+      );
+      return kids.length > 0 && kids.every((c) => c.tagName === "img") ? <>{children}</> : <p>{children}</p>;
+    },
 
     img: ({ src, alt }) => {
       const name =
@@ -208,7 +217,7 @@ export function SubtopicArticle({ page, runner }: { page: SubtopicPage; runner: 
   };
 
   return (
-    <div className="prose-log prose max-w-none lg:prose-lg">
+    <div className="prose-log prose max-w-none lg:prose-lg xl:prose-xl">
       <Markdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeAlerts]}
