@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "call-flow.excalidraw",
+      "file": "call-flow.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "479b417f9edb9447cf95e649b41eab09902e5f59"
+    },
+    {
+      "source": "function-anatomy.excalidraw",
+      "file": "function-anatomy.svg",
+      "width": 944,
+      "height": 744,
+      "sha1": "d359e836ec1232f98d398d45177401d320ba661e"
+    },
+    {
+      "source": "pass-by-value.excalidraw",
+      "file": "pass-by-value.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "5720a47d501a27fc80e308212407bd6247553234"
+    }
+  ]
+}
