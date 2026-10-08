@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
-import { parseQuestions, parseSummary, type Question } from "./logs";
+import { parseQuestions, parseStringList, parseSummary, type Question } from "./logs";
 import { guides, subtopicId, type TopicGuide } from "./subtopics";
 
 /** A rendered Excalidraw diagram (see scripts/notes.mjs). */
@@ -68,7 +68,7 @@ function load(): SubtopicPage[] {
         throw new Error(`${where}: "published" must look like 2026-10-09`);
 
       // Where the material was cross-checked against. Never shown on the site.
-      if (!Array.isArray(data.sources) || data.sources.length === 0) {
+      if (data.sources == null || parseStringList(data.sources, where, "sources").length === 0) {
         throw new Error(`${where}: list the lessons this page covers under "sources"`);
       }
 
