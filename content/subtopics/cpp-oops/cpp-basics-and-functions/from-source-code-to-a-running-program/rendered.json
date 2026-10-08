@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "build-pipeline.excalidraw",
+      "file": "build-pipeline.svg",
+      "width": 944,
+      "height": 1214,
+      "sha1": "d95d0549651e877d224e6e1ac121f8010ee03d9c"
+    },
+    {
+      "source": "dev-cycle.excalidraw",
+      "file": "dev-cycle.svg",
+      "width": 944,
+      "height": 1234,
+      "sha1": "ffc3b3a4859d06c2ec029200d0fec8963b47c7d8"
+    },
+    {
+      "source": "multi-file-link.excalidraw",
+      "file": "multi-file-link.svg",
+      "width": 944,
+      "height": 804,
+      "sha1": "48d599eff993042c5d104e5dc4013fc57a0f9f5d"
+    }
+  ]
+}
