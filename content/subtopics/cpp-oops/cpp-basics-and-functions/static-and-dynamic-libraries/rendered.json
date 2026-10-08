@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "static-vs-dynamic.excalidraw",
+      "file": "static-vs-dynamic.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "d094f5bac40395b03470987da2e4170f7392211b"
+    },
+    {
+      "source": "using-a-library.excalidraw",
+      "file": "using-a-library.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "8f0b1fd233f3ca6d4db3c33cab2500bb0d0e26c9"
+    }
+  ]
+}
