@@ -1,0 +1,25 @@
+{
+  "pages": [
+    {
+      "source": "brace-styles.excalidraw",
+      "file": "brace-styles.svg",
+      "width": 944,
+      "height": 564,
+      "sha1": "3a2a6ef870483385008fdc505525cc3c0a778e51"
+    },
+    {
+      "source": "identifier-rules.excalidraw",
+      "file": "identifier-rules.svg",
+      "width": 944,
+      "height": 724,
+      "sha1": "b3705e2d8a5859cff9d1e131f9ba13dfc1c0d728"
+    },
+    {
+      "source": "naming-styles.excalidraw",
+      "file": "naming-styles.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "1ae875d3e1b7a1b66aa62af654f4adc19ce853c6"
+    }
+  ]
+}
