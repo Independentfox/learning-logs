@@ -17,10 +17,22 @@ npm run dev        # http://localhost:3000
 
 ## How changes reach the site
 
-Changes go through pull requests: work on a branch, open a PR against `main`, and merge it with
-a **merge commit** (not squash or rebase). Vercel deploys every push to `main`, but on the Hobby
-plan it only deploys commits by the project owner — the merge commit is the owner's, so that's
-the one that goes live. Commit messages are one line.
+Every change goes through a pull request into `main` and is merged with a **merge commit** (not
+squash or rebase). Vercel deploys each push to `main`; on the Hobby plan it only deploys commits
+by the project owner, and the merge commit is the owner's, so that's the one that goes live.
+
+| Work                     | Branch                                                                     | Label                       |
+| ------------------------ | -------------------------------------------------------------------------- | --------------------------- |
+| C++ & OOPs track         | `track/cpp-oops` — long-running; fast-forward it to `main` before new work | `track: cpp-oops`           |
+| New features             | `feat/<name>`                                                              | `enhancement`               |
+| Fixes                    | `fix/<name>`                                                               | `bug`                       |
+| Layout and styling       | `style/<name>`                                                             | `ui`                        |
+| Tracks, syllabi and days | `content/<name>`                                                           | `content`                   |
+| Docs and process         | `docs/<name>`                                                              | `documentation`, `workflow` |
+
+Commit messages are one line with a type prefix — `feat:`, `fix:`, `style:`, `content:`, `docs:`.
+Every PR fills in the template (summary, changes, testing) and gets a label. Short-lived branches
+are deleted once merged.
 
 ## Where things live
 
