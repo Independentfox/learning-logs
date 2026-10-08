@@ -132,7 +132,7 @@ ub.cpp:7:9: runtime error: signed integer overflow: 2147483647 + 1 cannot be rep
 
 Not everything the standard leaves open is UB. There are two milder cases.
 
-**Implementation-defined behavior.** The standard lets each compiler choose, but the compiler must **document** its choice and stick to it. For example, `sizeof(int)` is 4 on every mainstream desktop compiler today, but the standard only guarantees at least 2. Whether plain `char` is signed or unsigned also varies: it's signed on most x86 systems and unsigned on many ARM Linux systems.
+**Implementation-defined behavior.** The standard lets each compiler choose, but the compiler must **document** its choice and stick to it. For example, `sizeof(int)` is 4 on every mainstream desktop compiler today, but the standard only guarantees that an `int` is at least 16 bits (2 bytes on any ordinary system). Whether plain `char` is signed or unsigned also varies: it's signed on most x86 systems and unsigned on many ARM Linux systems.
 
 **Unspecified behavior.** The compiler chooses from a set of allowed outcomes, but doesn't have to document which, and may even choose differently in different places. The classic example is the order in which a function's arguments are evaluated:
 
