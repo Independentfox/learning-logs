@@ -1,3 +1,4 @@
+import { Globe } from "lucide-react";
 import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number | string };
@@ -43,3 +44,10 @@ export function GoogleIcon({ size = "1rem", ...props }: IconProps) {
     </svg>
   );
 }
+
+/** The profile links a person can have, in the order they're shown (footer, contributor cards). */
+export const networks = [
+  { key: "linkedin", label: "LinkedIn", Icon: LinkedInIcon },
+  { key: "github", label: "GitHub", Icon: GitHubIcon },
+  { key: "portfolio", label: "portfolio", Icon: Globe },
+] as const;

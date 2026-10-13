@@ -40,6 +40,7 @@ are deleted once merged.
 | -------------------------------------------------------------------- | ------------------------------ |
 | Learning tracks (a card each, and a page each at `/learning/<slug>`) | `src/content/categories.ts`    |
 | Building Journey cards                                               | `src/content/projects.ts`      |
+| Contributors tab: add a friend to `friends`                          | `src/content/contributors.ts`  |
 | Daily logs — one Markdown file per day (format below)                | `content/days/*.md`            |
 | Site name, links                                                     | `src/content/site.ts`          |
 | Home: hero, stats panel, tabs                                        | `src/app/(journey)/layout.tsx` |

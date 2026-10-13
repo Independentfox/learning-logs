@@ -79,7 +79,7 @@ const searchIndex = logs
   .map((log) => ({ day: log.day, title: log.title, category: getCategory(log.category)?.name ?? "" }))
   .reverse();
 
-/** Shared by both tabs: intro, live stats, the tab switcher and day search. */
+/** Shared by every tab: intro, live stats, the tab switcher and day search. */
 export default async function JourneyLayout({ children }: { children: ReactNode }) {
   const viewer = await getViewer();
 
@@ -110,7 +110,7 @@ export default async function JourneyLayout({ children }: { children: ReactNode 
         </section>
 
         <div
-          className="enter relative z-20 mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between lg:mt-24"
+          className="enter relative z-20 mt-16 flex flex-col gap-3 sm:items-start lg:mt-24 lg:flex-row lg:items-center lg:justify-between"
           style={delay(220)}
         >
           <JourneyTabs />
