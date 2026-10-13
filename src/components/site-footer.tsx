@@ -1,14 +1,7 @@
-import { Globe } from "lucide-react";
 import { Fragment } from "react";
-import { GitHubIcon, LinkedInIcon } from "@/components/icons";
+import { networks } from "@/components/icons";
 import { people, profileLink, type Person } from "@/content/site";
 import { cn, rem, shell } from "@/lib/utils";
-
-const networks = [
-  { key: "linkedin", label: "LinkedIn", Icon: LinkedInIcon },
-  { key: "github", label: "GitHub", Icon: GitHubIcon },
-  { key: "portfolio", label: "portfolio", Icon: Globe },
-] as const;
 
 /** A person's name followed by an icon for each of their links. */
 function PersonLinks({ person }: { person: Person }) {

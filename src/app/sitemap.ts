@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: siteUrl, changeFrequency: "daily", priority: 1 },
     { url: `${siteUrl}/building`, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteUrl}/contributors`, changeFrequency: "monthly", priority: 0.5 },
     ...categories.map(({ slug }) => ({
       url: `${siteUrl}/learning/${slug}`,
       changeFrequency: "weekly" as const,
