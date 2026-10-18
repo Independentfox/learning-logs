@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "jumping.excalidraw",
+      "file": "jumping.svg",
+      "width": 944,
+      "height": 464,
+      "sha1": "ef4f84f12531eb7b22f5c22cb1bcc1ecca0961a2"
+    },
+    {
+      "source": "when-it-pauses.excalidraw",
+      "file": "when-it-pauses.svg",
+      "width": 944,
+      "height": 514,
+      "sha1": "b54acb781cff5f8dc6943abc10df18f05219a38c"
+    }
+  ]
+}
