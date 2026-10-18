@@ -8,7 +8,7 @@ in our own words; this file is only for reviewing that nothing was missed. It is
 - **Reference** — official docs (cppreference, GCC, Clang…) for material learncpp doesn't cover.
 - ✅ = page is live (link opens it) · ⏳ = not written yet
 
-**22 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
+**23 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
 
 Every learncpp lesson is covered by at least one subtopic, except: [A.4 C++ FAQ](https://www.learncpp.com/cpp-tutorial/cpp-faq/).
 
@@ -59,7 +59,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 
 ## 02 · Debugging
 
-[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging) · 4/13 live
+[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging) · 5/13 live
 
 - **01 · Syntax errors vs semantic errors** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging/syntax-errors-vs-semantic-errors)
   - learncpp: [3.1 Syntax and semantic errors](https://www.learncpp.com/cpp-tutorial/syntax-and-semantic-errors/)
@@ -70,7 +70,7 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
   - learncpp: [3.2 The debugging process](https://www.learncpp.com/cpp-tutorial/the-debugging-process/) · [3.3 A strategy for debugging](https://www.learncpp.com/cpp-tutorial/a-strategy-for-debugging/)
 - **04 · Print debugging and logging** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging/print-debugging-and-logging)
   - learncpp: [3.4 Basic debugging tactics](https://www.learncpp.com/cpp-tutorial/basic-debugging-tactics/) · [3.5 More debugging tactics](https://www.learncpp.com/cpp-tutorial/more-debugging-tactics/)
-- **05 · Stepping through code** · ⏳
+- **05 · Stepping through code** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging/stepping-through-code)
   - learncpp: [3.6 Using an integrated debugger: Stepping](https://www.learncpp.com/cpp-tutorial/using-an-integrated-debugger-stepping/)
 - **06 · Breakpoints and run-to-cursor** · ⏳
   - learncpp: [3.7 Using an integrated debugger: Running and breakpoints](https://www.learncpp.com/cpp-tutorial/using-an-integrated-debugger-running-and-breakpoints/)
