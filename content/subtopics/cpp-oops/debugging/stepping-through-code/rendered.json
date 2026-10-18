@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "session-states.excalidraw",
+      "file": "session-states.svg",
+      "width": 944,
+      "height": 534,
+      "sha1": "820bf18f81fba21e8353a5a278117b7a99f6b8bc"
+    },
+    {
+      "source": "step-commands.excalidraw",
+      "file": "step-commands.svg",
+      "width": 944,
+      "height": 564,
+      "sha1": "9f5581fa0140a02736134e1a3c9ff6e59efc667d"
+    }
+  ]
+}
