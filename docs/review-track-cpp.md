@@ -8,7 +8,7 @@ in our own words; this file is only for reviewing that nothing was missed. It is
 - **Reference** — official docs (cppreference, GCC, Clang…) for material learncpp doesn't cover.
 - ✅ = page is live (link opens it) · ⏳ = not written yet
 
-**19 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
+**20 of 390 subtopics live.** 299 subtopics map to learncpp lessons; 91 go beyond learncpp and are checked against reference docs instead.
 
 Every learncpp lesson is covered by at least one subtopic, except: [A.4 C++ FAQ](https://www.learncpp.com/cpp-tutorial/cpp-faq/).
 
@@ -59,11 +59,11 @@ _Regenerate after each new page: `python3 docs/gen_review.py` (it also fails if 
 
 ## 02 · Debugging
 
-[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging) · 1/13 live
+[Topic page](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging) · 2/13 live
 
 - **01 · Syntax errors vs semantic errors** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging/syntax-errors-vs-semantic-errors)
   - learncpp: [3.1 Syntax and semantic errors](https://www.learncpp.com/cpp-tutorial/syntax-and-semantic-errors/)
-- **02 · Reading compiler error messages** · ⏳
+- **02 · Reading compiler error messages** · ✅ [live](https://thelearninglogs.vercel.app/learning/cpp-oops/debugging/reading-compiler-error-messages)
   - Related: [3.1 Syntax and semantic errors](https://www.learncpp.com/cpp-tutorial/syntax-and-semantic-errors/) · [0.11 Configuring your compiler: Warning and error levels](https://www.learncpp.com/cpp-tutorial/configuring-your-compiler-warning-and-error-levels/)
   - Reference: [GCC: Diagnostic message formatting](https://gcc.gnu.org/onlinedocs/gcc/Diagnostic-Message-Formatting-Options.html)
 - **03 · A systematic debugging process** · ⏳
