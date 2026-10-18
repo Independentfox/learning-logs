@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "debugging-loop.excalidraw",
+      "file": "debugging-loop.svg",
+      "width": 944,
+      "height": 564,
+      "sha1": "aa9f14fc71d89cc95851f487390a6f1491c0864f"
+    },
+    {
+      "source": "narrowing-down.excalidraw",
+      "file": "narrowing-down.svg",
+      "width": 944,
+      "height": 624,
+      "sha1": "7334f2f9fcc90939a15dd879142be38864d52f54"
+    }
+  ]
+}
