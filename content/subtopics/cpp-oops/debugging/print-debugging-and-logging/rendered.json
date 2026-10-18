@@ -1,0 +1,18 @@
+{
+  "pages": [
+    {
+      "source": "cerr-vs-cout.excalidraw",
+      "file": "cerr-vs-cout.svg",
+      "width": 944,
+      "height": 544,
+      "sha1": "78054961480ef13af49e88d4e8d4c3890d7228a1"
+    },
+    {
+      "source": "debug-switch.excalidraw",
+      "file": "debug-switch.svg",
+      "width": 944,
+      "height": 664,
+      "sha1": "ef34c0ea95149270e0148899dab2fbba0e2a25fd"
+    }
+  ]
+}
